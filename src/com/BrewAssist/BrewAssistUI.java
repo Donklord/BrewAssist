@@ -4,6 +4,19 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     
@@ -33,7 +46,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
        // JFrame frame = new JFrame("Brewing Assistant v1.0");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,900);
+        setSize(1080,900);
         add(tabbedPane);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -256,17 +269,153 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
         //Mid grid (1,2)
         JPanel recipie = new JPanel();
-        JLabel recipieText = new JLabel("Recipie section under construction");
-        recipie.setBorder(BorderFactory.createTitledBorder("Grain Bill, Hops & Yeast"));
-        recipie.add(recipieText);
+        BorderLayout midSub1 = new BorderLayout();
+        recipie.setLayout(midSub1);
+        
+        //Mid panel 1 - Batch size & yeast type top bar
+        JPanel midPan1 = new JPanel();
+        FlowLayout yeastnBatch = new FlowLayout(FlowLayout.CENTER);
+        midPan1.setLayout(yeastnBatch);
+        midPan1.setBackground(Color.WHITE);
+        JButton calc = new JButton("Calculate");
+        JLabel calcSpace = new JLabel("      ");
+        JTextField size = new JTextField("5", 2);
+        JLabel sizeLabel = new JLabel("Batch Size (Gallons): ");
+        JLabel yeastLabel = new JLabel("      Yeast Type: ");
+        JComboBox yeast = new JComboBox();
+        yeast.addItem("Type 1");
+        yeast.addItem("Type 2");
+        yeast.addItem("Type 3");
+        midPan1.add(sizeLabel);
+        midPan1.add(size);
+        midPan1.add(yeastLabel);
+        midPan1.add(yeast);
+        midPan1.add(calcSpace);
+        midPan1.add(calc);
+        midPan1.setBorder(new EmptyBorder(0, 10, 0, 0) );
+        recipie.add(midPan1, BorderLayout.NORTH);
+        beerStyles.setBackground(Color.WHITE);
+        
+            //Mid panel 2 - Hops & Grain
+        JPanel midPan2 = new JPanel();
+        FlowLayout midSub2 = new FlowLayout();
+        midPan2.setLayout(midSub2);
+        midPan2.setBackground(Color.WHITE);
+        
+                //Mid panel 2 - Grains
+        JPanel grains = new JPanel();
+        FlowLayout grainsLayout = new FlowLayout(FlowLayout.LEFT);
+        grains.setLayout(grainsLayout);
+        
+        JComboBox grainCombo = new JComboBox();
+        grainCombo.addItem("Grain 1");
+        grainCombo.addItem("Grain 2");
+        grainCombo.addItem("Grain 3");
+        grainCombo.addItem("Grain 4");
+        grainCombo.addItem("Grain 5");
+        
+        String[] grainColNames = {"Grain", "Lbs", "Deg Lob", "%Eff"};
+        Object[][] grainData = {
+            {"", "Lbs 1", "Deg 1", "% 1"},
+            {"", "Lbs 2", "Deg 2", "% 2"},
+            {"", "Lbs 3", "Deg 3", "% 3"},
+            {"", "Lbs 4", "Deg 4", "% 4"},
+            {"", "Lbs 5", "Deg 5", "% 5"},
+        };
+        
+        JTable grainTable = new JTable(grainData, grainColNames);
+        grainTable.setBackground(Color.WHITE);
+        grainTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(grainCombo));
+        grains.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.WHITE, Color.WHITE), "Grains"));
+        //grains.setBorder(new EmptyBorder(10, 10, 10, 10));
+        grains.setBackground(Color.WHITE);
+        grains.add(new JScrollPane(grainTable));
+        grains.setPreferredSize(new Dimension(500, 150));
+        midPan2.add(grains);
+        
+                //Mid panel 2 - Hops
+        JPanel hops = new JPanel();
+        hops.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        
+        JComboBox hopCombo = new JComboBox();
+        hopCombo.addItem("Hop 1");
+        hopCombo.addItem("Hop 2");
+        hopCombo.addItem("Hop 3");
+        hopCombo.addItem("Hop 4");
+        hopCombo.addItem("Hop 5");
+        
+        String[] hopColNames = {"Hop", "Amount", "Time", "Prop 1", "Prop 2"};
+        Object[][] hopData = {
+            {"", "Amnt 1", "Time 1", "P1", "P2"},
+            {"", "Amnt 2", "Time 2", "P1", "P2"},
+            {"", "Amnt 3", "Time 3", "P1", "P2"},
+            {"", "Amnt 4", "Time 4", "P1", "P2"},
+            {"", "Amnt 5", "Time 5", "P1", "P2"},
+        };
+        
+        JTable hopTable = new JTable(hopData, hopColNames);
+        hopTable.setBackground(Color.WHITE);
+        hopTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(hopCombo));
+        hops.setBackground(Color.WHITE);
+        hops.add(new JScrollPane(hopTable));
+        hops.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.WHITE, Color.WHITE), "Hops"));
+        hops.setPreferredSize(new Dimension(500, 150));
+        midPan2.add(hops);
+        
+        recipie.add(midPan2, BorderLayout.CENTER);
+        
+      //  JLabel recipieText = new JLabel("Recipie section under construction");
+        recipie.setBorder(BorderFactory.createTitledBorder("Grain Bill, Hops & Yeast"));;
+       // recipie.add(recipieText);
         recipie.setBackground(Color.WHITE);
         inner.add(recipie);
         
         //Bottom grid (1,3)
         JPanel calcualted = new JPanel();
-        JLabel calcText = new JLabel("Calculated section is under construction");
+        JLabel calcIbu = new JLabel("IBU's:");
+        JLabel calcSrm = new JLabel("SRM:");
+        JLabel calcOg = new JLabel("O.G.:");
+        JLabel calcFg = new JLabel("F.G.:");
+        JLabel calcAbv = new JLabel("% ABV:");
+        
+        JTextField cIbuT = new JTextField(5);
+        cIbuT.setEditable(false);
+        cIbuT.setFont(ibuFont);
+        cIbuT.setText("0");
+        JTextField cSrmT = new JTextField(5);
+        cSrmT.setEditable(false);
+        cSrmT.setFont(ibuFont);
+        cSrmT.setText("0");
+        JTextField cOgT = new JTextField(5);
+        cOgT.setEditable(false);
+        cOgT.setFont(ibuFont);
+        cOgT.setText("0");
+        JTextField cFgT = new JTextField(5);
+        cFgT.setEditable(false);
+        cFgT.setFont(ibuFont);
+        cFgT.setText("0");
+        JTextField cAbvT = new JTextField(5);
+        cAbvT.setEditable(false);
+        cAbvT.setFont(ibuFont);
+        cAbvT.setText("0");
+        
+        JTextArea charac = new JTextArea(2,50);
+        charac.setEditable(false);
+        charac.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Characteristics"));
+        //JLabel calcText = new JLabel("Calculated section is under construction");
         calcualted.setBorder(BorderFactory.createTitledBorder("Calculated Characteristics"));
-        calcualted.add(calcText);
+        //calcualted.add(calcText);
+        calcualted.add(calcIbu);
+        calcualted.add(cIbuT);
+        calcualted.add(calcSrm);
+        calcualted.add(cSrmT);
+        calcualted.add(calcOg);
+        calcualted.add(cOgT);
+        calcualted.add(calcFg);
+        calcualted.add(cFgT);
+        calcualted.add(calcAbv);
+        calcualted.add(cAbvT);
+        calcualted.add(charac);
         calcualted.setBackground(Color.WHITE);
         inner.add(calcualted);
         
