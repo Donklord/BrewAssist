@@ -1,0 +1,48 @@
+name,displayName,yeild,lovibond,srm,maxInBatch,notes
+acidMalt,Acid Malt,58.7,3,3,10,Used to adjust PH without chemicals.  Enhances head retention.
+amberMalt,Amber malt,75,17,22,20,"Used in english browns, add color and biscuit taste.  Intense flavor - limit use"
+aromaticMalt,Aromatic Malt,78,20,26,10,Provides strong malt flavor and aroma
+barleyFlaked,Barley - Flaked,70,2,2,20,Adds significant body to Porters and Stouts. 
+barleyRaw,Barley - Raw,60.9,2,2,15,Raw and unmalted can be used to add body to beer.  Requires fine milling and multi stage mash.
+barleyTorrefied,Barley - Torrefied,79,2,2,40,Raw that has been cracked open.  Faster conversion when compared to raw.
+brownMalt,Brown Malt,70,49,65,10,Adds dry biscuit flavor.  Used in nut brown ales porters and some belgian.
+brumalt,Brumalt,71.7,17,23,10,Dark german add malt flavor.  Marzen and Oktoberfest beers.
+crystalMalt10,Crystal Malt - 10,75,8,10,20,Adds body and color.  Improves head retention.
+crystalMalt20,Crystal Malt - 20,75,15,20,20,Adds body and color.  Improves head retention.
+crystalMalt30,Crystal Malt - 30,75,23,30,20,Adds body and color.  Improves head retention.
+crystalMalt40,Crystal Malt - 40,74,30,40,20,Adds body and color.  Improves head retention.
+crystalMalt60,Crystal Malt - 60,74,45,60,20,Adds body and color.  Improves head retention.
+crystalMalt80,Crystal Malt - 80,74,60,80,20,Adds body and color.  Improves head retention.
+crystalMalt120,Crystal Malt - 120,72,89,120,20,Adds body and color.  Improves head retention.  Very Dark
+caramuncih,Caramunich,71.7,42,56,10,Carmel copper colored malt.  Used in belgian ales and German bocks.
+carared,Carared,75,15,20,20,Adds body color.  Improves head retention.
+caravienne,Caravienne,73.9,17,22,10,Light Belgian crystal malt.  Used in light trappist  and abbey style Belgian ales.
+chocolateUS,Chocolate Malt - US,60,260,350,10,Dark malt.  Provides righ red or brown color and nutty flavor.  Used for Brown ales porters and some stouts.
+chocolateUK,Chocolate Malt - UK,73,334,450,10,Dark malt.  Provides righ red or brown color and nutty flavor.  Used for Brown ales porters and some stouts.
+mildMalt,Mild malt,80,3,4,100,"""English Mild""  A light specialty malt used in Brown Ales"
+munichMalt,Munich Malt,80,7,9,80,"Malty -  sweet flavor, adds reddish amber color.  Does not contribute signficantly to body or head retention.  Used for Bock porter marzen oktoberfest beers."
+munichMalt10,Munich Malt - 10,77,8,10,80,"Malty -  sweet flavor, adds reddish amber color.  Does not contribute signficantly to body or head retention.  Used for Bock porter marzen oktoberfest beers."
+munichMalt20,Munich Malt - 20,75,15,20,80,Malty -  sweet flavor adds orange color.  Does not contribute signficantly to body or head retention.  Used for Bock porter marzen oktoberfest beers.
+pale2RowBel,Pale Malt (2 row) Belgium,80,3,3,100,Base malt for all styles.
+pale2RowUK,Pale Malt (2 row) UK,78,3,3,100,Base malt for all English styles.
+pale2RowUS,Pale Malt (2 row) US,79,2,2,100,Base malt for all styles.
+pale6RowUS,Pale Malt (6 row) US,76,2,2,100,Base malt for all styles.
+peatSmoked,Peat Smoked Malt,74,3,3,20,Robust smokey malt provides smoky flavor.  Used in scottish ales.
+pilsner2RowBel,Pilsner (2 row) Belgium,79,2,2,100,Base malt for Continental lagers.
+pilsner2RowGer,Pilsner (2 row) German,81,2,2,100,Base malt for Pilsners and Bohemian Lagers.
+pilsner2RowUK,Pilsner (2 row) UK,78,1,1,100,Pilsner base malt.
+roastedBarley,Roasted Barley,55,223,300,10,Roasted to create a burnt grainy and coffee like flavor.  Imparts red to deep brown color.  Adds very strong roasted flavor.  Used in 2-4 % in Brown ales for nutty flavor.  3-10% in porters for coffee flavor
+ryeMalt,Rye Malt,63,4,5,15,Adds a dry crisp characteristic to beer.  Imparts deep red color and distincive rye flavor.
+ryeFlaked,Rye Malt - Falked,78.3,2,2,10,Adds a dry crisp favor to rye beers.  Can be easier to mash than raw rye.
+smokedMalt,Smoked Malt,80,7,9,100,"Smoked over open fire.  Creates ""smoked"" flavor and aroma.  Used for German Rauchbier but can be added to Brown Ales and Porters."
+specialB,Special B Malt,65.2,134,180,10,Extreme carmel aroma and flavord malt.  Used in dark Belgian abbey and Trappist ales.
+specialRoast,Special Roast,72,37,50,10,Used for English ales nut brown ales and porters.  Adds toasted biscuit like flavor and aroma.
+toastedMalt,Toasted Malt,71.7,20,27,10,Adds reddish / orange color.  Improves body with sweetnesss.  Tasted flavor.  Similar to biscuit or victory malt.
+victoryMalt,Victory Malt,73,19,25,15,"Adds ""Biscuit"" or tosted flavor to English ales.  Used for Nut brown ales and porters."
+viennaMalt,ViennaMalt,78,3,4,90,Imparts golden to orange color to the beer.
+wheatBel,Wheat Malt Belgium,81,2,2,60,Malted wheat for use in Wheat Beers
+wheatDark,Wheat Malt Dark,84,7,9,20,Dark malted wheate for use in dark what styles such as Dunkeweizen.
+wheatGer,Wheat Malt Germain,84,2,2,60,Malted wheat base for use in all wheat styles.
+wheatFlaked,Wheat Malt - Flaked,77,2,2,40,Increase body and foam retention. Used for faster conversion and better yeild.  Used in Belgian white and wit.
+wheatRoasted,Wheat Malt - Roasted,54.3,315,425,10,AKA Chocolate Wheat Malt.  Adds deep dark brown color.  Used in Dunkelweizens and other dark styles.  Roasted woody and charcoal or burnt toast flavor (depends on degree of roasting)
+whiteWheat,White Wheat Malt,86,2,2,60,Gives malty flavor from raw wheat.  Used in Weiss Wit and White beers.

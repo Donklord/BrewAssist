@@ -1,0 +1,32 @@
+name,displayName,alphaAcid,betaAcid
+ahtanum,Ahtanum,5.7-6.3,5-6.5
+amarillo,Amarillo,8-11,5-6.5
+cascade,Cascade,4.5-6,5-7
+centennial,Centennial,9.5-11.5,4-5
+chinook,Chinook,12-14,3-4
+columbus,Columbus,12, 
+cluster,Cluster,5.5-8.5,4.5-5.5
+crystal,Crystal,4-5,5-6.7
+fuggle,Fuggle,3.8-5.5,1.5-2
+galena,Galena,12.5-14,7.5-9
+golding,Golding,4-6,2-3
+hallertauMf,Hallertau mf,3.5-5.5,3.5-5.5
+horizon,Horizon,10.2-16.5,6.5-8.5
+liberty,Liberty,3.5-4.5,3-3.5
+magnum,Magnum,10-12.6,5-7
+mountHood,Mount Hood,4-6,5-7.5
+northernBrewer,Northern Brewer,8-10,3-5
+nugget,Nugget,12.5-14.5,4-6
+perle,Perle,7-9.5,4-5
+saaz,Saaz,3, 
+satus,Satus,12.5-14,8.5-9
+simcoe,Simcoe,12-14,4-5
+spaltSelect,Spalt Select,3.5-5.5,3-4.5
+sterling,Sterling,4.5-5,5-6
+tettnang,Tettnang,4-5,3.5-4.5
+tomahawk,Tomahawk,14-18,4.5-5.8
+ultra,Ultra,4.5-5,3.6-4.7
+usFuggle,US Fuggle,3.9, 
+vanguard,Vanguard,5-6,5-7
+warrior,Warrior,15-17,4.5-5.5
+willamette,Willamette,4-6,3.5-4.5

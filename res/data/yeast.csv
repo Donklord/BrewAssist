@@ -1,0 +1,29 @@
+name,displayName,type,flcculation,attenuation,tempRange,alchoholTolerance,characteristics
+wyeast1007GermanAle,Wyeast 1007 German Ale,Ale,Low,73-77,55-68,11,Higher temp ferminatation may produce mild fruitiness.  Beers mature rapidly.
+wyeast1010AmericanWheat,Wyeast 1010 American Wheat,Ale,Low,74-78,58-74,10,Strong fermenating.  Produces dry slighty tart crisp beer.
+wyeast1056AmericanAle,Wyeast 1056 American Ale,Ale,Low-Med,73-77,60-72,11,Crisp clean flavor and low fruitness.  Mild citrus notes develop with cooler (60-66) fermentations.
+wyeast1084IrishAle,Wyeast 1084 Irish Ale,Ale,Medium,71-75,62-72,12,When fermented in lower temps produces a dry and crisp profile with subtle fruitness.
+wyeast1098BritishAle,Wyeast 1098 British Ale,Ale,Medium,73-75,64-72,10,Allows malt and hop characteristics to dominate profile.  Dry and crisp well balanced with a clean neutral finish.
+wyeast1099WhitbreadAle,Wyeast 1099 Whitbread Ale,Ale,Med-High,68-72,64-75,10,Mild malty and slighty fruity profile.  Low fermentation temps will produce a clean finish.
+wyeast1187RingwoodAle,Wyeast 1187 Ringwood Ale,Ale,High,68-72,64-74,10,Distinc fruit esters with a malty comples profile.  Strain can be a slow starter and fermenter.
+wyeast1272AmericanAleII,Wyeast 1272 American Ale II,Ale,Medium,72-76,60-72,10,Soft clean profile with hints of nut and slightly tart finish.
+wyeast1275ThamesValleyAle,Wyeast 1275 Thames Valley Ale,Ale,Low-Med,72-76,62-72,10,Produces classic brittish bitters with a rich complete flavor profile.  Light malt character with low fruitness and clean well balanced.
+wyeast1318LondonAleIII,Wyeast 1318 London Ale III,Ale,High,71-75,64-74,10,Produces a wonderful malt and hop profile.  Fruity very light and softly balanced palate.
+wyeast1332NorthwestAle,Wyeast 1332 Northwest Ale,Ale,High,67-71,65-75,10,Produces a malty and mildy fruty ale with good depth and complexity.
+wyeast1335BritishAleII,Wyeast 1335 British Ale II,Ale,High,73-76,63-75,10,Malty flavor characteristics.  Finishes clean crisp and fairly dry.
+wyeast1450DannysFavorate50,Wyeast 1450 Danny's Favorate 50,Ale,Low,74-76,60-70,10,Produces a big mouthfeel and accentuates the malt carmel or fruit character of a beer without being sweet.
+wyeast1469WestYorkshireAle,Wyeast 1469 West yorkshire Ale,Ale,High,67-71,64-72,9,Full chewy malt flavor and character but finishes dry.  Best used for cask-conditioned beers.
+wyeast1728ScottishAle,Wyeast 1728 Scottish Ale,Ale,High,63-73,55-75,12,Unique suited for strong malty ales.
+wyeast1968LondonESBAle,Wyeast 1968 London ESB Ale,Ale,Very High,67-71,64-72,9,Good cask conditioned ale strain.   Produces malty beers.
+wyeast2565Kolsch,Wyeast 2565 Kolsch,Ale,Low,73-77,56-70,10,Exhibit some friut character with a clean like profile.
+wyeast200BudvarLager,Wyeast 2000 Budvar Lager,Lager,Med-High,71-75,48-56,9,Malty nose subtle fruit tones and rich malt profile.  Finishes malty but dry.
+wyeast2001UrquellLager,Wyeast 2001 Urquel Lager,Lager,Med-High,72-76,48-56,9,Mild friiut and floral aroma.  Very dry and clean palate.  Clean and neutral finish
+wyeast2007PilsenLager,Wyeast 2007 Pilsen Lager,Lager,Medium,71-75,48-56,9,Classic american lager.  
+wyeast2035AmericanLager,Wyeast 2035 American Lager,Lager,Medium,73-77,48-58,9,Complex and aromatic strain used for a variety of lager beers.
+wyeast2042DanishLager,Wyeast 2042 Danish Lager,Lager,Low,73-77,46-56,9,Good choice for Dortmund-style lagers.  Ferment crisp and dry.
+wyeast2112CaliforniaLager,Wyeast 2112 California Lager,Lager,High,67-71,58-68,9,"Produces lager characteristics up to 65 degrees with malty, and clear beers."
+wyeast2124BohemainLager,Wyeast 2124 Bohemain Lager,Lager,Low-Med,73-77,45-68,9,Distinct malty profile with a clean finish.
+wyeast2206BavarianLager,Wyeast 2206 Bavarian Lager,Lager,Med-High,73-77,46-58,9,Rich full bodied and malty beers.
+wyeast2278CzechPils,Wyeast 2278 Czech Pils,Lager,Med-High,70-74,50-58,9,Finish dry and malty. 
+wyeast2308MunichLager,Wyeast 2308 Munich Lager,Lager,Medium,70-74,48-56,9,Smooth well rounded and full-bodied.
+wyeast2633OctoberfestLager,Wyeast 2633 Octoberfest Lager,Lager,Low-Med,73-77,48-58,9,Rich malty complex and full boided octoberfest.
