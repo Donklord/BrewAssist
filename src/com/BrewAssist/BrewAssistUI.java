@@ -19,7 +19,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
-    
+    NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
+    CsvLoader file = new CsvLoader();
     
     //Global variables
     boolean savedWg = true;
@@ -30,6 +31,26 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JPanel newBrew_WholeGrain = new JPanel();
     JPanel newBrew_Extract = new JPanel();
     JLabel wgMessage = new JLabel("");
+    
+    JTextField ibuText = new JTextField(5);
+    JTextField srmText = new JTextField(5);
+    JTextField ogText = new JTextField(6);
+    JTextField fgText = new JTextField(6);
+    JTextField abvText = new JTextField(5);
+    JTextArea specialTextField = new JTextArea(2,50);
+    JComboBox<String> grainCombo = new JComboBox<>();
+    Object[][] grainData = {
+            {"", "", "", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
+        };
+    
+    JTextField test = new JTextField();
+    
+    String[] styleNames = file.getBeerNames();
     
     
     public BrewAssistUI() {
@@ -56,7 +77,13 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     public void itemStateChanged(ItemEvent item) {
         validate();
         repaint();
-    }
+        Object which = item.getItem();
+        String answer = which.toString();
+        int state = item.getStateChange();
+        if (state == item.SELECTED) {
+            wholeGrainEvent.itemChanged(answer);
+        }
+    } 
     
     public Boolean isOptimizedDrawingEnabled() {
         return false;
@@ -206,10 +233,14 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         FlowLayout subLayout3 = new FlowLayout(FlowLayout.CENTER);
         subPanel3.setLayout(subLayout3);
         subPanel3.setBackground(Color.WHITE);
-        JComboBox beerStyles = new JComboBox();
-        beerStyles.addItem("Amber");
-        beerStyles.addItem("IPA");
-        beerStyles.addItem("Stout");
+        JComboBox<String> beerStyles = new JComboBox<>();
+        beerStyles.addItemListener(this);
+        String[] beerResponse = file.getBeerNames();
+        for (int i = 0; i < 28; i++) {
+            if (i != 0 ) {
+                beerStyles.addItem(beerResponse[i]);
+            }
+        }
         beerStyles.setBackground(Color.WHITE);
         subPanel3.setPreferredSize(new Dimension(50,50));
         subPanel3.add(beerStyles);
@@ -227,30 +258,32 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JLabel og = new JLabel("O.G.:", JLabel.RIGHT);
         JLabel fg = new JLabel("F.G.:", JLabel.RIGHT);
         JLabel abv = new JLabel("%ABV:", JLabel.RIGHT);
-        JTextField ibuText = new JTextField(5);
+        //JTextField ibuText = new JTextField(5);
         Font ibuFont = ibuText.getFont().deriveFont(Font.PLAIN, 12f);
         ibuText.setFont(ibuFont);
         ibuText.setEditable(false);
         ibuText.setText("0");
-        JTextField srmText = new JTextField(5);
+        
         srmText.setFont(ibuFont);
         srmText.setEditable(false);
         srmText.setText("0");
-        JTextField ogText = new JTextField(5);
+        
         ogText.setFont(ibuFont);
         ogText.setEditable(false);
         ogText.setText("0");
-        JTextField fgText = new JTextField(5);
+        
         fgText.setFont(ibuFont);
         fgText.setEditable(false);
         fgText.setText("0");
-        JTextField abvText = new JTextField(5);
+        
         abvText.setFont(ibuFont);
         abvText.setEditable(false);
         abvText.setText("0");
-        JTextArea specialTextField = new JTextArea(2,50);
+        
         specialTextField.setEditable(false);
-        specialTextField.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Special Ingredients"));
+        specialTextField.setLineWrap(true);
+        specialTextField.setWrapStyleWord(true);
+        specialTextField.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Characteristic Ingredients"));
         SubPanel1.add(ibu);
         SubPanel1.add(ibuText);
         SubPanel1.add(srm);
@@ -282,10 +315,13 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JTextField size = new JTextField("5", 2);
         JLabel sizeLabel = new JLabel("Batch Size (Gallons): ");
         JLabel yeastLabel = new JLabel("      Yeast Type: ");
-        JComboBox yeast = new JComboBox();
-        yeast.addItem("Type 1");
-        yeast.addItem("Type 2");
-        yeast.addItem("Type 3");
+        JComboBox<String> yeast = new JComboBox<>();
+        String[] yeastResponse = file.getYeastNames();
+        for (int i = 0; i < 29; i++) {
+            if (i != 0 ) {
+                yeast.addItem(yeastResponse[i]);
+            }
+        }
         midPan1.add(sizeLabel);
         midPan1.add(size);
         midPan1.add(yeastLabel);
@@ -307,21 +343,18 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         FlowLayout grainsLayout = new FlowLayout(FlowLayout.LEFT);
         grains.setLayout(grainsLayout);
         
-        JComboBox grainCombo = new JComboBox();
-        grainCombo.addItem("Grain 1");
-        grainCombo.addItem("Grain 2");
-        grainCombo.addItem("Grain 3");
-        grainCombo.addItem("Grain 4");
-        grainCombo.addItem("Grain 5");
+        
+        grainCombo.addItemListener(this);
+        String[] grainResponse = file.getGrainNames();
+        for (int i = 0; i < 48; i++) {
+            if (i != 0 ) {
+                grainCombo.addItem(grainResponse[i]);
+            }
+        }
+        grainCombo.addItem("");
         
         String[] grainColNames = {"Grain", "Lbs", "Deg Lob", "%Eff"};
-        Object[][] grainData = {
-            {"", "Lbs 1", "Deg 1", "% 1"},
-            {"", "Lbs 2", "Deg 2", "% 2"},
-            {"", "Lbs 3", "Deg 3", "% 3"},
-            {"", "Lbs 4", "Deg 4", "% 4"},
-            {"", "Lbs 5", "Deg 5", "% 5"},
-        };
+        
         
         JTable grainTable = new JTable(grainData, grainColNames);
         grainTable.setBackground(Color.WHITE);
@@ -337,20 +370,24 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JPanel hops = new JPanel();
         hops.setLayout(new FlowLayout(FlowLayout.RIGHT));
         
-        JComboBox hopCombo = new JComboBox();
-        hopCombo.addItem("Hop 1");
-        hopCombo.addItem("Hop 2");
-        hopCombo.addItem("Hop 3");
-        hopCombo.addItem("Hop 4");
-        hopCombo.addItem("Hop 5");
+        JComboBox<String> hopCombo = new JComboBox<>();
+        hopCombo.addItemListener(this);
+        String[] hopResponse = file.getHopNames();
+        for (int i = 0; i < 32; i++) {
+            if (i != 0 ) {
+                hopCombo.addItem(hopResponse[i]);
+            }
+        }
+        hopCombo.addItem("");
         
         String[] hopColNames = {"Hop", "Amount", "Time", "Prop 1", "Prop 2"};
         Object[][] hopData = {
-            {"", "Amnt 1", "Time 1", "P1", "P2"},
-            {"", "Amnt 2", "Time 2", "P1", "P2"},
-            {"", "Amnt 3", "Time 3", "P1", "P2"},
-            {"", "Amnt 4", "Time 4", "P1", "P2"},
-            {"", "Amnt 5", "Time 5", "P1", "P2"},
+            {"", "", "", "", ""},
+            {"", "", "", "", ""},
+            {"", "", "", "", ""},
+            {"", "", "", "", ""},
+            {"", "", "", "", ""},
+            {"", "", "", "", ""},
         };
         
         JTable hopTable = new JTable(hopData, hopColNames);
