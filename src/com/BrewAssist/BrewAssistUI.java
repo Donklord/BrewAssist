@@ -21,6 +21,7 @@ import com.Ingredients.*;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
+    WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
    // CsvLoader file = new CsvLoader();
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
@@ -67,6 +68,17 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JTable hopTable = new JTable(hopData, hopColNames);
     
     JTextField test = new JTextField();
+    private JLabel calcIbu = new JLabel("IBU's:");
+    private JLabel calcSrm = new JLabel("SRM:");
+    private JLabel calcOg = new JLabel("O.G.:");
+    private JLabel calcFg = new JLabel("F.G.:");
+    private JLabel calcAbv = new JLabel("% ABV:");
+    JTextField size = new JTextField("5", 2);
+    JTextField cIbuT = new JTextField(5);
+    JTextField cSrmT = new JTextField(5);
+    JTextField cOgT = new JTextField(5);
+    JTextField cFgT = new JTextField(5);
+    JTextField cAbvT = new JTextField(5);
     
    // String[] styleNames = file.getBeerNames();
     
@@ -85,7 +97,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
        // JFrame frame = new JFrame("Brewing Assistant v1.0");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1080,700);
+        setSize(1080,900);
         add(tabbedPane);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -159,8 +171,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
             savedWg = true;
             wgMessage.setText("Your batch has been saved!");
             //Save the new batch here
-        } else {
-            //Do something
+        } else if (command.equals("Calculate")) {
+            wholeGrainCalc.calculate();
         }
         
     }
@@ -203,7 +215,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JPanel selectStyle = new JPanel();
         GridLayout newLayout1 = new GridLayout(2,1,5,5); //Was 3,1,5,5
         selectStyle.setLayout(newLayout1);
-        selectStyle.setBorder(BorderFactory.createTitledBorder("Select Style"));
+        selectStyle.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Select Style"));
         selectStyle.setBackground(Color.WHITE);
         //JLabel newBrewLabel = new JLabel("Drop down under construction", JLabel.CENTER);
         JPanel subPanel3 = new JPanel();
@@ -288,8 +300,9 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         midPan1.setLayout(yeastnBatch);
         midPan1.setBackground(Color.WHITE);
         JButton calc = new JButton("Calculate");
+        calc.addActionListener(this);
         JLabel calcSpace = new JLabel("      ");
-        JTextField size = new JTextField("5", 2);
+        
         JLabel sizeLabel = new JLabel("Batch Size (Gallons): ");
         JLabel yeastLabel = new JLabel("      Yeast Type: ");
         JComboBox<String> yeast = new JComboBox<>();
@@ -375,29 +388,25 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
         //Bottom grid (1,3)
         JPanel calcualted = new JPanel();
-        JLabel calcIbu = new JLabel("IBU's:");
-        JLabel calcSrm = new JLabel("SRM:");
-        JLabel calcOg = new JLabel("O.G.:");
-        JLabel calcFg = new JLabel("F.G.:");
-        JLabel calcAbv = new JLabel("% ABV:");
         
-        JTextField cIbuT = new JTextField(5);
+        
+        
         cIbuT.setEditable(false);
         cIbuT.setFont(ibuFont);
         cIbuT.setText("0");
-        JTextField cSrmT = new JTextField(5);
+        
         cSrmT.setEditable(false);
         cSrmT.setFont(ibuFont);
         cSrmT.setText("0");
-        JTextField cOgT = new JTextField(5);
+        
         cOgT.setEditable(false);
         cOgT.setFont(ibuFont);
         cOgT.setText("0");
-        JTextField cFgT = new JTextField(5);
+        
         cFgT.setEditable(false);
         cFgT.setFont(ibuFont);
         cFgT.setText("0");
-        JTextField cAbvT = new JTextField(5);
+        
         cAbvT.setEditable(false);
         cAbvT.setFont(ibuFont);
         cAbvT.setText("0");
