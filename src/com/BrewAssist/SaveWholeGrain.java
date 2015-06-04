@@ -92,6 +92,7 @@ public class SaveWholeGrain {
         File f = new File("C:\\BrewAssist");
         if (!f.exists()) {
             new File("C:\\BrewAssist\\Saves\\wg").mkdirs();
+            new File("C:\\BrewAssist\\Saves\\extract").mkdir();
             System.out.println("Saves Directory Created!");
         }
     }
