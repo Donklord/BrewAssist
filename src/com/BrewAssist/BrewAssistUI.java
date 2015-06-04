@@ -18,10 +18,12 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import com.Ingredients.*;
+import java.io.File;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
     WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
+    SaveWholeGrain saveGrain = new SaveWholeGrain(this);
    // CsvLoader file = new CsvLoader();
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
@@ -43,6 +45,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JTextField ogText = new JTextField(6);
     JTextField fgText = new JTextField(6);
     JTextField abvText = new JTextField(5);
+    JTextField grainName = new JTextField(15);
     JTextArea specialTextField = new JTextArea(2,50);
     JComboBox<String> grainCombo = new JComboBox<>();
     Object[][] grainData = {
@@ -65,7 +68,9 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
             {"", "", "", "", ""},
             {"", "", "", "", ""},
         };
-        JTable hopTable = new JTable(hopData, hopColNames);
+    JTable hopTable = new JTable(hopData, hopColNames);
+    JComboBox<String> beerStyles = new JComboBox<>();
+    JComboBox<String> yeast = new JComboBox<>();
     
     JTextField test = new JTextField();
     private JLabel calcIbu = new JLabel("IBU's:");
@@ -170,7 +175,16 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         } else if (command.equals("Save Batch")) {
             savedWg = true;
             wgMessage.setText("Your batch has been saved!");
-            //Save the new batch here
+            File f = new File("C:\\BrewAssist\\Saves\\wg\\" + grainName.getText() + ".properties");
+            if (!f.exists()) {
+                saveGrain.saveGrain(grainName.getText());
+            } else {
+                answer = throwSaveOverrideWarning();
+                if (answer == 0) {
+                    saveGrain.saveGrain(grainName.getText());
+                }
+            }
+            
         } else if (command.equals("Calculate")) {
             wholeGrainCalc.calculate();
         }
@@ -180,6 +194,15 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     public int throwNewBatchWarning() {
         Object[] options = { "OK", "CANCEL" };
         Object selectedValue = JOptionPane.showOptionDialog(null, "You have not saved your work, do you want to continue?", "Warning",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
+        int newSelectedValue = (int)selectedValue;
+        return newSelectedValue;    
+    }
+    
+    public int throwSaveOverrideWarning() {
+        Object[] options = { "OK", "CANCEL" };
+        Object selectedValue = JOptionPane.showOptionDialog(null, "This file already exists, do you want to overwrite it?", "Warning",
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
             null, options, options[0]);
         int newSelectedValue = (int)selectedValue;
@@ -222,7 +245,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         FlowLayout subLayout3 = new FlowLayout(FlowLayout.CENTER);
         subPanel3.setLayout(subLayout3);
         subPanel3.setBackground(Color.WHITE);
-        JComboBox<String> beerStyles = new JComboBox<>();
+        
         beerStyles.addItemListener(this);
         String[] beerResponse = styleApp.styleList;
         for (int i = 0; i < 27; i++) {
@@ -305,7 +328,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
         JLabel sizeLabel = new JLabel("Batch Size (Gallons): ");
         JLabel yeastLabel = new JLabel("      Yeast Type: ");
-        JComboBox<String> yeast = new JComboBox<>();
+        
         String[] yeastResponse = yeast1.yeastList;
         for (int i = 0; i < 28; i++) {
             if (i != 0 ) {
@@ -432,9 +455,11 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         inner.add(calcualted);
         
         //Top bar
+        JLabel grainLabel = new JLabel("         Batch Name: ");
         JPanel topBar = new JPanel();
         topBar.setBackground(Color.WHITE);
         FlowLayout topLayout = new FlowLayout(FlowLayout.RIGHT);
+        grainName.setFont(ibuFont);
         JButton newButton = new JButton("New Batch");
         JButton loadButton = new JButton("Load Batch");
         JButton saveButton = new JButton("Save Batch");
@@ -443,6 +468,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         saveButton.addActionListener(this);
         topBar.setLayout(topLayout);
         topBar.add(wgMessage);
+        topBar.add(grainLabel);
+        topBar.add(grainName);
         topBar.add(newButton);
         topBar.add(loadButton);
         topBar.add(saveButton);
@@ -461,5 +488,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     
     public static void main(String[] arguments) {
         BrewAssistUI app = new BrewAssistUI();
+        app.saveGrain.createDirectory();
     }
 }
