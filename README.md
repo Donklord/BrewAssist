@@ -13,8 +13,8 @@ This package contains five classes, one for each ingredient type and one for bee
 <h5><i> isIngredients </i></h5>
 >Example and description here
 
-<h5> getIngredients </h5>
+<h5><i> getIngredients </i></h5>
 >Example and description here
 
-<h5> Ingredient Storage Methods </h5>
+<h5><i> Ingredient Storage Methods </i></h5>
 >Example and description here
