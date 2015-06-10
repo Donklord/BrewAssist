@@ -5,16 +5,16 @@
   
 ### Code Examples ###
 
-  There is two main packages to this project.
+There is two main packages to this project.
 
-    *com.Ingredients*
-      This package contains five classes, one for each ingredient type and one for beer styles.; Extract Ingredients (Liquid and       Dry Malt Extract), Whole Grain (Malted barley), hops, yeast and beer styles.  Each class contains the following methods.
-      
-      **isIngredients**
-      >Example and description here
-      
-      **getIngredients**
-      >Example and description here
-      
-      **Ingredient Storage Methods**
-      >Example and description here
+#### com.Ingredients ####
+This package contains five classes, one for each ingredient type and one for beer styles.; Extract Ingredients (Liquid and Dry Malt Extract), Whole Grain (Malted barley), hops, yeast and beer styles.  Each class contains the following methods.
+
+**isIngredients**
+>Example and description here
+
+**getIngredients**
+>Example and description here
+
+**Ingredient Storage Methods**
+>Example and description here
