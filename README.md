@@ -7,7 +7,7 @@
 
 There is two main packages to this project.
 
-##### com.Ingredients #####
+<h4> com.Ingredients </h4>
 This package contains five classes, one for each ingredient type and one for beer styles.; Extract Ingredients (Liquid and Dry Malt Extract), Whole Grain (Malted barley), hops, yeast and beer styles.  Each class contains the following methods.
 
  ##### isIngredients #####
