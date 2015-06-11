@@ -80,3 +80,33 @@ This class ties into the BrewAssistUI class and saves all data to a file located
 
 <h5><i> WholeGainCalc </i></h5>
 This class ties into BrewAssistUI and pulls ingredient information from the com.Ingredients package.  It contains all of the methods needed to calculate the key merics for brewing beer; IBU, SRM, Degrees Lovibond, Orignal Gravity, Final Gravity and ABV.  Once the "Calculate" button is selected, a method in the BrewAsssistUI class calls the calculate class in the WholeGrainClass.  This method then runs though a handful of helper methods that pull the required information form BrewAssistUI, calculates the target meric, and saves the final result in BrewAssistUI.
+
+### To Do ###
+
+<h5><i> To Do List </i></h5>
+<ul style="list-style-type:square">
+  <li>Create Extract UI</li>
+  <li>Create Extract Events</li>
+  <li>Add Extract ingredients</li>
+  <li>Create "Load Batch" popup</li>
+  <li>Create batch loading functionality</li>
+  <li>Create batch calculation pop up window (will show you what calculations were used)</li>
+  <li>Create settings menu</li>
+  <li>Add swtiching between metric and english units</li>
+  <li>Add ingredient picker (Allows you to navigate all available ingredients and see more information about them)</li>
+  <li>Create a brew day tracking tab.  Allows user to load the target batch and track the brewday progress</li>
+  <li>Create "Post-mortem" functionality.  Program will try to identify flaws when creating a recipie.  (Beer Analytics!)</li>
+</ul>
+
+<h5><i> Wish List </i></h5>
+Items that I want to do, but are a little out of reach given my current skill level.
+<ul style="list-style-type:square">
+  <li>Update UI (Make it pretty)</li>
+  <li>Allow user the ability to add custom ingredients and beer styles</li>
+  <li>Allow user to display batch in a prettier format for printing.</li>
+</ul>
+
+<h5><i> Known Bugs </i></h5>
+<ul style="list-style-type:square">
+  <li>When selecting an ingredient type (for hops or grain table), the table appears to "lab" behind to populate the characteristics.  You need to click any other cell in the first column </li>
+</ul>
