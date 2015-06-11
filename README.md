@@ -70,7 +70,7 @@ This package contains five classes, one for each ingredient type and one for bee
 This package contains four classes; BrewAssistUI, NewWholeGrainEvent, SaveWholeGrain and WholeGrainCalc.  A high level summary of each class is below.
 
 <h5><i>  BrewAssistUI </i></h5>
-This class contains all of the UI elements, using Java swing.  This class also contains all of the popup warnings and action events.  This class is the main method.
+This class contains all of the UI elements, using Java swing.  This class also contains all of the popup warnings and action events.  This class contains the main method.
 
 <h5><i> NewWholeGrainEvent </i></h5>
 This class ties into the BrewAssistUI class and imports ingredients information from the com.Ingredients package.  When an event occurs in BrewAssistUI it passes the information to NewWholeGrainEvent and pulls the information from the com.Ingredients package.
