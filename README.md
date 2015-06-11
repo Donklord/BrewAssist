@@ -109,5 +109,5 @@ Items that I want to do, but are a little out of reach given my current skill le
 
 <h5><i> Known Bugs </i></h5>
 <ul style="list-style-type:square">
-  <li>When selecting an ingredient type (for hops or grain table), the table appears to "lab" behind to populate the characteristics.  You need to click any other cell in the first column </li>
+  <li>When selecting an ingredient type (for hops or grain table), the table appears to "lag" behind to populate the characteristics.  You need to click any other cell in the first column to list them.</li>
 </ul>
