@@ -4,9 +4,9 @@
 This project is a brewing assistance program.  Its is designed to assist beer homebrewers to create batch recipies, track brew day progress and track key brewing metrics over multiple batches.
   
 ### Motivation ###
-I love brewing beer and I am teaching myself how to program with Java.  This is a learning project for me to help bridge two of my interests and help me learn something about using the Java lanugauge.  My background in programming is based on C / Assembly, so this is my first time learning an object oriented program.  I have no dought that this program is really inefficient and I am probably doing a lot of things the hard way.
+This is a learning project for me to help bridge two of my interests; brewing beer and programming.  My background in programming is based on C / Assembly, so this is my first time learning an object oriented program.  I have no dought that this program is really inefficient and I am probably doing a lot of things the hard way.
 
-I took insparation from other comercially available options (Like BrewSmith or Beertarget) but I wanted to create something tailored to exacly what I wanted.  I also wanted to learn how to design your own batch of beer from scratch.
+I took insparation from other comercially available options (Like BrewSmith or Beertarget) but I wanted to create something tailored to exacly what I wanted.  I also wanted to learn how to design my own batch of beer from scratch.
 
 ### Installation and Use ###
 <h5><i> Installation </i></h5>
@@ -14,6 +14,8 @@ There isnt any special installation instructions, the program, by default, is de
 
 <h5><i> Program Use </i></h5>
 Using the program requires some knowldege about what recipie you want to build.  But in general you can follow this procedure below.
+
+Please note: there is a known bug with the table (Hops and grains table) not populating the ingredient characteristics afer selecting them.  All you have to do is click on any cell in the first column.  I am currently looking into alternatives.
 
 <ol>
   <li>Choose what beer style you are trying to create from the style selector</li>
@@ -24,7 +26,7 @@ Using the program requires some knowldege about what recipie you want to build. 
   
 ### Code Overview ###
 
-There is two main packages to this project.
+There is two main packages in this project; com.Ingredients and com.BrewAsist.
 
 <h4><b> com.Ingredients </b></h4>
 This package contains five classes, one for each ingredient type and one for beer styles.; Extract Ingredients (Liquid and Dry Malt Extract), Whole Grain (Malted barley), hops, yeast and beer styles.  Each class contains the following methods.
