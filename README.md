@@ -95,6 +95,7 @@ This class ties into BrewAssistUI and pulls ingredient information from the com.
   <li>Add swtiching between metric and english units</li>
   <li>Add ingredient picker (Allows you to navigate all available ingredients and see more information about them)</li>
   <li>Create a brew day tracking tab.  Allows user to load the target batch and track the brewday progress</li>
+  <li>Create batch tracking functionality, track a recipie across multiple batches and track how the target metrics varied over time.</li>
   <li>Create "Post-mortem" functionality.  Program will try to identify flaws when creating a recipie.  (Beer Analytics!)</li>
 </ul>
 
