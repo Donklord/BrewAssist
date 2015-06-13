@@ -13,7 +13,11 @@ public class Styles {
     public String notes;
     public String[] styleList = new String[27];
     
-    
+  /**
+    * Only constructor, enables a String array that contains all of
+    * the usable beer styles.
+    * 
+    */
     public Styles() {
         //set grainList array values
         styleList[0] = "American Light Lager";
@@ -45,6 +49,16 @@ public class Styles {
         styleList[26] = "American Brown Ale";
     }
     
+  /**
+    * Returns true if the ingredient exists, returns false if the
+    * ingredient doesn't exist.
+    * <p>
+    * This method is intended to check the existence of an ingredient 
+    * before calling the getIngredeints method.
+    *
+    * @param  in   a string name of the desired ingredient.
+    * @return      Boolean status of the existence of the input. 
+    */
     public boolean isIngredients(String in) {
         for (int i = 0; i < 27; i++) {
             if (in.equals(styleList[i])) {
@@ -54,6 +68,15 @@ public class Styles {
         return false;
     }
     
+  /**
+    * Given a beer name as a String, calls a helper function that
+    * sets the characteristics in the UI.
+    * <p>
+    * This method is the main means to set beer style characteristics.  It
+    * pulls the String information via a combo box in the main UI.
+    *
+    * @param  in   a string name of the desired ingredient.
+    */
     public void getIngredients(String in) {
         if (in.equals("American Light Lager")) {
             americanLightLager();
@@ -112,8 +135,10 @@ public class Styles {
         }
     }
     
-    //Whole Grain Types Helper Methods
-    
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanLightLager() {
         displayName= "American Light Lager";
         ibu = "8-12";

@@ -1,7 +1,5 @@
 package com.BrewAssist;
 
-import java.awt.event.*;
-import javax.swing.*;
 import com.Ingredients.*;
 
 public class NewWholeGrainEvent {
