@@ -19,11 +19,13 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
     WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
     SaveWholeGrain saveGrain = new SaveWholeGrain(this);
+    FileLoader fileLoad = new FileLoader(this);
    // CsvLoader file = new CsvLoader();
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
     yeast yeast1 = new yeast();
     Styles styleApp = new Styles();
+    
     
     //Global variables
     boolean savedWg = true;
@@ -79,6 +81,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JTextField cOgT = new JTextField(5);
     JTextField cFgT = new JTextField(5);
     JTextField cAbvT = new JTextField(5);
+    JFrame wgLoadFrame = new JFrame();
     
    // String[] styleNames = file.getBeerNames();
     
@@ -141,6 +144,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
+        String fileName;
         int answer = -1;
         if (command.equals("New Batch")) {
             if (savedWg == false) {
@@ -170,21 +174,47 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 if (answer == 0) {
                     savedWg = false;
                     wgMessage.setText("A new batch has been loaded!");
-                    //Load batch here
+                    fileName = fileLoad.wgLoad();
+                    System.out.println("UI Result: " + fileName);
+                    if (!fileName.equals("Empty")) {
+                        saveGrain.wgLoader(fileName);
+                        wholeGrainCalc.calculate();
+                        tableRefresh();
+                        
+                    }
                 }
             } else if (savedWg == true) {
                 savedWg = false;
                 wgMessage.setText("A new batch has been loaded!");
-                //Load batch here
+                fileName = fileLoad.wgLoad();
+                System.out.println("UI Result: " + fileName);
+                if (!fileName.equals("Empty")) {
+                    saveGrain.wgLoader(fileName);
+                    wholeGrainCalc.calculate();
+                    tableRefresh();
+                }
             } else if (savedEx == false) {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedEx = false;
-                    //Load batch here
+                    fileName = fileLoad.wgLoad();
+                    System.out.println("UI Result: " + fileName);
+                    if (!fileName.equals("Empty")) {
+                        saveGrain.wgLoader(fileName);
+                        wholeGrainCalc.calculate();
+                        tableRefresh();
+                    }
                 }
             } else if (savedEx == true) {
                 savedEx = false;
-                //Load batch here
+                fileName = fileLoad.wgLoad();
+                System.out.println("UI Result: " + fileName);
+                if (!fileName.equals("Empty")) {
+                    saveGrain.wgLoader(fileName);
+                    wholeGrainCalc.calculate();
+                    tableRefresh();
+                }
+                
             }
         } else if (command.equals("Save Batch")) {
             savedWg = true;
@@ -255,6 +285,11 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         newBrew_Extract.add(newBrewLabel);
         add(newBrew_Extract, BorderLayout.CENTER);
      //   setVisible(true);
+    }
+    
+    private void tableRefresh() {
+       // grainTable.getModel().setValueAt(grain, WIDTH, WIDTH);
+        //hopTable.repaint();
     }
     
    /**
