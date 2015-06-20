@@ -9,7 +9,11 @@ public class Hops {
     public String betaAcid;
     public String[] hopList = new String[31];
     
-    
+    /**
+    * Only constructor, enables a String array that contains all of
+    * the usable hop ingredients.
+    * 
+    */
     public Hops() {
         //set grainList array values
         hopList[0] = "Ahtanum";
@@ -45,6 +49,16 @@ public class Hops {
         hopList[30] = "Willamette";
     }
     
+  /**
+    * Returns true if the ingredient exists, returns false if the
+    * ingredient doesn't exist.
+    * <p>
+    * This method is intended to check the existence of an ingredient 
+    * before calling the getIngredeints method.
+    *
+    * @param  in   a string name of the desired ingredient.
+    * @return      Boolean status of the existence of the input. 
+    */
     public boolean isIngredients(String in) {
         for (int i = 0; i < 31; i++) {
             if (in.equals(hopList[i])) {
@@ -54,6 +68,15 @@ public class Hops {
         return false;
     }
     
+    /**
+    * Given a hop name as a String, calls a helper function that
+    * sets the characteristics in the UI.
+    * <p>
+    * This method is the main means to set hop characteristics.  It
+    * pulls the String information via a combo box in the main UI.
+    *
+    * @param  in   a string name of the desired ingredient.
+    */
     public void getIngredients(String in) {
         if (in.equals("Ahtanum")) {
             ahtanum();
@@ -120,8 +143,10 @@ public class Hops {
         } 
     }
     
-    //Whole Grain Types Helper Methods
-    
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void ahtanum() {
         name = "ahtanum";
         displayName= "Ahtanum";
@@ -129,6 +154,10 @@ public class Hops {
         betaAcid = "5-6.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void amarillo() {
         name = "amarillo";
         displayName= "Amarillo";
@@ -136,6 +165,10 @@ public class Hops {
         betaAcid = "5-6.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void cascade() {
         name = "cascade";
         displayName= "Cascade";
@@ -143,6 +176,10 @@ public class Hops {
         betaAcid = "5-7";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void centennial() {
         name = "centennial";
         displayName= "Centennial";
@@ -150,6 +187,10 @@ public class Hops {
         betaAcid = "4-5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void chinook() {
         name = "chinook";
         displayName= "Chinook";
@@ -157,6 +198,10 @@ public class Hops {
         betaAcid = "3-4";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void columbus() {
         name = "columbus";
         displayName= "Columbus";
@@ -164,6 +209,10 @@ public class Hops {
         betaAcid = "";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void cluster() {
         name = "cluster";
         displayName= "Cluster";
@@ -171,6 +220,10 @@ public class Hops {
         betaAcid = "4.5-5.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystal() {
         name = "crystal";
         displayName= "Crystal";
@@ -178,6 +231,10 @@ public class Hops {
         betaAcid = "5-6.7";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void fuggle() {
         name = "fuggle";
         displayName= "Fuggle";
@@ -185,6 +242,10 @@ public class Hops {
         betaAcid = "1.5-2";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void galena() {
         name = "galena";
         displayName= "Galena";
@@ -192,6 +253,10 @@ public class Hops {
         betaAcid = "7.5-9";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void golding() {
         name = "golding";
         displayName= "Golding";
@@ -199,6 +264,10 @@ public class Hops {
         betaAcid = "2-3";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void hallertauMf() {
         name = "hallertauMf";
         displayName= "Hallertau Mf";
@@ -206,6 +275,10 @@ public class Hops {
         betaAcid = "3.5-5.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void horizon() {
         name = "horizon";
         displayName= "Horizon";
@@ -213,6 +286,10 @@ public class Hops {
         betaAcid = "6.5-8.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void liberty() {
         name = "liberty";
         displayName= "Liberty";
@@ -220,6 +297,10 @@ public class Hops {
         betaAcid = "3-3.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void magnum() {
         name = "magnum";
         displayName= "Magnum";
@@ -227,6 +308,10 @@ public class Hops {
         betaAcid = "";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void mountHood() {
         name = "mountHood";
         displayName= "Mount Hood";
@@ -234,6 +319,10 @@ public class Hops {
         betaAcid = "5-7.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void northernBrewer() {
         name = "northernBrewer";
         displayName= "Northern Brewer";
@@ -241,6 +330,10 @@ public class Hops {
         betaAcid = "3-5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void nugget() {
         name = "nugget";
         displayName= "Nugget";
@@ -248,6 +341,10 @@ public class Hops {
         betaAcid = "4-6";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void perle() {
         name = "perle";
         displayName= "Perle";
@@ -255,6 +352,10 @@ public class Hops {
         betaAcid = "4-5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void saaz() {
         name = "saaz";
         displayName= "Saaz";
@@ -262,6 +363,10 @@ public class Hops {
         betaAcid = "";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void satus() {
         name = "satus";
         displayName= "Satus";
@@ -269,6 +374,10 @@ public class Hops {
         betaAcid = "8.5-9";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void simcoe() {
         name = "simcoe";
         displayName= "Simcoe";
@@ -276,6 +385,10 @@ public class Hops {
         betaAcid = "4-5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void spaltSelect() {
         name = "spaltSelect";
         displayName= "Spalt Select";
@@ -283,6 +396,10 @@ public class Hops {
         betaAcid = "3-4.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void sterling() {
         name = "sterling";
         displayName= "Sterling";
@@ -290,6 +407,10 @@ public class Hops {
         betaAcid = "5-6";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void tettnang() {
         name = "tettnang";
         displayName= "Tettnang";
@@ -297,6 +418,10 @@ public class Hops {
         betaAcid = "3.5-4.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void tomahawk() {
         name = "tomahawk";
         displayName= "Tomahawk";
@@ -304,6 +429,10 @@ public class Hops {
         betaAcid = "4.5-5.8";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void ultra() {
         name = "ultra";
         displayName= "Ultra";
@@ -311,6 +440,10 @@ public class Hops {
         betaAcid = "3.6-4.7";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void usFuggle() {
         name = "usFuggle";
         displayName= "US Fuggle";
@@ -318,6 +451,10 @@ public class Hops {
         betaAcid = "";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void vanguard() {
         name = "vanguard";
         displayName= "Vanguard";
@@ -325,6 +462,10 @@ public class Hops {
         betaAcid = "5-7";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void warrior() {
         name = "warrior";
         displayName= "Warrior";
@@ -332,6 +473,10 @@ public class Hops {
         betaAcid = "4.5-5.5";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void willamette() {
         name = "willamette";
         displayName= "Willamette";

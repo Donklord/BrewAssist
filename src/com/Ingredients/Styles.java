@@ -150,6 +150,10 @@ public class Styles {
         notes = "2 or 6 row barley with high percentage of corn or rice adjunts (up to 40%).";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanLager() {
         displayName= "American Lager";
         ibu = "8-18";
@@ -161,6 +165,10 @@ public class Styles {
         notes = "2 or 6 row barley with high percentage of corn or rice adjunts (up to 40%).";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void creamAle() {
         displayName= "Cream Ale";
         ibu = "8-20";
@@ -172,6 +180,10 @@ public class Styles {
         notes = "American ingredients.  2 and 6 row barley common  Any variety of hops.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanWheatAle() {
         displayName= "American Wheat Ale";
         ibu = "15-30";
@@ -183,6 +195,10 @@ public class Styles {
         notes = "German weissbeir yeast is inappropriate.  Large proportion of wheat malt (often 30-50%).  American german or new owrld hops are typical.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void intPaleLager() {
         displayName= "International Pale Lager";
         ibu = "18-25";
@@ -194,6 +210,10 @@ public class Styles {
         notes = "2 or 6 row barley generaly more bitter and filling than american lager.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void intAmberLager() {
         displayName= "International Amber Lager";
         ibu = "8-25";
@@ -205,6 +225,10 @@ public class Styles {
         notes = "2 or 6 row barley color malts such as victory or amber… ect.   Carmal malts as well.  European or American hops .";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void intDarkLager() {
         displayName= "International Dark Lager";
         ibu = "8-20";
@@ -216,6 +240,10 @@ public class Styles {
         notes = "2 or 6 row barley.  Light use of carmel and darker malts.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void czechPaleLager() {
         displayName= "Czech Pale Lager";
         ibu = "20-35";
@@ -227,6 +255,10 @@ public class Styles {
         notes = "Soft water with low sulfate and carbon content.  Saazer-type hops.  Czech pilsner malt and czech lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void czechPremiumPaleLager() {
         displayName= "Czech Premium Pale Lager";
         ibu = "30-45";
@@ -238,6 +270,10 @@ public class Styles {
         notes = "Soft water with low sulfate and carbon content.  Saazer-type hops.  Czech pilsner malt and czech lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void czechAmberLager() {
         displayName= "Czech Amber Lager";
         ibu = "20-35";
@@ -249,6 +285,10 @@ public class Styles {
         notes = "Pilsner and carmel malts.  Vienna and Muncih malts may also be used.  Low mineral content water and Saazer type hops.  Czech lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void czechDarkLager() {
         displayName= "Czech Dark Lager";
         ibu = "18-34";
@@ -260,6 +300,10 @@ public class Styles {
         notes = "Pilsner and dark carmel malts with addition of roasted malts.  Low mineral content water and saazer type hops.  Czech lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void munichHelles() {
         displayName= "Munich Helles";
         ibu = "16-22";
@@ -271,6 +315,10 @@ public class Styles {
         notes = "Contiental pilsner malt and traditional german saazer type hops.  Clean german lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void festbier() {
         displayName= "Festbier";
         ibu = "18-25";
@@ -282,6 +330,10 @@ public class Styles {
         notes = "Majority pils malt with some Vienna and/or Munich malt.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void hellesBock() {
         displayName= "Helles Bock";
         ibu = "23-35";
@@ -293,6 +345,10 @@ public class Styles {
         notes = "Base of pils and or vienna malt with some Munich malt.  Saazer type hops and clean lager yeast.";
     }
     
+    /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void germanLeichtbier() {
         displayName= "German Leichtbier";
         ibu = "15-28";
@@ -304,6 +360,10 @@ public class Styles {
         notes = "Similar to a german pils or hells.  Cotinental pils malt with german lager yeast and saazer type hops.";
     }
     
+    /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void kolsch() {
         displayName= "Kolsch";
         ibu = "18-30";
@@ -315,6 +375,10 @@ public class Styles {
         notes = "German hops and german pils or pale malts.  Clean yeast and up to 20% wheat malt may be used.  (this is rare in the authentic version.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void germanHellesExportbier() {
         displayName= "German Helles Exportbier";
         ibu = "20-30";
@@ -326,6 +390,10 @@ public class Styles {
         notes = "German or Czech hops.  Pilsner malt with german lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void germanPils() {
         displayName= "German Pils";
         ibu = "22-40";
@@ -337,6 +405,10 @@ public class Styles {
         notes = "Continental pilser malt with german hop varieties.  German lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void viennaLager() {
         displayName= "ViennaLager";
         ibu = "18-30";
@@ -348,6 +420,10 @@ public class Styles {
         notes = "Vienna malt continental hops. Can use some carmel and / or darker malts.  Only finest quality ingredients.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void munichDunkel() {
         displayName= "Munich Dunkel";
         ibu = "18-28";
@@ -359,6 +435,10 @@ public class Styles {
         notes = "Munich malt with the remainder in german pils.  Smallamounts of crystal malt (small amount).  Traditional german hop varities and german lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void doppelbock() {
         displayName= "Doppelbock";
         ibu = "16-26";
@@ -370,6 +450,10 @@ public class Styles {
         notes = "Pils and / or vienna malt.  Muncih and vienna malts for daker versions.  Saazer type hops and clean lager yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void weissbier() {
         displayName= "Weissbier";
         ibu = "5-15";
@@ -392,6 +476,10 @@ public class Styles {
         notes = "Bit of roasted or black malt.  Pale base malt.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void blondeAle() {
         displayName= "Blonde Ale";
         ibu = "15-28";
@@ -403,6 +491,10 @@ public class Styles {
         notes = "Can include up to 25% wheat malt.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanPaleAle() {
         displayName= "American Pale Ale";
         ibu = "30-50";
@@ -414,6 +506,10 @@ public class Styles {
         notes = "Pale ale malt typically US 2 row.  American or new world hops.  American or English ale yeast.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanAmberAle() {
         displayName= "American Amber Ale";
         ibu = "25-40";
@@ -425,6 +521,10 @@ public class Styles {
         notes = "Pale ale malt typically US 2 row.  American or new world hops.  American or English ale yeast.  Medium to dark crystal malts.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void americanBrownAle() {
         displayName= "American Brown Ale";
         ibu = "20-30";
@@ -436,10 +536,10 @@ public class Styles {
         notes = "Pale malt plus crystal and darker malts.  American hops are typical.";
     }
     
-    /*  public static void main(String[] arguments) {
+      /*public static void main(String[] arguments) {
         Styles app = new Styles();
         boolean check;
-        check = app.isIngredients("Helles Bock");
+        check = app.isIngredients(null)
         if (check == true) {
             app.getIngredients("Helles Bock");
             System.out.println("Name: " + app.displayName);

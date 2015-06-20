@@ -13,10 +13,24 @@ public class NewWholeGrainEvent {
     String[] grainNames = grain.grainList;
     String matches = "None";
     
+    /**
+    * Only constructor.
+    * 
+    */
     public NewWholeGrainEvent(BrewAssistUI in) {
         gui = in;
     }
     
+  /**
+    * Item (combo box) action sorting method.  Takes an item event and performs various actions
+    * based on the contents.  Populates beer styles based on selection.  Populates grain and hop 
+    * characteristics based on in.
+    * <p>
+    * This method is the main tie in between the BrewAssistUI and 
+    * NewWholeGrainEvent classes.
+    *
+    * @param  in   An item event, in the form of a string.
+    */
     public void itemChanged(String in) {
         matches = in;
         
@@ -93,6 +107,17 @@ public class NewWholeGrainEvent {
         
     }
    
+  /**
+    * Helper method that sets the data on the grain table based on the table 
+    * column (c) and the name of the grain ingredient (name).  Calls a helper 
+    * function in the WholeGrain class of the com.Ingredients package.
+    * <p>
+    * This method populates grain characteristics based on the name of the
+    * ingredient
+    *
+    * @param  c   Numeric grain column number.
+    * @param  name   String name of the ingredient.
+    */
     private void setGrain(int c, String name) {
         if (name.equals("")) {
             gui.grainData[c][2] = "";
@@ -108,6 +133,17 @@ public class NewWholeGrainEvent {
         }
     } 
     
+  /**
+    * Helper method that sets the data on the hop table based on the table 
+    * column (c) and the name of the hop ingredient (name).  Calls a helper 
+    * function in the Hops class of the com.Ingredients package.
+    * <p>
+    * This method populates hop characteristics based on the name of the
+    * ingredient
+    *
+    * @param  c   Numeric grain column number.
+    * @param  name   String name of the ingredient.
+    */
     private void setHop(int c, String name) {
         if (name.equals("")) {
             gui.hopData[c][3] = "";

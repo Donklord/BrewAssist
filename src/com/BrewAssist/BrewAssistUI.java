@@ -82,7 +82,10 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     
    // String[] styleNames = file.getBeerNames();
     
-    
+  /**
+    * Only constructor, sets up and configures main frame.  Calls helper function to paint tabs.
+    * 
+    */
     public BrewAssistUI() {
      
         super("Brewing Assistant v1.0");
@@ -103,6 +106,16 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         setLocationRelativeTo(null);
     }
     
+  /**
+    * Item (Combo box) action method.  Validate and repaints frame when run.
+    * If combo box state has changed, runs helper function itemChanged (which 
+    * passes the combo box contents) which performs an action.
+    * <p>
+    * This method is the main tie in between the BrewAssistUI and 
+    * NewWholeGrainEvent classes.
+    *
+    * @param  item   An item event
+    */
     @Override
     public void itemStateChanged(ItemEvent item) {
         validate();
@@ -119,6 +132,12 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         return false;
     }
     
+  /**
+    * Action (button) action method.  Performs button action based on button pressed.
+    * Save batch, load batch, new batch, calculate.
+    *
+    * @param  event   An action event
+    */
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
@@ -186,6 +205,14 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
     }
     
+  /**
+    * Pop up box that asks the user if they want to override unsaved work when 
+    * pressing "New Batch" or "Load Batch" without saving first.
+    * <p>
+    * This method is called from the actionPerformed method above.
+    *
+    * @return   Integer response (0 is OK, 1 is cancel)
+    */
     public int throwNewBatchWarning() {
         Object[] options = { "OK", "CANCEL" };
         Object selectedValue = JOptionPane.showOptionDialog(null, "You have not saved your work, do you want to continue?", "Warning",
@@ -195,6 +222,14 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         return newSelectedValue;    
     }
     
+  /**
+    * Pop up box that asks the user if they want to override a previously saved file 
+    * when "Save Batch" is pressed and the batch name matches.
+    * <p>
+    * This method is called from the actionPerformed method above.
+    *
+    * @return   Integer response (0 is OK, 1 is cancel)
+    */
     public int throwSaveOverrideWarning() {
         Object[] options = { "OK", "CANCEL" };
         Object selectedValue = JOptionPane.showOptionDialog(null, "This file already exists, do you want to overwrite it?", "Warning",
@@ -204,7 +239,12 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         return newSelectedValue;    
     }
         
-    
+  /**
+    * Populates the "Extract" tab.
+    * <p>
+    * This method is called from the constructor and adds the UI elements for the Extract tab.
+    *
+    */
     private void createNewBrew_Extract() {
         currentPage = "Extract";
         bypass = false;
@@ -217,6 +257,12 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
      //   setVisible(true);
     }
     
+   /**
+    * Populates the "Whole" tab.
+    * <p>
+    * This method is called from the constructor and adds the UI elements for the Whole tab.
+    *
+    */
     public void createNewBrew_WholeGrain() {
         currentPage = "Whole Grain";
         bypass = false;
@@ -473,6 +519,12 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         add(newBrew_WholeGrain,BorderLayout.CENTER);
     }
     
+  /**
+    * Set UI's Look and Feel
+    * <p>
+    * This method is called from the constructor.
+    *
+    */
     private void setLookAndFeel() {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.basic");  //com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
@@ -481,6 +533,11 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         }
     }
     
+  /**
+    * Main method, calls BrewAssistUI (Main UI elements) and createDirectory method in the SaveWholeGrain class.
+    *
+    * @param arguments 
+    */
     public static void main(String[] arguments) {
         BrewAssistUI app = new BrewAssistUI();
         app.saveGrain.createDirectory();

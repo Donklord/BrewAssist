@@ -4,7 +4,7 @@ import com.Ingredients.*;
 import java.text.*;
 
 public class WholeGrainCalc {
-    
+    //Global variable declaration
     BrewAssistUI gui;
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
@@ -22,10 +22,23 @@ public class WholeGrainCalc {
     DecimalFormat wholeDf = new DecimalFormat("#");
     DecimalFormat oneDf = new DecimalFormat("#.#");
     
+  /**
+    * Only constructor.
+    * 
+    * @param in BrewAssistUI Class
+    */
     public WholeGrainCalc(BrewAssistUI in) {
         gui = in;
     }
     
+  /**
+    * Calls a series of helper methods to calculate specific properties.  
+    * Once calculated it sets the associated field in the UI.
+    * <p>
+    * High level method that calculates beer properties once the "Calculate"
+    * button is pressed in the UI.
+    *
+    */
     public void calculate() {
         //Calculate SRM
         double srmCalc = getSrmTotal();
@@ -52,6 +65,14 @@ public class WholeGrainCalc {
         
     }
     
+    /**
+    * Calculates total SRM (Beer color).
+    * <p>
+    * Called by the 'calculate' method,
+    * 
+    * @return SRM total as a double.
+    *
+    */
     public double getSrmTotal() {
         double result = 0.0;
         double total = 0.0;

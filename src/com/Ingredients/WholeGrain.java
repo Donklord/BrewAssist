@@ -12,7 +12,11 @@ public class WholeGrain {
     public String notes;
     public String[] grainList = new String[47];
     
-    
+    /**
+    * Only constructor, enables a String array that contains all of
+    * the usable whole grain ingredients.
+    * 
+    */
     public WholeGrain() {
         //set grainList array values
         grainList[0] = "Acid Malt";
@@ -64,6 +68,16 @@ public class WholeGrain {
         grainList[46] = "White Wheat Malt";
     }
     
+  /**
+    * Returns true if the ingredient exists, returns false if the
+    * ingredient doesn't exist.
+    * <p>
+    * This method is intended to check the existence of an ingredient 
+    * before calling the getIngredeints method.
+    *
+    * @param  in   a string name of the desired ingredient.
+    * @return      Boolean status of the existence of the input. 
+    */
     public boolean isIngredients(String in) {
         for (int i = 0; i < 47; i++) {
             if (in.equals(grainList[i])) {
@@ -73,6 +87,15 @@ public class WholeGrain {
         return false;
     }
     
+    /**
+    * Given a grain name as a String, calls a helper function that
+    * sets the characteristics in the UI.
+    * <p>
+    * This method is the main means to set grain characteristics.  It
+    * pulls the String information via a combo box in the main UI.
+    *
+    * @param  in   a string name of the desired ingredient.
+    */
     public void getIngredients(String in) {
         if (in.equals("Acid Malt")) {
             acidMalt();
@@ -171,8 +194,10 @@ public class WholeGrain {
         }
     }
     
-    //Whole Grain Types Helper Methods
-    
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void acidMalt() {
         name = "acidMalt";
         displayName= "Acid malt";
@@ -183,6 +208,10 @@ public class WholeGrain {
         notes = "Used to adjust PH without chemicals.  Enhances head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void amberMalt() {
         name = "amberMalt";
         displayName= "Amber Malt";
@@ -193,6 +222,10 @@ public class WholeGrain {
         notes = "Used in english browns adds color and biscuit taste.  Intense flavor - limit use";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void aromaticMalt() {
         name = "aromaticMalt";
         displayName= "Aromatic Malt";
@@ -203,6 +236,10 @@ public class WholeGrain {
         notes = "Provides strong malt flavor and aroma";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void barleyFlaked() {
         name = "barleyFlaked";
         displayName= "Barley - Flaked";
@@ -213,6 +250,10 @@ public class WholeGrain {
         notes = "Adds significant body to Porters and Stouts. ";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void barleyRaw() {
         name = "barleyRaw";
         displayName= "Barley - Raw";
@@ -223,6 +264,10 @@ public class WholeGrain {
         notes = "Raw and unmalted can be used to add body to beer.  Requires fine milling and multi stage mash.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void barleyTorrefied() {
         name = "barleyTorrefied";
         displayName= "Barley - Torrefied";
@@ -233,6 +278,10 @@ public class WholeGrain {
         notes = "Raw that has been cracked open.  Faster conversion when compared to raw, higher yeild.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void brownMalt() {
         name = "brownMalt";
         displayName= "Brown Malt";
@@ -243,6 +292,10 @@ public class WholeGrain {
         notes = "Adds dry biscuit flavor.  Used in nut brown ales, porters and some belgian.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void brumalt() {
         name = "brumalt";
         displayName= "Brumalt";
@@ -253,6 +306,10 @@ public class WholeGrain {
         notes = "Dark german.  Add malt flavor of Alt Marzen and Oktoberfest beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt10() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -263,6 +320,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt20() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -273,6 +334,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt30() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -283,6 +348,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+ /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt40() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -293,6 +362,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt60() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -303,6 +376,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt80() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -313,6 +390,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void crystalMalt120() {
         name = "crystalMalt10";
         displayName= "Crystal Malt - 10";
@@ -323,6 +404,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void caramunich() {
         name = "caramunich";
         displayName= "Caramunich";
@@ -333,6 +418,10 @@ public class WholeGrain {
         notes = "Carmel, copper colored malt.  Used in belgian ales and German bocks.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void carared() {
         name = "carared";
         displayName= "Carared";
@@ -343,6 +432,10 @@ public class WholeGrain {
         notes = "Adds body, color.  Improves head retention.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void caravienne() {
         name = "caravienne";
         displayName= "Caravienne";
@@ -353,6 +446,10 @@ public class WholeGrain {
         notes = "Light Belgian crystal malt.  Used in light trappist and abbey style Belgian ales.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void chocolateUS() {
         name = "chocolateUS";
         displayName= "Chocolate Malt - US";
@@ -363,6 +460,10 @@ public class WholeGrain {
         notes = "Dark malt.  Provides righ red or brown color and nutty flavor.  Used for Brown ales, porters and some stouts.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void chocolateUK() {
         name = "chocolateUK";
         displayName= "Chocolate Malt - UK";
@@ -373,6 +474,10 @@ public class WholeGrain {
         notes = "Dark malt.  Provides righ red or brown color and nutty flavor.  Used for Brown ales, porters and some stouts.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void mildMalt() {
         name = "mildMalt";
         displayName= "Mild Malt";
@@ -383,6 +488,10 @@ public class WholeGrain {
         notes = "English Mild A light specialty malt used in Brown Ales";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void munichMalt() {
         name = "munichMalt";
         displayName= "Munich Malt";
@@ -393,6 +502,10 @@ public class WholeGrain {
         notes = "Malty - sweet flavor, adds reddish amber color.  Does not contribute signficantly to body or head retention.  Used for Bock, porter, marzen, oktoberfest beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void munichMalt10() {
         name = "munichMalt10";
         displayName= "Munich Malt - 10";
@@ -403,6 +516,10 @@ public class WholeGrain {
         notes = "Malty - sweet flavor, adds slight orange color.  Does not contribute signficantly to body or head retention.  Used for Bock, porter, marzen, oktoberfest beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void munichMalt20() {
         name = "munichMalt20";
         displayName= "Munich Malt - 20";
@@ -413,6 +530,10 @@ public class WholeGrain {
         notes = "Malty -  sweet flavor, adds orange color.  Does not contribute signficantly to body or head retention.  Used for Bock, porter, marzen, oktoberfest beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pale2RowBel() {
         name = "pale2RowBel";
         displayName= "Pale Malt (2 row) Belgium";
@@ -423,6 +544,10 @@ public class WholeGrain {
         notes = "Base malt for all styles.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pale2RowUK() {
         name = "pale2RowUK";
         displayName= "Pale Malt (2 row) UK";
@@ -433,6 +558,10 @@ public class WholeGrain {
         notes = "Base malt for all English styles.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pale2RowUS() {
         name = "pale2RowUS";
         displayName= "Pale Malt (2 row) US";
@@ -443,6 +572,10 @@ public class WholeGrain {
         notes = "Base malt for all styles.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pale6RowUS() {
         name = "pale6RowUS";
         displayName= "Pale Malt (6 row) US";
@@ -453,6 +586,10 @@ public class WholeGrain {
         notes = "Base malt for all styles.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void peatSmoked() {
         name = "peatSmoked";
         displayName= "Peat Smoked";
@@ -463,6 +600,10 @@ public class WholeGrain {
         notes = "Robust smokey malt, provides smoky flavor.  Used in scottish ales.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pilsner2RowBel() {
         name = "pilsner2RowBel";
         displayName= "Pilsner (2 row) Belgium";
@@ -473,6 +614,10 @@ public class WholeGrain {
         notes = "Base malt for Continental lagers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pilsner2RowGer() {
         name = "pilsner2RowGer";
         displayName= "Pilsner (2 row) German";
@@ -483,6 +628,10 @@ public class WholeGrain {
         notes = "Base malt for Pilsners and Bohemian Lagers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void pilsner2RowUK() {
         name = "pilsner2RowUK";
         displayName= "Pilsner (2 row) UK";
@@ -493,6 +642,10 @@ public class WholeGrain {
         notes = "Pilsner base malt.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void roastedBarley() {
         name = "roastedBarley";
         displayName= "Roasted Barley";
@@ -503,6 +656,10 @@ public class WholeGrain {
         notes = "Roasted to create a burnt, grainy, coffee like flavor.  Imparts red to deep brown color.  Adds very strong roasted flavor.  Used in 2-4 % in Brown ales for nutty flavor.  3-10% in porters for coffee flavor";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void ryeMalt() {
         name = "ryeMalt";
         displayName= "Rye Malt";
@@ -513,6 +670,10 @@ public class WholeGrain {
         notes = "Adds a dry, crisp characteristic to beer.  Imparts deep red color and distincive rye flavor.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void ryeFlaked() {
         name = "ryeFlaked";
         displayName= "Rye Malt - Flaked";
@@ -523,6 +684,10 @@ public class WholeGrain {
         notes = "Adds a dry, crisp favor to rye beers.  Can be easier to mash than raw rye.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void smokedMalt() {
         name = "smokedMalt";
         displayName= "Smoked Malt";
@@ -533,6 +698,10 @@ public class WholeGrain {
         notes = "Smoked over open fire, creates smoked flavor and aroma.  Used for German Rauchbier but can be added to Brown Ales and Porters.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void specialB() {
         name = "specialB";
         displayName= "Special B";
@@ -543,6 +712,10 @@ public class WholeGrain {
         notes = "Extreme carmel aroma and flavord malt.  Used in dark Belgian abbey and Trappist ales.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void specialRoast() {
         name = "specialRoast";
         displayName= "Special Roast";
@@ -553,6 +726,10 @@ public class WholeGrain {
         notes = "Used for English ales, nut brown ales, and porters.  Adds toasted, biscuit like flavor and aroma.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void toastedMalt() {
         name = "toastedMalt";
         displayName= "Toasted Malt";
@@ -563,6 +740,10 @@ public class WholeGrain {
         notes = "Adds reddish / orange color.  Improves body with sweetnesss.  Tasted flavor.  Similar to biscuit or victory malt.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void victoryMalt() {
         name = "victoryMalt";
         displayName= "Victory Malt";
@@ -573,6 +754,10 @@ public class WholeGrain {
         notes = "Adds \"Biscuit\" or tosted flavor to English ales.  Used for Nut brown ales and porters.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void viennaMalt() {
         name = "viennaMalt";
         displayName= "Vienna Malt";
@@ -583,6 +768,10 @@ public class WholeGrain {
         notes = "Imparts golden to orange color to the beer.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wheatBel() {
         name = "wheatBel";
         displayName= "Wheat Malt Belgium";
@@ -593,6 +782,10 @@ public class WholeGrain {
         notes = "Malted wheat for use in Wheat Beers";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wheatDark() {
         name = "wheatDark";
         displayName= "Wheat Malt Dark";
@@ -603,6 +796,10 @@ public class WholeGrain {
         notes = "Dark malted wheat for use in dark what styles such as Dunkeweizen.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wheatGer() {
         name = "wheatGer";
         displayName= "Wheat Malt German";
@@ -613,6 +810,10 @@ public class WholeGrain {
         notes = "Malted wheat base for use in all wheat styles.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wheatFlaked() {
         name = "wheatFlaked";
         displayName= "Wheat Malt - Flaked";
@@ -623,6 +824,10 @@ public class WholeGrain {
         notes = "Increase body and foam retention. Used for faster conversion and better yeild.  Used in Belgian white and wit.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wheatRoasted() {
         name = "wheatRoasted";
         displayName= "Wheat Malt - Roasted";
@@ -633,6 +838,10 @@ public class WholeGrain {
         notes = "AKA Chocolate Wheat Malt.  Adds deep dark brown color.  Used in Dunkelweizens and other dark styles.  Roasted, woody, charcoal or burnt toast flavor (depends on degree of roasting)";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void whiteWheat() {
         name = "whiteWheat";
         displayName= "White Wheat Malt";

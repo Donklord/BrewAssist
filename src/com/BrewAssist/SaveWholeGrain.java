@@ -5,10 +5,24 @@ import java.util.*;
 
 public class SaveWholeGrain {
     BrewAssistUI gui;
+    
+  /**
+    * Only constructor.
+    * 
+    */
     public SaveWholeGrain(BrewAssistUI in) {
         gui = in;
     }
     
+  /**
+    * Save data from the WholeGrain tab and populate it in a new property
+    * file located in `C:/BrewAssist/wg/fileName.properties`.  Ties into
+    * BrewAssistUI class and pulls all necessary information.
+    * <p>
+    * Saves grain recipe data into a property file.
+    *
+    * @param  fileName   String name of the file.
+    */
     public void saveGrain(String fileName) {
         Properties prop = new Properties();
         
@@ -68,6 +82,7 @@ public class SaveWholeGrain {
         }
     }
     
+    /*
     public void configExample() {
         try {
             //Load the properites file
@@ -86,8 +101,13 @@ public class SaveWholeGrain {
         } catch (IOException ioe) {
             System.out.println("IO error " + ioe.getMessage());  
         }
-    }
+    } */
     
+  /**
+    * Checks to see if the base BrewAssist directory exists.  If it doesn't exist
+    * it creates it.
+    *
+    */
     public void createDirectory() {
         File f = new File("C:\\BrewAssist");
         if (!f.exists()) {

@@ -13,7 +13,11 @@ public class yeast {
     public String notes;
     public String[] yeastList = new String[28];
     
-    
+    /**
+    * Only constructor, enables a String array that contains all of
+    * the usable yeast ingredients.
+    * 
+    */
     public yeast() {
         //set grainList array values
         yeastList[0] = "Wyeast 1007 German Ale";
@@ -46,6 +50,16 @@ public class yeast {
         yeastList[27] = "Wyeast 2633 Octoberfest Lager";
     }
     
+  /**
+    * Returns true if the ingredient exists, returns false if the
+    * ingredient doesn't exist.
+    * <p>
+    * This method is intended to check the existence of an ingredient 
+    * before calling the getIngredeints method.
+    *
+    * @param  in   a string name of the desired ingredient.
+    * @return      Boolean status of the existence of the input. 
+    */
     public boolean isIngredients(String in) {
         for (int i = 0; i < 28; i++) {
             if (in.equals(yeastList[i])) {
@@ -55,6 +69,15 @@ public class yeast {
         return false;
     }
     
+  /**
+    * Given a yeast name as a String, calls a helper function that
+    * sets the characteristics in the UI.
+    * <p>
+    * This method is the main means to set yeast characteristics.  It
+    * pulls the String information via a combo box in the main UI.
+    *
+    * @param  in   a string name of the desired ingredient.
+    */
     public void getIngredients(String in) {
         if (in.equals("Wyeast 1007 German Ale")) {
             wyeast1007GermanAle();
@@ -115,8 +138,10 @@ public class yeast {
         } 
     }
     
-    //Whole Grain Types Helper Methods
-    
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1007GermanAle() {
         name = "wyeast1007GermanAle";
         displayName= "Wyeast 1007 German Ale";
@@ -128,6 +153,10 @@ public class yeast {
         notes = "Higher temp ferminatation may produce mild fruitiness.  Beers mature rapidly.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1010AmericanWheat() {
         name = "Wyeast 1010 American Wheat";
         displayName= "Wyeast 1010 American Wheat";
@@ -139,6 +168,10 @@ public class yeast {
         notes = "Strong fermenating, produces dry slighty tart crisp beer.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1056AmericanAle() {
         name = "wyeast1056AmericanAle";
         displayName= "Wyeast 1056 American Ale";
@@ -150,6 +183,10 @@ public class yeast {
         notes = "Crisp clean flavor, low fruitness.  Mild citrus notes develop with cooler (60-66) fermentations.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1084IrishAle() {
         name = "wyeast1084IrishAle";
         displayName= "Wyeast 1084 Irish Ale";
@@ -161,6 +198,10 @@ public class yeast {
         notes = "When fermented in lower temps produces a dry, crisp profile with subtle fruitness.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1098BritishAle() {
         name = "wyeast1098BritishAle";
         displayName= "Wyeast 1098 British Ale";
@@ -172,6 +213,10 @@ public class yeast {
         notes = "Allows malt and hop characteristics to dominate profile.  Dry and crisp, well balanced with a clean neutral finish.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1099WhitbreadAle() {
         name = "wyeast1099WhitbreadAle";
         displayName= "Wyeast 1099 Whitbread Ale";
@@ -183,6 +228,10 @@ public class yeast {
         notes = "Mild malty and slighty fruity profile.  Low fermentation temps will produce a clean finish.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1187RingwoodAle() {
         name = "wyeast1187RingwoodAle";
         displayName= "Wyeast 1187 Ringwood Ale";
@@ -194,6 +243,10 @@ public class yeast {
         notes = "Distinc fruit esters with a malty, comples profile.  Strain can be a slow starter and fermenter.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1272AmericanAleII() {
         name = "wyeast1272AmericanAleII";
         displayName= "Wyeast 1272 American Ale II";
@@ -205,6 +258,10 @@ public class yeast {
         notes = "Soft clean profile with hints of nut and slightly tart finish.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1275ThamesValleyAle() {
         name = "wyeast1275ThamesValleyAle";
         displayName= "Wyeast 1275 Thames Valley Ale";
@@ -216,6 +273,10 @@ public class yeast {
         notes = "Produces classic brittish bitters with a rich complete flavor profile.  Light malt character, low fruitness, clean and well balanced.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1318LondonAleIII() {
         name = "wyeast1318LondonAleIII";
         displayName= "Wyeast 1318 London Ale III";
@@ -227,6 +288,10 @@ public class yeast {
         notes = "Produces a wonderful malt and hop profile.  Fruity, very light and softly balanced palate.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1332NorthwestAle() {
         name = "wyeast1332NorthwestAle";
         displayName= "Wyeast 1332 Northwest Ale";
@@ -238,6 +303,10 @@ public class yeast {
         notes = "Produces a malty and mildy fruty ale with good depth and complexity.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1335BritishAleII() {
         name = "wyeast1335BritishAleII";
         displayName= "Wyeast 1335 British Ale II";
@@ -249,6 +318,10 @@ public class yeast {
         notes = "Malty flavor characteristics.  Finishes clean, crisp and fairly dry.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1450DannysFavorate50() {
         name = "wyeast1450DannysFavorate50";
         displayName= "Wyeast 1450 Danny's Favorate 50";
@@ -260,6 +333,10 @@ public class yeast {
         notes = "Produces a big mouthfeel and accentuates the malt, carmel or fruit character of a beer without being sweet.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1469WestYorkshireAle() {
         name = "wyeast1469WestYorkshireAle";
         displayName= "Wyeast 1469 West yorkshire Ale";
@@ -271,6 +348,10 @@ public class yeast {
         notes = "Full chewy malt flavor and character but finishes dry.  Best used for cask-conditioned beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1728ScottishAle() {
         name = "wyeast1728ScottishAle";
         displayName= "Wyeast 1728 Scottish Ale";
@@ -282,6 +363,10 @@ public class yeast {
         notes = "Unique suited for strong, malty ales.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast1968LondonESBAle() {
         name = "wyeast1968LondonESBAle";
         displayName= "Wyeast 1968 London ESB Ale";
@@ -293,6 +378,10 @@ public class yeast {
         notes = "Good cask conditioned ale strain.   Produces malty beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2565Kolsch() {
         name = "wyeast2565Kolsch";
         displayName= "Wyeast 2565 Kolsch";
@@ -304,6 +393,10 @@ public class yeast {
         notes = "Exhibit some friut character with a clean like profile.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast200BudvarLager() {
         name = "wyeast200BudvarLager";
         displayName= "Wyeast 2000 Budvar Lager";
@@ -315,6 +408,10 @@ public class yeast {
         notes = "Malty nose subtle fruit tones and rich malt profile.  Finishes malty but dry.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2001UrquellLager() {
         name = "wyeast2001UrquellLager";
         displayName= "Wyeast 2001 Urquel Lager";
@@ -326,6 +423,10 @@ public class yeast {
         notes = "Mild friiut and floral aroma.  Very dry and clean palate.  Clean and neutral finish";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2007PilsenLager() {
         name = "wyeast2007PilsenLager";
         displayName= "Wyeast 2007 Pilsen Lager";
@@ -337,6 +438,10 @@ public class yeast {
         notes = "Classic american lager.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2035AmericanLager() {
         name = "wyeast2035AmericanLager";
         displayName= "Wyeast 2035 American Lager";
@@ -348,6 +453,10 @@ public class yeast {
         notes = "Complex and aromatic strain used for a variety of lager beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2042DanishLager() {
         name = "wyeast2042DanishLager";
         displayName= "Wyeast 2042 Danish Lager";
@@ -359,6 +468,10 @@ public class yeast {
         notes = "Good choice for Dortmund-style lagers.  Ferment crisp and dry.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2112CaliforniaLager() {
         name = "wyeast2112CaliforniaLager";
         displayName= "Wyeast 2112 California Lager";
@@ -370,6 +483,10 @@ public class yeast {
         notes = "Produces lager characteristics up to 65 degrees with malty, and clear beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2124BohemainLager() {
         name = "wyeast2124BohemainLager";
         displayName= "Wyeast 2124 Bohemain Lager";
@@ -381,6 +498,10 @@ public class yeast {
         notes = "Distinct malty profile with a clean finish.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2206BavarianLager() {
         name = "wyeast2206BavarianLager";
         displayName= "Wyeast 2206 Bavarian Lager";
@@ -392,6 +513,10 @@ public class yeast {
         notes = "Rich, full bodied, malty beers.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2278CzechPils() {
         name = "wyeast2278CzechPils";
         displayName= "Wyeast 2278 Czech Pils";
@@ -403,6 +528,10 @@ public class yeast {
         notes = "Finish dry and malty. ";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2308MunichLager() {
         name = "wyeast2308MunichLager";
         displayName= "Wyeast 2308 Munich Lager";
@@ -414,6 +543,10 @@ public class yeast {
         notes = "Smooth, well rounded and full-bodied.";
     }
     
+  /**
+    * Sets the global variables to the given style.
+    *
+    */
     private void wyeast2633OctoberfestLager() {
         name = "wyeast2633OctoberfestLager";
         displayName= "Wyeast 2633 Octoberfest Lager";
