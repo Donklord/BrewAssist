@@ -1,4 +1,4 @@
-package com.BrewAssist;
+package BrewAssist.RecipeBuilder;
 
 import java.awt.FileDialog;
 import java.awt.Frame;

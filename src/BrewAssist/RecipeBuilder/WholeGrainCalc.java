@@ -1,6 +1,8 @@
-package com.BrewAssist;
+package BrewAssist.RecipeBuilder;
 
-import com.Ingredients.*;
+import BrewAssist.Ingredients.Hops;
+import BrewAssist.Ingredients.WholeGrain;
+import BrewAssist.Ingredients.Styles;
 import java.text.*;
 
 public class WholeGrainCalc {

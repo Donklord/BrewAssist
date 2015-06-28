@@ -1,4 +1,4 @@
-package com.Ingredients;
+package BrewAssist.Ingredients;
 
 public class yeast {
     

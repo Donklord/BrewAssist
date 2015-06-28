@@ -1,4 +1,4 @@
-package com.Ingredients;
+package BrewAssist.Ingredients;
 
 import java.io.*;
 import java.util.*;

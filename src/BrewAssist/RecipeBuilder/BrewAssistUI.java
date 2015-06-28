@@ -1,5 +1,9 @@
-package com.BrewAssist;
+package BrewAssist.RecipeBuilder;
 
+import BrewAssist.Ingredients.yeast;
+import BrewAssist.Ingredients.Hops;
+import BrewAssist.Ingredients.WholeGrain;
+import BrewAssist.Ingredients.Styles;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,13 +16,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import com.Ingredients.*;
 import java.io.File;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
     WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
-    SaveWholeGrain saveGrain = new SaveWholeGrain(this);
+    public SaveWholeGrain saveGrain = new SaveWholeGrain(this);
     FileLoader fileLoad = new FileLoader(this);
    // CsvLoader file = new CsvLoader();
     WholeGrain grain = new WholeGrain();
@@ -91,7 +94,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     */
     public BrewAssistUI() {
      
-        super("Brewing Assistant v1.0");
+        super("Brewing Assistant Recipe Builder");
         JTabbedPane tabbedPane = new JTabbedPane();
         createNewBrew_WholeGrain();
         tabbedPane.addTab("Create New - Whole Grain", null, newBrew_WholeGrain, "Create new whole grain batch");
@@ -573,8 +576,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     *
     * @param arguments 
     */
-    public static void main(String[] arguments) {
-        BrewAssistUI app = new BrewAssistUI();
-        app.saveGrain.createDirectory();
-    }
+  //  public static void main(String[] arguments) {
+   //     BrewAssistUI app = new BrewAssistUI();
+  //     app.saveGrain.createDirectory();
+   // }
 }

@@ -1,4 +1,4 @@
- package com.BrewAssist;
+ package BrewAssist.RecipeBuilder;
 
 import java.io.*;
 import java.util.*;
@@ -139,17 +139,5 @@ public class SaveWholeGrain {
         }
     } 
     
-  /**
-    * Checks to see if the base BrewAssist directory exists.  If it doesn't exist
-    * it creates it.
-    *
-    */
-    public void createDirectory() {
-        File f = new File("C:\\BrewAssist");
-        if (!f.exists()) {
-            new File("C:\\BrewAssist\\Saves\\wg").mkdirs();
-            new File("C:\\BrewAssist\\Saves\\extract").mkdir();
-            System.out.println("Saves Directory Created!");
-        }
-    }
+  
 }
