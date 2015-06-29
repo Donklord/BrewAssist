@@ -105,7 +105,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         add(tabbedPane);
         
        // JFrame frame = new JFrame("Brewing Assistant v1.0");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1080,900);
         add(tabbedPane);
         setVisible(true);
