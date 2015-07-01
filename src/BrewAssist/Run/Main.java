@@ -32,7 +32,7 @@ public class Main extends JFrame implements ActionListener {
         //Setting default properties for JFrame
         startup.setLayout(startupLayout);
         startup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        startup.setSize(400,500);
+        startup.setSize(275,425);
         startup.setLocationRelativeTo(null);
         startup.getContentPane().setBackground(Color.WHITE);
         
@@ -40,21 +40,24 @@ public class Main extends JFrame implements ActionListener {
         batchPan.setLayout(batchLayout);
         batchPan.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Batch Creation & Tracking"));
         batchPan.setBackground(Color.WHITE);
-        JButton recipeBuild = new JButton("Recipe Builder");
+        JButton recipeBuild = new JButton("Recipe Builder!");
         recipeBuild.addActionListener(this);
         recipeBuild.setPreferredSize(new Dimension(150, 20));
+        recipeBuild.setToolTipText("Batch creating tool!");
         JButton recipeTrack = new JButton("Recipe Tracker");
         recipeTrack.setEnabled(false);
         recipeTrack.setPreferredSize(new Dimension(150, 20));
+        recipeTrack.setToolTipText("Brew day notes and batch tracking!");
         JButton ingredientPick = new JButton("Ingredient Picker");
         ingredientPick.setEnabled(false);
         ingredientPick.setPreferredSize(new Dimension(150, 20));
+        ingredientPick.setToolTipText("Ingredient lookup tool!");
         
-        batchLayout.putConstraint(SpringLayout.WEST, recipeBuild, 10, SpringLayout.WEST, batchPan);
+        batchLayout.putConstraint(SpringLayout.WEST, recipeBuild, 52, SpringLayout.WEST, batchPan);
         batchLayout.putConstraint(SpringLayout.NORTH, recipeBuild, 10, SpringLayout.NORTH, batchPan);
-        batchLayout.putConstraint(SpringLayout.WEST, recipeTrack, 10, SpringLayout.WEST, batchPan);
+        batchLayout.putConstraint(SpringLayout.WEST, recipeTrack, 52, SpringLayout.WEST, batchPan);
         batchLayout.putConstraint(SpringLayout.NORTH, recipeTrack, 10, SpringLayout.SOUTH, recipeBuild);
-        batchLayout.putConstraint(SpringLayout.WEST, ingredientPick, 10, SpringLayout.WEST, batchPan);
+        batchLayout.putConstraint(SpringLayout.WEST, ingredientPick, 52, SpringLayout.WEST, batchPan);
         batchLayout.putConstraint(SpringLayout.NORTH, ingredientPick, 10, SpringLayout.SOUTH, recipeTrack);
         
         batchPan.add(recipeBuild);
@@ -71,13 +74,15 @@ public class Main extends JFrame implements ActionListener {
         JButton ingredientEdit = new JButton("Ingredient Editor");
         ingredientEdit.setEnabled(false);
         ingredientEdit.setPreferredSize(new Dimension(150, 20));
+        ingredientEdit.setToolTipText("Add / edit main ingredients and beer styles!");
+        
         JButton styleEdit = new JButton("Beer Style Editor");
         styleEdit.setEnabled(false);
         styleEdit.setPreferredSize(new Dimension(150, 20));
         
-        personalLayout.putConstraint(SpringLayout.WEST, ingredientEdit, 10, SpringLayout.WEST, personalPan);
+        personalLayout.putConstraint(SpringLayout.WEST, ingredientEdit, 52, SpringLayout.WEST, personalPan);
         personalLayout.putConstraint(SpringLayout.NORTH, ingredientEdit, 10, SpringLayout.NORTH, personalPan);
-        personalLayout.putConstraint(SpringLayout.WEST, styleEdit, 10, SpringLayout.WEST, personalPan);
+        personalLayout.putConstraint(SpringLayout.WEST, styleEdit, 52, SpringLayout.WEST, personalPan);
         personalLayout.putConstraint(SpringLayout.NORTH, styleEdit, 10, SpringLayout.SOUTH, ingredientEdit);
         
         personalPan.add(ingredientEdit);
@@ -93,17 +98,17 @@ public class Main extends JFrame implements ActionListener {
         JButton settingB = new JButton("Settings");
         settingB.setEnabled(false);
         settingB.setPreferredSize(new Dimension(150, 20));
-        JButton help = new JButton("Help");
-        help.setEnabled(false);
-        help.setPreferredSize(new Dimension(150, 20));
+        JButton helpB = new JButton("Help");
+        helpB.setEnabled(false);
+        helpB.setPreferredSize(new Dimension(150, 20));
         
-        personalLayout.putConstraint(SpringLayout.WEST, settingB, 10, SpringLayout.WEST, settingsPan);
-        personalLayout.putConstraint(SpringLayout.NORTH, settingB, 10, SpringLayout.NORTH, settingsPan);
-        personalLayout.putConstraint(SpringLayout.WEST, help, 10, SpringLayout.WEST, settingsPan);
-        personalLayout.putConstraint(SpringLayout.NORTH, help, 10, SpringLayout.SOUTH, settingB);
+        settingLayout.putConstraint(SpringLayout.WEST, settingB, 52, SpringLayout.WEST, settingsPan);
+        settingLayout.putConstraint(SpringLayout.NORTH, settingB, 10, SpringLayout.NORTH, settingsPan);
+        settingLayout.putConstraint(SpringLayout.WEST, helpB, 52, SpringLayout.WEST, settingsPan);
+        settingLayout.putConstraint(SpringLayout.NORTH, helpB, 10, SpringLayout.SOUTH, settingB);
         
         settingsPan.add(settingB);
-        settingsPan.add(help);
+        settingsPan.add(helpB);
         
         startup.add(settingsPan);
         
