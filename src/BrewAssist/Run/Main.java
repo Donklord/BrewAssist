@@ -2,7 +2,7 @@ package BrewAssist.Run;
 
 import BrewAssist.RecipeBuilder.BrewAssistUI;
 import BrewAssist.Core.*;
-import java.awt.BorderLayout;
+import BrewAssist.RecipeTrack.RecipeTrackUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -45,7 +45,7 @@ public class Main extends JFrame implements ActionListener {
         recipeBuild.setPreferredSize(new Dimension(150, 20));
         recipeBuild.setToolTipText("Batch creating tool!");
         JButton recipeTrack = new JButton("Recipe Tracker");
-        recipeTrack.setEnabled(false);
+        recipeTrack.addActionListener(this);
         recipeTrack.setPreferredSize(new Dimension(150, 20));
         recipeTrack.setToolTipText("Brew day notes and batch tracking!");
         JButton ingredientPick = new JButton("Ingredient Picker");
@@ -126,8 +126,10 @@ public class Main extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
         
-        if (command.equals("Recipe Builder")) {
+        if (command.equals("Recipe Builder!")) {
             BrewAssistUI app = new BrewAssistUI();
+        } else if (command.equals("Recipe Tracker")) {
+            RecipeTrackUI app1 = new RecipeTrackUI();
         }
     }
     
