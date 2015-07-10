@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -53,8 +54,8 @@ public class RecipeTrackUI extends JFrame {
     //Recipe parameters
     JComboBox<String> grainCombo = new JComboBox<>();
     JComboBox<String> hopCombo = new JComboBox<>();
-    JComboBox yeastCombo = new JComboBox();
-    JComboBox starterCombo = new JComboBox();
+    JComboBox<String> yeastCombo = new JComboBox<>();
+    JComboBox<String> starterCombo = new JComboBox<>();
     String[] grainColNames = {"Name", "Lbs"};
     Object[][] grainData = {
             {"", ""},
@@ -222,7 +223,10 @@ public class RecipeTrackUI extends JFrame {
         
         wgTrack.add(overview);
         
-        //Recipe portion
+        //////////////////
+        //Recipe portion//
+        //////////////////
+        
         //SpringLayout recipeLayout = new SpringLayout();
         //recipe.setLayout(recipeLayout);
         recipe.setLayout(new BoxLayout(recipe, BoxLayout.Y_AXIS));
@@ -230,12 +234,12 @@ public class RecipeTrackUI extends JFrame {
         recipe.setBackground(Color.WHITE);
         JPanel recipeNorth = new JPanel();
         JPanel recipeSouth = new JPanel();
-        JPanel recipeNorthSub = new JPanel();
         
         /////////////////////
         //recipeNorth panel//
         /////////////////////
         recipeNorth.setLayout(new GridLayout(1,2,5,5));
+        recipeNorth.setBackground(Color.WHITE);
         
         //Setup grain and hop table
         String[] grainResponse = grain.grainList;
@@ -246,6 +250,8 @@ public class RecipeTrackUI extends JFrame {
         grainCombo.addItem("");
         grainTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(grainCombo));
         grainTable.getColumnModel().getColumn(0).setPreferredWidth(200);
+        grainTable.setPreferredScrollableViewportSize(grainTable.getPreferredSize());
+        grainTable.setFillsViewportHeight(true);
         
         String[] hopResponse = hopApp.hopList;
         for (int i = 0; i < 31; i++) {
@@ -255,16 +261,19 @@ public class RecipeTrackUI extends JFrame {
         hopCombo.addItem("");
         hopTable.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(hopCombo));
         hopTable.getColumnModel().getColumn(0).setPreferredWidth(200);
+        hopTable.setPreferredScrollableViewportSize(hopTable.getPreferredSize());
+        hopTable.setFillsViewportHeight(true);
         
         //Adding components
-        recipeNorth.add(grainTable);
-        recipeNorth.add(hopTable);
-        
-        recipe.add(recipeNorth);
+        recipeNorth.add(new JScrollPane(grainTable));
+        recipeNorth.add(new JScrollPane(hopTable));
         
         /////////////////////
         //recipeSouth panel//
         /////////////////////
+        recipeSouth.setBackground(Color.WHITE);
+        SpringLayout southLayout = new SpringLayout();
+        recipeSouth.setLayout(southLayout);
         
         //Local variables
         JLabel yeast = new JLabel("Yeast: ");
@@ -273,9 +282,34 @@ public class RecipeTrackUI extends JFrame {
         JLabel grains = new JLabel("Grain Bill: ");
         JLabel hops = new JLabel("Hop Schedule: ");
         
+        String[] yeastResponse = yeast1.yeastList;
+        for (int i = 0; i < 28; i++) {
+            if (i != 0 ) {
+                yeastCombo.addItem(yeastResponse[i]);
+            }
+        }
+        
+        starterCombo.addItem("Yes");
+        starterCombo.addItem("No");
+        
+        //Set constraints
+        southLayout.putConstraint(SpringLayout.WEST, yeast, 5, SpringLayout.WEST, recipeSouth);
+        southLayout.putConstraint(SpringLayout.NORTH, yeast, 8, SpringLayout.NORTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, yeastCombo, 15, SpringLayout.EAST, yeast);
+        southLayout.putConstraint(SpringLayout.NORTH, yeastCombo, 5, SpringLayout.NORTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, starter, 20, SpringLayout.EAST, yeastCombo);
+        southLayout.putConstraint(SpringLayout.NORTH, starter, 8, SpringLayout.NORTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, starterCombo, 5, SpringLayout.EAST, starter);
+        southLayout.putConstraint(SpringLayout.NORTH, starterCombo, 5, SpringLayout.NORTH, recipeSouth);
+        
+        
         recipeSouth.add(yeast);
+        recipeSouth.add(yeastCombo);
+        recipeSouth.add(starter);
+        recipeSouth.add(starterCombo);
         
         recipe.add(recipeSouth);
+        recipe.add(recipeNorth);
         
         wgTrack.add(recipe);
         
