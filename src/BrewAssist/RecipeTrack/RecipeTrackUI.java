@@ -4,6 +4,7 @@ import BrewAssist.Ingredients.Hops;
 import BrewAssist.Ingredients.WholeGrain;
 import BrewAssist.Ingredients.yeast;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -82,6 +83,36 @@ public class RecipeTrackUI extends JFrame {
     
     JTextField tempPitch_field = new JTextField(4);
     
+    //Mash parameters
+    JTextField mashDuration_field = new JTextField(4);
+    JTextField waterMashRatio_field = new JTextField(4);
+    JTextField mashVolume_field = new JTextField(4);
+    JTextField targetMashTemp_field = new JTextField(4);
+    JTextField strikeWaterTemp_field = new JTextField(4);
+    JTextField mashTempActual_field = new JTextField(4);
+    JTextField finalMashTemp_field = new JTextField(4);
+    JTextField preboilGrav_field = new JTextField(4);
+    JTextField mashEff_field = new JTextField(4);
+    
+    String[] mashColNames = {"Sparge Step", "<html>Infusion<br>Volume</html>", "<html>Infusion<br>Temp</html>", "<html>Mash<br>Temp</html>", "<html>Volume of<br>Runnings</html>", "<html>Gravity of<br>Runnings</html>"};
+    Object[][] mashData = {
+        {"First", "", "", "", "", ""},
+        {"Second", "", "", "", "", ""},
+        {"Third", "", "", "", "", ""},
+    };
+    JTable mashTable = new JTable(mashData, mashColNames);
+    
+    //Ferm / boil parameters
+    JTextField boilDuration_field = new JTextField(4);
+    JTextField postBoilGravity_field = new JTextField(4);
+    JTextField volumnPreBoil_field = new JTextField(4);
+    JTextField volumnPostBoil_field = new JTextField(4);
+    JTextField volumnInPrim_field = new JTextField(4);
+    JTextField tempCheck1_field = new JTextField(4);
+    JTextField tempCheck2_field = new JTextField(4);
+    JTextField tempCheck3_field = new JTextField(4);
+    JTextField tempCheck4_field = new JTextField(4);
+    JTextField finalGrav_field = new JTextField(4);
     
     public RecipeTrackUI() {
         
@@ -301,26 +332,179 @@ public class RecipeTrackUI extends JFrame {
         southLayout.putConstraint(SpringLayout.NORTH, starter, 8, SpringLayout.NORTH, recipeSouth);
         southLayout.putConstraint(SpringLayout.WEST, starterCombo, 5, SpringLayout.EAST, starter);
         southLayout.putConstraint(SpringLayout.NORTH, starterCombo, 5, SpringLayout.NORTH, recipeSouth);
-        
+        southLayout.putConstraint(SpringLayout.WEST, tempPitch, 15, SpringLayout.EAST, starterCombo);
+        southLayout.putConstraint(SpringLayout.NORTH, tempPitch, 7, SpringLayout.NORTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, tempPitch_field, 5, SpringLayout.EAST, tempPitch);
+        southLayout.putConstraint(SpringLayout.NORTH, tempPitch_field, 5, SpringLayout.NORTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, grains, 5, SpringLayout.WEST, recipeSouth);
+        southLayout.putConstraint(SpringLayout.SOUTH, grains, -5, SpringLayout.SOUTH, recipeSouth);
+        southLayout.putConstraint(SpringLayout.WEST, hops, 350, SpringLayout.WEST, recipeSouth);
+        southLayout.putConstraint(SpringLayout.SOUTH, hops, -5, SpringLayout.SOUTH, recipeSouth);
+
         
         recipeSouth.add(yeast);
         recipeSouth.add(yeastCombo);
         recipeSouth.add(starter);
         recipeSouth.add(starterCombo);
+        recipeSouth.add(tempPitch);
+        recipeSouth.add(tempPitch_field);
+        recipeSouth.add(grains);
+        recipeSouth.add(hops);
         
         recipe.add(recipeSouth);
         recipe.add(recipeNorth);
         
         wgTrack.add(recipe);
         
-        //Mash portion
-        JLabel temp2 = new JLabel("Mash under construction");
-        mash.add(temp2);
+        ////////////////
+        //Mash portion//
+        ////////////////
+        mash.setLayout(new BoxLayout(mash, BoxLayout.Y_AXIS));
+        mash.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Mash Procedure"));
+        mash.setBackground(Color.WHITE);
+        JPanel mashNorth = new JPanel();
+        JPanel mashSouth = new JPanel();
+        
+        //////////////
+        //Mash North//
+        //////////////
+        SpringLayout mashNorthLayout = new SpringLayout();
+        mashNorth.setLayout(mashNorthLayout);
+        mashNorth.setBackground(Color.WHITE);
+        
+        //Setting up components
+        JLabel mashDuration = new JLabel("Mash Duration: ");
+        JLabel waterMashRatio = new JLabel("Water-Mash Ratio: ");
+        JLabel mashVolume = new JLabel("Mash Volume: ");
+        JLabel targetMashTemp = new JLabel("Target Mash Temp: ");
+        JLabel strikeWaterTemp = new JLabel("Strike Water Temp: ");
+        JLabel mashTempActual = new JLabel("Mash Temp Actual: ");
+        JLabel finalMashTemp = new JLabel("Final Mash Temp: ");
+        JLabel preboilGrav = new JLabel("Preboil Gravity: ");
+        JLabel mashEff = new JLabel("Mash Efficiency: ");
+        
+        //Set constraints
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashDuration, 45, SpringLayout.WEST, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashDuration, 7, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashDuration_field, 25, SpringLayout.EAST, mashDuration);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashDuration_field, 5, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, waterMashRatio, 45, SpringLayout.WEST, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, waterMashRatio, 7, SpringLayout.SOUTH, mashDuration);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, waterMashRatio_field, 5, SpringLayout.EAST, waterMashRatio);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, waterMashRatio_field, 5, SpringLayout.SOUTH, mashDuration_field);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashVolume, 45, SpringLayout.WEST, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashVolume, 8, SpringLayout.SOUTH, waterMashRatio);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashVolume_field, 30, SpringLayout.EAST, mashVolume);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashVolume_field, 5, SpringLayout.SOUTH, waterMashRatio_field);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, targetMashTemp, 35, SpringLayout.EAST, mashDuration_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, targetMashTemp, 6, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, targetMashTemp_field, 5, SpringLayout.EAST, targetMashTemp);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, targetMashTemp_field, 5, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, strikeWaterTemp, 35, SpringLayout.EAST, waterMashRatio_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, strikeWaterTemp, 7, SpringLayout.SOUTH, targetMashTemp);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, strikeWaterTemp_field, 5, SpringLayout.EAST, strikeWaterTemp);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, strikeWaterTemp_field, 5, SpringLayout.SOUTH, targetMashTemp_field);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashTempActual, 35, SpringLayout.EAST, mashVolume_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashTempActual, 7, SpringLayout.SOUTH, strikeWaterTemp);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashTempActual_field, 6, SpringLayout.EAST, mashTempActual);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashTempActual_field, 5, SpringLayout.SOUTH, strikeWaterTemp_field);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, finalMashTemp, 35, SpringLayout.EAST, targetMashTemp_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, finalMashTemp, 6, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, finalMashTemp_field, 5, SpringLayout.EAST, finalMashTemp);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, finalMashTemp_field, 5, SpringLayout.NORTH, recipeSouth);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, preboilGrav, 35, SpringLayout.EAST, strikeWaterTemp_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, preboilGrav, 7, SpringLayout.SOUTH, finalMashTemp);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, preboilGrav_field, 18, SpringLayout.EAST, preboilGrav);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, preboilGrav_field, 5, SpringLayout.SOUTH, finalMashTemp_field);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashEff, 35, SpringLayout.EAST, mashTempActual_field);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashEff, 7, SpringLayout.SOUTH, preboilGrav);
+        mashNorthLayout.putConstraint(SpringLayout.WEST, mashEff_field, 12, SpringLayout.EAST, mashEff);
+        mashNorthLayout.putConstraint(SpringLayout.NORTH, mashEff_field, 5, SpringLayout.SOUTH, preboilGrav_field);
+        
+        //Adding components
+        mashNorth.add(mashDuration);
+        mashNorth.add(mashDuration_field);
+        mashNorth.add(waterMashRatio);
+        mashNorth.add(waterMashRatio_field);
+        mashNorth.add(mashVolume);
+        mashNorth.add(mashVolume_field);
+        mashNorth.add(targetMashTemp);
+        mashNorth.add(targetMashTemp_field);
+        mashNorth.add(strikeWaterTemp);
+        mashNorth.add(strikeWaterTemp_field);
+        mashNorth.add(mashTempActual);
+        mashNorth.add(mashTempActual_field);
+        mashNorth.add(finalMashTemp);
+        mashNorth.add(finalMashTemp_field);
+        mashNorth.add(preboilGrav);
+        mashNorth.add(preboilGrav_field);
+        mashNorth.add(mashEff);
+        mashNorth.add(mashEff_field);
+        
+        mash.add(mashNorth);
+        
+        //////////////
+        //Mash South//
+        //////////////
+        mashSouth.setBackground(Color.WHITE);
+        mash.add(mashSouth);
+        
+        //Setting up components
+        mashTable.getTableHeader().setPreferredSize(new Dimension(100,35));
+        mashTable.setPreferredScrollableViewportSize(mashTable.getPreferredSize());
+        mashTable.setFillsViewportHeight(true);
+        
+        //Adding components
+        mashSouth.add(new JScrollPane(mashTable));
+        
         wgTrack.add(mash);
         
-        //Fermentation portion
-        JLabel temp3 = new JLabel("Ferm under construction");
-        fermentation.add(temp3);
+        ///////////////////////
+        //Boil & Fermentation//
+        ///////////////////////
+        SpringLayout fermentationLayout = new SpringLayout();
+        fermentation.setLayout(fermentationLayout);
+        fermentation.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Boil & Fermentation"));
+        fermentation.setBackground(Color.WHITE);
+        
+        //Setup local components
+        JLabel boilDuration = new JLabel("Boil Duration: ");
+        JLabel postBoilGravity = new JLabel("Post Boil Gravity: ");
+        JLabel volumnPreBoil = new JLabel("Volumn Pre-Boil: ");
+        JLabel volumnPostBoil = new JLabel("Volumn Post-Boil: ");
+        JLabel volumnInPrim = new JLabel("Volumn In Primary: ");
+        JLabel tempCheck1 = new JLabel("Ferm. Temp. Check 1: ");
+        JLabel tempCheck2 = new JLabel("Ferm. Temp. Check 2: ");
+        JLabel tempCheck3 = new JLabel("Ferm. Temp. Check 3: ");    
+        JLabel tempCheck4 = new JLabel("Ferm. Temp. Check 4: ");
+        JLabel finalGrav = new JLabel("Final Gravity: ");
+        JLabel fermentationL = new JLabel("Fermentation");
+        JLabel boil = new JLabel("Boil");
+        
+        //Set constraints
+        fermentationLayout.putConstraint(SpringLayout.WEST, fermentationL, 45, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, fermentationL, 2, SpringLayout.NORTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, boilDuration, 5, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, boilDuration, 6, SpringLayout.SOUTH, fermentationL);
+        fermentationLayout.putConstraint(SpringLayout.WEST, boilDuration_field, 34, SpringLayout.EAST, boilDuration);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, boilDuration_field, 25, SpringLayout.NORTH, fermentation);  //Edit this field
+        fermentationLayout.putConstraint(SpringLayout.WEST, postBoilGravity, 5, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, postBoilGravity, 7, SpringLayout.SOUTH, boilDuration);
+        fermentationLayout.putConstraint(SpringLayout.WEST, postBoilGravity_field, 15, SpringLayout.EAST, postBoilGravity);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, postBoilGravity_field, 5, SpringLayout.SOUTH, boilDuration_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnPreBoil, 15, SpringLayout.EAST, boilDuration_field);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPreBoil, 25, SpringLayout.NORTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnPreBoil_field, 15, SpringLayout.EAST, volumnPreBoil);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPreBoil_field, 25, SpringLayout.NORTH, fermentation);
+        
+        fermentation.add(fermentationL);
+        fermentation.add(boilDuration);
+        fermentation.add(boilDuration_field);
+        fermentation.add(postBoilGravity);
+        fermentation.add(postBoilGravity_field);
+        fermentation.add(volumnPreBoil);
+        fermentation.add(volumnPreBoil_field);
+        
         wgTrack.add(fermentation);
         wgTrack.setVisible(true);
         
