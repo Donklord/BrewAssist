@@ -61,10 +61,15 @@ public class SaveWholeGrain {
         prop.setProperty("hop6Amount", gui.hopData[5][1].toString());
         prop.setProperty("hop6Time", gui.hopData[5][2].toString());
         prop.setProperty("yeast", gui.yeast.getSelectedItem().toString());
+        prop.setProperty("ibu", gui.cIbuT.getText());
+        prop.setProperty("srm", gui.cSrmT.getText());
+        prop.setProperty("og", gui.cOgT.getText());
+        prop.setProperty("fg", gui.cFgT.getText());
+        prop.setProperty("abv", gui.cAbvT.getText());
         
         //Create the save file
         FileWriter writer = null;
-        String path = "C:\\BrewAssist\\Saves\\wg\\" + fileName + ".properties";
+        String path = "C:\\BrewAssist\\Saves\\Recipe\\wg\\" + fileName + ".properties";
         try {
             writer = new FileWriter(path);
             prop.store(writer, "Author: PVB");
@@ -91,7 +96,7 @@ public class SaveWholeGrain {
     */
     public void wgLoader(String filename) {
         try {
-            String path = "C:\\BrewAssist\\Saves\\WG\\" + filename;
+            String path = "C:\\BrewAssist\\Saves\\Recipe\\wg\\" + filename;
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);
@@ -102,6 +107,11 @@ public class SaveWholeGrain {
             gui.grainName.setText(config.getProperty("name"));
             gui.beerStyles.setSelectedItem(config.getProperty("style"));
             gui.size.setText(config.getProperty("batchSize"));
+            gui.cIbuT.setText(config.getProperty("ibu"));
+            gui.cSrmT.setText(config.getProperty("srm"));
+            gui.cOgT.setText(config.getProperty("og"));
+            gui.cFgT.setText(config.getProperty("fg"));
+            gui.cAbvT.setText(config.getProperty("abv"));
             gui.grainData[0][0] = config.getProperty("grain1Name");
             gui.grainData[0][1] = config.getProperty("grain1Lb");
             gui.grainData[1][0] = config.getProperty("grain2Name");

@@ -23,7 +23,7 @@ public class FileLoader {
         Frame f = new Frame();
         f.setLocationRelativeTo(null);
         FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
-        fd.setDirectory("C:\\BrewAssist\\Saves\\wg");
+        fd.setDirectory("C:\\BrewAssist\\Saves\\Recipe\\wg");
         fd.setFile("*.properties");
         fd.setVisible(true);
         filename = fd.getFile();

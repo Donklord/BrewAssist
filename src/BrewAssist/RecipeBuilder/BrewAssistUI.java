@@ -181,7 +181,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                     System.out.println("UI Result: " + fileName);
                     if (!fileName.equals("Empty")) {
                         saveGrain.wgLoader(fileName);
-                        wholeGrainCalc.calculate();
                         tableRefresh();
                         
                     }
@@ -193,7 +192,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 System.out.println("UI Result: " + fileName);
                 if (!fileName.equals("Empty")) {
                     saveGrain.wgLoader(fileName);
-                    wholeGrainCalc.calculate();
                     tableRefresh();
                 }
             } else if (savedEx == false) {
@@ -204,7 +202,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                     System.out.println("UI Result: " + fileName);
                     if (!fileName.equals("Empty")) {
                         saveGrain.wgLoader(fileName);
-                        wholeGrainCalc.calculate();
                         tableRefresh();
                     }
                 }
@@ -214,7 +211,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 System.out.println("UI Result: " + fileName);
                 if (!fileName.equals("Empty")) {
                     saveGrain.wgLoader(fileName);
-                    wholeGrainCalc.calculate();
                     tableRefresh();
                 }
                 
@@ -222,7 +218,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         } else if (command.equals("Save Batch")) {
             savedWg = true;
             wgMessage.setText("Your batch has been saved!");
-            File f = new File("C:\\BrewAssist\\Saves\\wg\\" + grainName.getText() + ".properties");
+            File f = new File("C:\\BrewAssist\\Saves\\Recipe\\wg\\" + grainName.getText() + ".properties");
             if (!f.exists()) {
                 saveGrain.saveGrain(grainName.getText());
             } else {

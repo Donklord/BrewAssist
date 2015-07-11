@@ -3,15 +3,22 @@ package BrewAssist.RecipeTrack;
 import BrewAssist.Ingredients.Hops;
 import BrewAssist.Ingredients.WholeGrain;
 import BrewAssist.Ingredients.yeast;
+import BrewAssist.RecipeTrack.FileLoader.*;
+import BrewAssist.RecipeTrack.SaveWholeGrain.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -20,7 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
 
-public class RecipeTrackUI extends JFrame {
+public class RecipeTrackUI extends JFrame implements ActionListener {
     
     ///////////////////////////////
     //Configure global parameters//
@@ -29,6 +36,13 @@ public class RecipeTrackUI extends JFrame {
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
     yeast yeast1 = new yeast();
+    FileLoader loadWgTracker = new FileLoader(this);
+    SaveWholeGrain saveWgTracker = new SaveWholeGrain(this);
+    
+    JLabel wgMessage = new JLabel("");
+    
+    boolean savedWg = true;
+    boolean savedEx = true;
     
     //Configure panel in tabs
     JPanel wgTrack = new JPanel();
@@ -480,12 +494,18 @@ public class RecipeTrackUI extends JFrame {
         JLabel finalGrav = new JLabel("Final Gravity: ");
         JLabel fermentationL = new JLabel("Fermentation");
         JLabel boil = new JLabel("Boil");
+        JButton wgNew = new JButton("New Tracking");
+        JButton wgLoad = new JButton("Load Tracking");
+        JButton wgSave = new JButton("Save Tracking");
+        wgNew.addActionListener(this);
+        wgLoad.addActionListener(this);
+        wgSave.addActionListener(this);
         
         //Set constraints
-        fermentationLayout.putConstraint(SpringLayout.WEST, fermentationL, 45, SpringLayout.WEST, fermentation);
-        fermentationLayout.putConstraint(SpringLayout.NORTH, fermentationL, 2, SpringLayout.NORTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, boil, 150, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, boil, 2, SpringLayout.NORTH, fermentation);
         fermentationLayout.putConstraint(SpringLayout.WEST, boilDuration, 5, SpringLayout.WEST, fermentation);
-        fermentationLayout.putConstraint(SpringLayout.NORTH, boilDuration, 6, SpringLayout.SOUTH, fermentationL);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, boilDuration, 6, SpringLayout.SOUTH, boil);
         fermentationLayout.putConstraint(SpringLayout.WEST, boilDuration_field, 34, SpringLayout.EAST, boilDuration);
         fermentationLayout.putConstraint(SpringLayout.NORTH, boilDuration_field, 25, SpringLayout.NORTH, fermentation);  //Edit this field
         fermentationLayout.putConstraint(SpringLayout.WEST, postBoilGravity, 5, SpringLayout.WEST, fermentation);
@@ -496,7 +516,46 @@ public class RecipeTrackUI extends JFrame {
         fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPreBoil, 25, SpringLayout.NORTH, fermentation);
         fermentationLayout.putConstraint(SpringLayout.WEST, volumnPreBoil_field, 15, SpringLayout.EAST, volumnPreBoil);
         fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPreBoil_field, 25, SpringLayout.NORTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnPostBoil, 15, SpringLayout.EAST, postBoilGravity_field);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPostBoil, 8, SpringLayout.SOUTH, volumnPreBoil);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnPostBoil_field, 10, SpringLayout.EAST, volumnPostBoil);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnPostBoil_field, 5, SpringLayout.SOUTH, volumnPreBoil_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnInPrim, 179, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnInPrim, 7, SpringLayout.SOUTH, volumnPostBoil);
+        fermentationLayout.putConstraint(SpringLayout.WEST, volumnInPrim_field, 5, SpringLayout.EAST, volumnInPrim);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, volumnInPrim_field, 5, SpringLayout.SOUTH, volumnPostBoil_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, fermentationL, 285, SpringLayout.EAST, boil);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, fermentationL, 2, SpringLayout.NORTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck1, 66, SpringLayout.EAST, volumnPreBoil_field);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck1, 6, SpringLayout.SOUTH, fermentationL);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck1_field, 15, SpringLayout.EAST, tempCheck1);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck1_field, 5, SpringLayout.SOUTH, fermentationL);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck2, 65, SpringLayout.EAST, volumnPostBoil_field);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck2, 9, SpringLayout.SOUTH, tempCheck1);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck2_field, 15, SpringLayout.EAST, tempCheck2);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck2_field, 5, SpringLayout.SOUTH, tempCheck1_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck3, 65, SpringLayout.EAST, volumnInPrim_field);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck3, 9, SpringLayout.SOUTH, tempCheck2);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck3_field, 15, SpringLayout.EAST, tempCheck2);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck3_field, 5, SpringLayout.SOUTH, tempCheck2_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck4, 407, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck4, 9, SpringLayout.SOUTH, tempCheck3);
+        fermentationLayout.putConstraint(SpringLayout.WEST, tempCheck4_field, 15, SpringLayout.EAST, tempCheck4);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, tempCheck4_field, 5, SpringLayout.SOUTH, tempCheck3_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, finalGrav, 407, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, finalGrav, 8, SpringLayout.SOUTH, tempCheck4);
+        fermentationLayout.putConstraint(SpringLayout.WEST, finalGrav_field, 66, SpringLayout.EAST, finalGrav);
+        fermentationLayout.putConstraint(SpringLayout.NORTH, finalGrav_field, 5, SpringLayout.SOUTH, tempCheck4_field);
+        fermentationLayout.putConstraint(SpringLayout.WEST, wgNew, 5, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.SOUTH, wgNew, -5, SpringLayout.SOUTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, wgLoad, 5, SpringLayout.EAST, wgNew);
+        fermentationLayout.putConstraint(SpringLayout.SOUTH, wgLoad, -5, SpringLayout.SOUTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, wgSave, 5, SpringLayout.EAST, wgLoad);
+        fermentationLayout.putConstraint(SpringLayout.SOUTH, wgSave, -5, SpringLayout.SOUTH, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.WEST, wgMessage, 5, SpringLayout.WEST, fermentation);
+        fermentationLayout.putConstraint(SpringLayout.SOUTH, wgMessage, -5, SpringLayout.NORTH, wgNew);
         
+        //Adding components
         fermentation.add(fermentationL);
         fermentation.add(boilDuration);
         fermentation.add(boilDuration_field);
@@ -504,6 +563,25 @@ public class RecipeTrackUI extends JFrame {
         fermentation.add(postBoilGravity_field);
         fermentation.add(volumnPreBoil);
         fermentation.add(volumnPreBoil_field);
+        fermentation.add(volumnPostBoil);
+        fermentation.add(volumnPostBoil_field);
+        fermentation.add(volumnInPrim);
+        fermentation.add(volumnInPrim_field);
+        fermentation.add(boil);
+        fermentation.add(tempCheck1);
+        fermentation.add(tempCheck1_field);
+        fermentation.add(tempCheck2);
+        fermentation.add(tempCheck2_field);
+        fermentation.add(tempCheck3);
+        fermentation.add(tempCheck3_field);
+        fermentation.add(tempCheck4);
+        fermentation.add(tempCheck4_field);
+        fermentation.add(finalGrav);
+        fermentation.add(finalGrav_field);
+        fermentation.add(wgNew);
+        fermentation.add(wgLoad);
+        fermentation.add(wgSave);
+        fermentation.add(wgMessage);
         
         wgTrack.add(fermentation);
         wgTrack.setVisible(true);
@@ -512,5 +590,122 @@ public class RecipeTrackUI extends JFrame {
     
     public Boolean isOptimizedDrawingEnabled() {
         return false;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        String command = event.getActionCommand();
+        String fileName;
+        int answer = -1;
+        if (command.equals("New Tracking")) {
+            if (savedWg == false) {
+                answer = throwNewBatchWarning();
+                if (answer == 0) {
+                    savedWg = false;
+                    fileName = loadWgTracker.wgRecipeLoad();
+                    if (!fileName.equals("Empty")) {
+                        loadWgTracker.wgRecipeLoad_PostProcess(fileName);
+                        tableRefresh();
+                    }
+                }
+            } else if (savedWg == true) {
+                savedWg = false;
+                fileName = loadWgTracker.wgRecipeLoad();
+                    if (!fileName.equals("Empty")) {
+                        loadWgTracker.wgRecipeLoad_PostProcess(fileName);
+                        tableRefresh();
+                    }
+            } else if (savedEx == false) {
+                answer = throwNewBatchWarning();
+                if (answer == 0) {
+                    savedEx = false;
+                    //Create a new batch here
+                }
+            } else if (savedEx == true) {
+                savedEx = false;
+                //Create a new batch here
+            }
+        } else if (command.equals("Load Tracking")) {
+            if (savedWg == false) {
+                answer = throwNewBatchWarning();
+                if (answer == 0) {
+                    savedWg = false;
+                    fileName = loadWgTracker.wgTrackLoad();
+                    System.out.println("UI Result: " + fileName);
+                    if (!fileName.equals("Empty")) {
+                        loadWgTracker.wgTrackLoad_PostProcess(fileName);
+                        tableRefresh();
+                        wgMessage.setText("Your tracking has been loaded!");
+                    }
+                }
+            } else if (savedWg == true) {
+                savedWg = false;
+                fileName = loadWgTracker.wgTrackLoad();
+                    System.out.println("UI Result: " + fileName);
+                    if (!fileName.equals("Empty")) {
+                        loadWgTracker.wgTrackLoad_PostProcess(fileName);
+                        tableRefresh();
+                        wgMessage.setText("Your tracking has been loaded!");
+                    }
+            } else if (savedEx == false) {
+                answer = throwNewBatchWarning();
+                if (answer == 0) {
+                    savedEx = false;
+                    //Load tracking here
+                }
+            } else if (savedEx == true) {
+                savedEx = false;
+                //Load tracking here
+                
+            }
+        } else if (command.equals("Save Tracking")) {
+            savedWg = true;
+            File f = new File("C:\\BrewAssist\\Saves\\Tracking\\wg\\" + title_field.getText() + ".properties");
+            if (!f.exists()) {
+                saveWgTracker.saveGrainTracking(title_field.getText());
+                wgMessage.setText("Your tracking has been saved!");
+            } else {
+                answer = throwSaveOverrideWarning();
+                if (answer == 0) {
+                    saveWgTracker.saveGrainTracking(title_field.getText());
+                    wgMessage.setText("Your tracking has been saved!");
+                }
+            }
+        }
+    }
+    
+    public int throwNewBatchWarning() {
+        Object[] options = { "OK", "CANCEL" };
+        Object selectedValue = JOptionPane.showOptionDialog(null, "You have not saved your work, do you want to continue?", "Warning",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
+        int newSelectedValue = (int)selectedValue;
+        return newSelectedValue;    
+    }
+    
+  /**
+    * Pop up box that asks the user if they want to override a previously saved file 
+    * when "Save Batch" is pressed and the batch name matches.
+    * <p>
+    * This method is called from the actionPerformed method above.
+    *
+    * @return   Integer response (0 is OK, 1 is cancel)
+    */
+    public int throwSaveOverrideWarning() {
+        Object[] options = { "OK", "CANCEL" };
+        Object selectedValue = JOptionPane.showOptionDialog(null, "This file already exists, do you want to overwrite it?", "Warning",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
+        int newSelectedValue = (int)selectedValue;
+        return newSelectedValue;    
+    }
+    
+    private void tableRefresh() {
+       grainTable.revalidate();
+       grainTable.repaint();
+       hopTable.revalidate();
+       hopTable.repaint();
+       mashTable.revalidate();
+       mashTable.repaint();
     }
 }
