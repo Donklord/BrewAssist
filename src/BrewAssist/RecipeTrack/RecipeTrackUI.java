@@ -137,7 +137,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         track.addTab("Batch Tracking - Whole Grain", null, wgTrack, "Track a Whole Grain Batch");
         
         //Call exract method here
-        track.addTab("Batch Tracking - Extract", null, extTrack, "Track an Extract Batch");
+        //track.addTab("Batch Tracking - Extract", null, extTrack, "Track an Extract Batch");
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700,900);

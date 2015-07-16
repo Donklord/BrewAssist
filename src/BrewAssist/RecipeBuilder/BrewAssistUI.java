@@ -85,6 +85,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JTextField cFgT = new JTextField(5);
     JTextField cAbvT = new JTextField(5);
     JFrame wgLoadFrame = new JFrame();
+    JTextArea charac = new JTextArea(10,50);
     
    // String[] styleNames = file.getBeerNames();
     
@@ -99,8 +100,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         createNewBrew_WholeGrain();
         tabbedPane.addTab("Create New - Whole Grain", null, newBrew_WholeGrain, "Create new whole grain batch");
         
-        createNewBrew_Extract();
-        tabbedPane.addTab("Create New - Extract", null, newBrew_Extract, "Create new extract batch");
+        //createNewBrew_Extract();
+        //tabbedPane.addTab("Create New - Extract", null, newBrew_Extract, "Create new extract batch");
         
         add(tabbedPane);
         
@@ -266,24 +267,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
             null, options, options[0]);
         int newSelectedValue = (int)selectedValue;
         return newSelectedValue;    
-    }
-        
-  /**
-    * Populates the "Extract" tab.
-    * <p>
-    * This method is called from the constructor and adds the UI elements for the Extract tab.
-    *
-    */
-    private void createNewBrew_Extract() {
-        currentPage = "Extract";
-        bypass = false;
-      //  JPanel newBrew = new JPanel();
-        JLabel newBrewLabel = new JLabel("Extract Under Construction...", JLabel.CENTER);
-        FlowLayout newBrewLayout = new FlowLayout();
-        newBrew_Extract.setLayout(newBrewLayout);
-        newBrew_Extract.add(newBrewLabel);
-        add(newBrew_Extract, BorderLayout.CENTER);
-     //   setVisible(true);
     }
     
     private void tableRefresh() {
@@ -509,9 +492,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         cAbvT.setFont(ibuFont);
         cAbvT.setText("0");
         
-        JTextArea charac = new JTextArea(2,50);
-        charac.setEditable(false);
-        charac.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Characteristics"));
+        charac.setLineWrap(true);
+        charac.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Notes"));
         //JLabel calcText = new JLabel("Calculated section is under construction");
         calcualted.setBorder(BorderFactory.createTitledBorder("Calculated Characteristics"));
         //calcualted.add(calcText);
