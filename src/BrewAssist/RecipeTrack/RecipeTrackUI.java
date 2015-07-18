@@ -131,17 +131,17 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     public RecipeTrackUI() {
         
         super("Brewing Assistant - Recipe Tracking");
-        JTabbedPane track = new JTabbedPane();
+        //JTabbedPane track = new JTabbedPane();
         
         createWgTrack();
-        track.addTab("Batch Tracking - Whole Grain", null, wgTrack, "Track a Whole Grain Batch");
+        //track.addTab("Batch Tracking - Whole Grain", null, wgTrack, "Track a Whole Grain Batch");
         
         //Call exract method here
         //track.addTab("Batch Tracking - Extract", null, extTrack, "Track an Extract Batch");
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(700,900);
-        add(track);
+        //add(track);
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -585,6 +585,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         
         wgTrack.add(fermentation);
         wgTrack.setVisible(true);
+        add(wgTrack);
         
     } 
     

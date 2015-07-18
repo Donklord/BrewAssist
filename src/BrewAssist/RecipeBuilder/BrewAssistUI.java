@@ -37,7 +37,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     boolean bypass = false;
     
     JPanel newBrew_WholeGrain = new JPanel();
-    JPanel newBrew_Extract = new JPanel();
     JLabel wgMessage = new JLabel("");
     
     JTextField ibuText = new JTextField(5);
@@ -95,20 +94,20 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     */
     public BrewAssistUI() {
      
-        super("Brewing Assistant Recipe Builder");
-        JTabbedPane tabbedPane = new JTabbedPane();
+        super("Brewing Assistant - Recipe Builder");
+        //JTabbedPane tabbedPane = new JTabbedPane();
         createNewBrew_WholeGrain();
-        tabbedPane.addTab("Create New - Whole Grain", null, newBrew_WholeGrain, "Create new whole grain batch");
+        //tabbedPane.addTab("Create New - Whole Grain", null, newBrew_WholeGrain, "Create new whole grain batch");
         
         //createNewBrew_Extract();
         //tabbedPane.addTab("Create New - Extract", null, newBrew_Extract, "Create new extract batch");
         
-        add(tabbedPane);
+        //add(tabbedPane);
         
        // JFrame frame = new JFrame("Brewing Assistant v1.0");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1080,900);
-        add(tabbedPane);
+        //add(tabbedPane);
         setVisible(true);
         setLocationRelativeTo(null);
     }
