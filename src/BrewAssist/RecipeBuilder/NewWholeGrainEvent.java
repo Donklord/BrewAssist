@@ -155,5 +155,51 @@ public class NewWholeGrainEvent {
             gui.hopData[c][3] = hopApp.alphaAcid;
             gui.hopData[c][4] = hopApp.betaAcid;
         }
-    }  
+    }
+    
+    /**
+    * Clears all fields in the Recipe Builder UI.
+    * <p>
+    * Called by the actionPerformed method in BrewAssistUI when the button "New Batch" is pressed on the UI.
+    */
+    public void newGrain() {
+        gui.cIbuT.setText("");
+        gui.cSrmT.setText("");
+        gui.cOgT.setText("");
+        gui.cFgT.setText("");
+        gui.cAbvT.setText("");
+        gui.grainName.setText("");
+        gui.size.setText("5");
+        gui.charac.setText("");
+        gui.grainTable.setValueAt("", 0, 0);
+        gui.grainTable.setValueAt("", 0, 1);
+        gui.grainTable.setValueAt("", 1, 0);
+        gui.grainTable.setValueAt("", 1, 1);
+        gui.grainTable.setValueAt("", 2, 0);
+        gui.grainTable.setValueAt("", 2, 1);
+        gui.grainTable.setValueAt("", 3, 0);
+        gui.grainTable.setValueAt("", 3, 1);
+        gui.grainTable.setValueAt("", 4, 0);
+        gui.grainTable.setValueAt("", 4, 1);
+        gui.grainTable.setValueAt("", 5, 0);
+        gui.grainTable.setValueAt("", 5, 1);
+        gui.hopTable.setValueAt("", 0, 0);
+        gui.hopTable.setValueAt("", 0, 1);
+        gui.hopTable.setValueAt("", 0, 2);
+        gui.hopTable.setValueAt("", 1, 0);
+        gui.hopTable.setValueAt("", 1, 1);
+        gui.hopTable.setValueAt("", 1, 2);
+        gui.hopTable.setValueAt("", 2, 0);
+        gui.hopTable.setValueAt("", 2, 1);
+        gui.hopTable.setValueAt("", 2, 2);
+        gui.hopTable.setValueAt("", 3, 0);
+        gui.hopTable.setValueAt("", 3, 1);
+        gui.hopTable.setValueAt("", 3, 2);
+        gui.hopTable.setValueAt("", 4, 0);
+        gui.hopTable.setValueAt("", 4, 1);
+        gui.hopTable.setValueAt("", 4, 2);
+        gui.hopTable.setValueAt("", 5, 0);
+        gui.hopTable.setValueAt("", 5, 1);
+        gui.hopTable.setValueAt("", 5, 2);
+    }
 }

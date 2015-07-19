@@ -155,21 +155,21 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 if (answer == 0) {
                     savedWg = false;
                     wgMessage.setText("A new batch has been started!");
-                    //Create a new batch here
+                    wholeGrainEvent.newGrain();
                 }
             } else if (savedWg == true) {
                 savedWg = false;
                 wgMessage.setText("A new batch has been started!");
-                //Create a new batch here
+                wholeGrainEvent.newGrain();
             } else if (savedEx == false) {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedEx = false;
-                    //Create a new batch here
+                    wholeGrainEvent.newGrain();
                 }
             } else if (savedEx == true) {
                 savedEx = false;
-                //Create a new batch here
+                wholeGrainEvent.newGrain();
             }
         } else if (command.equals("Load Batch")) {
             if (savedWg == false) {
@@ -182,7 +182,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                     if (!fileName.equals("Empty")) {
                         saveGrain.wgLoader(fileName);
                         tableRefresh();
-                        
                     }
                 }
             } else if (savedWg == true) {

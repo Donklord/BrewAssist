@@ -66,6 +66,7 @@ public class SaveWholeGrain {
         prop.setProperty("og", gui.cOgT.getText());
         prop.setProperty("fg", gui.cFgT.getText());
         prop.setProperty("abv", gui.cAbvT.getText());
+        prop.setProperty("notes", gui.charac.getText());
         
         //Create the save file
         FileWriter writer = null;
@@ -143,6 +144,7 @@ public class SaveWholeGrain {
             gui.hopData[5][1] = config.getProperty("hop6Amount");
             gui.hopData[5][2] = config.getProperty("hop6Time");
             gui.yeast.setSelectedItem(config.getProperty("yeast"));
+            gui.charac.setText(config.getProperty("notes"));
             inStream.close();
         } catch (IOException ioe) {
             System.out.println("IO error " + ioe.getMessage());  
