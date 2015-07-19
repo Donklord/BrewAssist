@@ -58,6 +58,24 @@ public class FileLoader {
         return filename;
     }
     
+    public String wgSeriesLoad() {
+        String filename = "Empty";
+        Frame f = new Frame();
+        f.setLocationRelativeTo(null);
+        FileDialog fd = new FileDialog(f, "Select a batch series", FileDialog.LOAD);
+        fd.setDirectory("C:\\BrewAssist\\Saves\\Tracking\\series");
+        fd.setFile("*.properties");
+        fd.setVisible(true);
+        filename = fd.getFile();
+        //Logging
+        if (filename.contains("Empty"))
+            System.out.println("Series Load: No file chosen");
+        else
+            System.out.println("Series Load: File " + filename + " was loaded");
+        
+        return filename;
+    }
+    
     /**
     * Whole Grain File Loader
     * <p>
@@ -220,6 +238,30 @@ public class FileLoader {
             System.out.println("IO error " + ioe.getMessage());  
         }
     }
+    
+    /**
+    * Whole Grain File Loader
+    * <p>
+    * This method takes the name of a file, loads all of its properties and sets the appropriate UI elements.
+    *
+    * @param filename (String) The name of the file to be loaded.
+    */
+    public void wgSeriesLoad_PostProcess(String filename) {
+        try {
+            String path = "C:\\BrewAssist\\Saves\\Recipe\\series\\" + filename;
+            //Load the properites file
+            File configFile = new File (path);
+            FileInputStream inStream = new FileInputStream(configFile);
+            Properties config = new Properties();
+            config.load(inStream);
+            
+            //Load default propreties from file and set UI elements.
+            gui.series_field.setText(config.getProperty("series"));
+            inStream.close();
+        } catch (IOException ioe) {
+            System.out.println("IO error " + ioe.getMessage());  
+        }
+    } 
     
     
 }

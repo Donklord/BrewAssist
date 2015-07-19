@@ -264,7 +264,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
             null, options, options[0]);
         int newSelectedValue = (int)selectedValue;
-        return newSelectedValue;    
+        return newSelectedValue;
     }
     
     private void tableRefresh() {

@@ -52,6 +52,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     
     //Overview parameters
     JTextField title_field = new JTextField(25);
+    JTextField series_field = new JTextField(10);
     JTextField brewDate_field = new JTextField(15);
     JTextField startTime_field = new JTextField(15);
     JTextField endTime_field = new JTextField(15);
@@ -164,6 +165,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         
         //  Local variables
         JLabel title = new JLabel("Batch Name:  ");
+        JLabel series = new JLabel("Batch Series: ");
         JLabel brewDate = new JLabel("Brew Date: ");
         JLabel startTime = new JLabel("Start Time: ");
         JLabel endTime = new JLabel("End Time: ");
@@ -177,12 +179,20 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JLabel og = new JLabel("OG: ");
         JLabel fg = new JLabel("FG: ");
         JLabel abv = new JLabel("ABV: ");
+        JButton ect = new JButton("...");
+        ect.setPreferredSize(new Dimension(20,20));
         
         //  Setting contstraints
-        overviewLayout.putConstraint(SpringLayout.WEST, title, 150, SpringLayout.WEST, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, title, 60, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, title, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, title_field, 3, SpringLayout.EAST, title);
         overviewLayout.putConstraint(SpringLayout.NORTH, title_field, 5, SpringLayout.NORTH, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, series, 20, SpringLayout.EAST, title_field);
+        overviewLayout.putConstraint(SpringLayout.NORTH, series, 5, SpringLayout.NORTH, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, series_field, 3, SpringLayout.EAST, series);
+        overviewLayout.putConstraint(SpringLayout.NORTH, series_field, 5, SpringLayout.NORTH, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, ect, 5, SpringLayout.EAST, series_field);
+        overviewLayout.putConstraint(SpringLayout.NORTH, ect, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate, 75, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, brewDate, 35, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate_field, 15, SpringLayout.EAST, brewDate);
@@ -239,6 +249,9 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         //  Adding components
         overview.add(title);
         overview.add(title_field);
+        overview.add(series);
+        overview.add(series_field);
+        overview.add(ect);
         overview.add(brewDate);
         overview.add(brewDate_field);
         overview.add(startTime);
@@ -642,7 +655,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
             } else if (savedWg == true) {
                 savedWg = false;
                 fileName = loadWgTracker.wgTrackLoad();
-                    System.out.println("UI Result: " + fileName);
+                System.out.println("UI Result: " + fileName);
                     if (!fileName.equals("Empty")) {
                         loadWgTracker.wgTrackLoad_PostProcess(fileName);
                         tableRefresh();
@@ -672,6 +685,13 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
                     wgMessage.setText("Your tracking has been saved!");
                 }
             }
+        } else if (command.equals("...")) {
+            fileName = loadWgTracker.wgSeriesLoad();
+            System.out.println("UI Result: " + fileName);
+                if (!fileName.equals("Empty")) {
+                    loadWgTracker.wgSeriesLoad_PostProcess(fileName);
+                    wgMessage.setText("Your tracking has been loaded!");
+                }
         }
     }
     

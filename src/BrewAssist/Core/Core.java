@@ -18,10 +18,10 @@ public class Core {
         File saves = new File("C:\\BrewAssist\\Saves");
         File recipe = new File("C:\\BrewAssist\\Saves\\Recipe");
         File wg = new File("C:\\BrewAssist\\Saves\\Recipe\\wg");
-        File ext = new File("C:\\BrewAssist\\Saves\\Recipe\\extract");
+        File series = new File("C:\\BrewAssist\\Saves\\Recipe\\series");    
         File tracking = new File("C:\\BrewAssist\\Saves\\Tracking");
         File trackingWg = new File("C:\\BrewAssist\\Saves\\Tracking\\wg");
-        File trackingExt = new File("C:\\BrewAssist\\Saves\\Tracking\\extract");
+        File trackingSeries = new File("C:\\BrewAssist\\Saves\\Tracking\\series");
         
         if (!root.exists()) {
             new File("C:\\BrewAssist").mkdir();
@@ -34,9 +34,9 @@ public class Core {
         } 
         if (!wg.exists()) {
             new File("C:\\BrewAssist\\Saves\\Recipe\\wg").mkdir();
-        } 
-        if (!ext.exists()) {
-            new File("C:\\BrewAssist\\Saves\\Recipe\\extract").mkdir();
+        }
+        if (!series.exists()) {
+            new File("C:\\BrewAssist\\Saves\\Recipe\\series").mkdir();
         } 
         if (!tracking.exists()) {
             new File("C:\\BrewAssist\\Saves\\Tracking").mkdir();
@@ -44,8 +44,8 @@ public class Core {
         if (!trackingWg.exists()) {
             new File("C:\\BrewAssist\\Saves\\Tracking\\wg").mkdir();
         } 
-        if (!trackingExt.exists()) {
-            new File("C:\\BrewAssist\\Saves\\Tracking\\extract").mkdir();
+        if (!trackingSeries.exists()) {
+            new File("C:\\BrewAssist\\Saves\\Tracking\\series").mkdir();
         } 
     }
     
