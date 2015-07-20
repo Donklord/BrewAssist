@@ -85,8 +85,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JTextField cAbvT = new JTextField(5);
     JFrame wgLoadFrame = new JFrame();
     JTextArea charac = new JTextArea(10,50);
-    
-   // String[] styleNames = file.getBeerNames();
+    JTextField series_field = new JTextField(10);
     
   /**
     * Only constructor, sets up and configures main frame.  Calls helper function to paint tabs.
@@ -95,19 +94,9 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     public BrewAssistUI() {
      
         super("Brewing Assistant - Recipe Builder");
-        //JTabbedPane tabbedPane = new JTabbedPane();
         createNewBrew_WholeGrain();
-        //tabbedPane.addTab("Create New - Whole Grain", null, newBrew_WholeGrain, "Create new whole grain batch");
-        
-        //createNewBrew_Extract();
-        //tabbedPane.addTab("Create New - Extract", null, newBrew_Extract, "Create new extract batch");
-        
-        //add(tabbedPane);
-        
-       // JFrame frame = new JFrame("Brewing Assistant v1.0");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1080,900);
-        //add(tabbedPane);
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -229,6 +218,8 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
             
         } else if (command.equals("Calculate")) {
             wholeGrainCalc.calculate();
+        } else if (command.equals("...")) {
+            //
         }
         
     }
@@ -511,6 +502,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         
         //Top bar
         JLabel grainLabel = new JLabel("         Batch Name: ");
+        JLabel series = new JLabel("     Series: ");
         JPanel topBar = new JPanel();
         topBar.setBackground(Color.WHITE);
         FlowLayout topLayout = new FlowLayout(FlowLayout.RIGHT);
@@ -518,13 +510,19 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         JButton newButton = new JButton("New Batch");
         JButton loadButton = new JButton("Load Batch");
         JButton saveButton = new JButton("Save Batch");
+        JButton ect = new JButton("...");
+        ect.setPreferredSize(new Dimension(20,20));
         newButton.addActionListener(this);
         loadButton.addActionListener(this);
         saveButton.addActionListener(this);
+        ect.addActionListener(this);
         topBar.setLayout(topLayout);
         topBar.add(wgMessage);
         topBar.add(grainLabel);
         topBar.add(grainName);
+        topBar.add(series);
+        topBar.add(series_field);
+        topBar.add(ect);
         topBar.add(newButton);
         topBar.add(loadButton);
         topBar.add(saveButton);

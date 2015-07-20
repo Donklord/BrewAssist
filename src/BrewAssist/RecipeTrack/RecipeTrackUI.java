@@ -179,8 +179,6 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JLabel og = new JLabel("OG: ");
         JLabel fg = new JLabel("FG: ");
         JLabel abv = new JLabel("ABV: ");
-        JButton ect = new JButton("...");
-        ect.setPreferredSize(new Dimension(20,20));
         
         //  Setting contstraints
         overviewLayout.putConstraint(SpringLayout.WEST, title, 60, SpringLayout.WEST, overview);
@@ -191,8 +189,6 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overviewLayout.putConstraint(SpringLayout.NORTH, series, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, series_field, 3, SpringLayout.EAST, series);
         overviewLayout.putConstraint(SpringLayout.NORTH, series_field, 5, SpringLayout.NORTH, overview);
-        overviewLayout.putConstraint(SpringLayout.WEST, ect, 5, SpringLayout.EAST, series_field);
-        overviewLayout.putConstraint(SpringLayout.NORTH, ect, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate, 75, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, brewDate, 35, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate_field, 15, SpringLayout.EAST, brewDate);
@@ -251,7 +247,6 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overview.add(title_field);
         overview.add(series);
         overview.add(series_field);
-        overview.add(ect);
         overview.add(brewDate);
         overview.add(brewDate_field);
         overview.add(startTime);
