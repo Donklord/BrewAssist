@@ -1,17 +1,65 @@
- package BrewAssist.RecipeBuilder;
+ package BrewAssist.Core;
 
 import java.io.*;
 import java.util.*;
+import BrewAssist.RecipeBuilder.*;
+import java.awt.FileDialog;
+import java.awt.Frame;
 
-public class SaveWholeGrain {
+public class Recipe {
     BrewAssistUI gui;
+    String root = "C:\\BrewAssist\\Saves\\Recipe\\wg\\";
     
   /**
     * Only constructor.
     * 
     */
-    public SaveWholeGrain(BrewAssistUI in) {
+    public Recipe(BrewAssistUI in) {
         gui = in;
+    }
+    
+    public Boolean saveRecipe() {
+        int answer = -1;
+        File f = new File(root + gui.grainName.getText() + ".properties");
+        if (!f.exists()) {
+            save(gui.grainName.getText());
+            return true;
+        } else {
+            answer = gui.throwSaveOverrideWarning();
+            if (answer == 0) {
+                save(gui.grainName.getText());
+            }
+        }
+        return false;
+    }
+    
+    public Boolean loadRecipe() {
+        String fileName = RunLoadFrame();
+                System.out.println("Recipe Loaded: " + fileName);
+                if (!fileName.equals("Empty")) {
+                    load(fileName);
+                    gui.tableRefresh();
+                    return true;
+                }
+        return false;
+    }
+    
+     public String RunLoadFrame() {
+        String filename = "Empty";
+        Frame f = new Frame();
+        f.setLocationRelativeTo(null);
+        FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
+        fd.setDirectory(root);
+        fd.setFile("*.properties");
+        fd.setVisible(true);
+        filename = fd.getFile();
+        //Logging
+        if (filename.contains("Empty"))
+            System.out.println("WG Load: No file chosen");
+        else
+            System.out.println("WG Load: File " + filename + " was loaded");
+        
+        return filename;
     }
     
   /**
@@ -23,7 +71,7 @@ public class SaveWholeGrain {
     *
     * @param  fileName   String name of the file.
     */
-    public void saveGrain(String fileName) {
+    public void save(String fileName) {
         Properties prop = new Properties();
         
         //Save properties
@@ -70,7 +118,7 @@ public class SaveWholeGrain {
         
         //Create the save file
         FileWriter writer = null;
-        String path = "C:\\BrewAssist\\Saves\\Recipe\\wg\\" + fileName + ".properties";
+        String path = root + fileName + ".properties";
         try {
             writer = new FileWriter(path);
             prop.store(writer, "Author: PVB");
@@ -95,9 +143,9 @@ public class SaveWholeGrain {
     *
     * @param filename (String) The name of the file to be loaded.
     */
-    public void wgLoader(String filename) {
+    public void load(String filename) {
         try {
-            String path = "C:\\BrewAssist\\Saves\\Recipe\\wg\\" + filename;
+            String path = root + filename;
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);

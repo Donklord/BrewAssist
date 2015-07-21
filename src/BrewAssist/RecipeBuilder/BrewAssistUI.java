@@ -4,6 +4,7 @@ import BrewAssist.Ingredients.yeast;
 import BrewAssist.Ingredients.Hops;
 import BrewAssist.Ingredients.WholeGrain;
 import BrewAssist.Ingredients.Styles;
+import BrewAssist.Core.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,13 +17,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.File;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
     WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
-    public SaveWholeGrain saveGrain = new SaveWholeGrain(this);
-    FileLoader fileLoad = new FileLoader(this);
+    //public SaveWholeGrain saveGrain = new SaveWholeGrain(this);
+    Recipe saveGrain = new Recipe(this);
+    //FileLoader fileLoad = new FileLoader(this);
    // CsvLoader file = new CsvLoader();
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
@@ -44,32 +45,32 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     JTextField ogText = new JTextField(6);
     JTextField fgText = new JTextField(6);
     JTextField abvText = new JTextField(5);
-    JTextField grainName = new JTextField(15);
+    public JTextField grainName = new JTextField(15);
     JTextArea specialTextField = new JTextArea(2,50);
     JComboBox<String> grainCombo = new JComboBox<>();
-    Object[][] grainData = {
-            {"", "", "", "", "", ""},
-            {"", "", "", "", "", ""},
-            {"", "", "", "", "", ""},
-            {"", "", "", "", "", ""},
-            {"", "", "", "", "", ""},
-            {"", "", "", "", "", ""},
+    public Object[][] grainData = {
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
         };
     String[] grainColNames = {"Grain", "Lbs", "% Yield", "Lovibond", "SRM", "% Max"};
     JTable grainTable = new JTable(grainData, grainColNames);
     
     String[] hopColNames = {"Hop", "Amount", "Time", "Alpha Acid", "Beta Acid"};
-        Object[][] hopData = {
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
+    public Object[][] hopData = {
+        {"", "", "", "", ""},
+        {"", "", "", "", ""},
+        {"", "", "", "", ""},
+        {"", "", "", "", ""},
+        {"", "", "", "", ""},
+        {"", "", "", "", ""},
         };
     JTable hopTable = new JTable(hopData, hopColNames);
-    JComboBox<String> beerStyles = new JComboBox<>();
-    JComboBox<String> yeast = new JComboBox<>();
+    public JComboBox<String> beerStyles = new JComboBox<>();
+    public JComboBox<String> yeast = new JComboBox<>();
     
     JTextField test = new JTextField();
     private JLabel calcIbu = new JLabel("IBU's:");
@@ -77,15 +78,15 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     private JLabel calcOg = new JLabel("O.G.:");
     private JLabel calcFg = new JLabel("F.G.:");
     private JLabel calcAbv = new JLabel("% ABV:");
-    JTextField size = new JTextField("5", 2);
-    JTextField cIbuT = new JTextField(5);
-    JTextField cSrmT = new JTextField(5);
-    JTextField cOgT = new JTextField(5);
-    JTextField cFgT = new JTextField(5);
-    JTextField cAbvT = new JTextField(5);
+    public JTextField size = new JTextField("5", 2);
+    public JTextField cIbuT = new JTextField(5);
+    public JTextField cSrmT = new JTextField(5);
+    public JTextField cOgT = new JTextField(5);
+    public JTextField cFgT = new JTextField(5);
+    public JTextField cAbvT = new JTextField(5);
     JFrame wgLoadFrame = new JFrame();
-    JTextArea charac = new JTextArea(10,50);
-    JTextField series_field = new JTextField(10);
+    public JTextArea charac = new JTextArea(10,50);
+    public JTextField series_field = new JTextField(10);
     
   /**
     * Only constructor, sets up and configures main frame.  Calls helper function to paint tabs.
@@ -136,7 +137,6 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
-        String fileName;
         int answer = -1;
         if (command.equals("New Batch")) {
             if (savedWg == false) {
@@ -165,57 +165,21 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedWg = false;
-                    wgMessage.setText("A new batch has been loaded!");
-                    fileName = fileLoad.wgLoad();
-                    System.out.println("UI Result: " + fileName);
-                    if (!fileName.equals("Empty")) {
-                        saveGrain.wgLoader(fileName);
-                        tableRefresh();
-                    }
+                    Boolean x = saveGrain.loadRecipe();
+                    if (x == true)
+                        wgMessage.setText("A new batch has been loaded!");
                 }
             } else if (savedWg == true) {
                 savedWg = false;
-                wgMessage.setText("A new batch has been loaded!");
-                fileName = fileLoad.wgLoad();
-                System.out.println("UI Result: " + fileName);
-                if (!fileName.equals("Empty")) {
-                    saveGrain.wgLoader(fileName);
-                    tableRefresh();
-                }
-            } else if (savedEx == false) {
-                answer = throwNewBatchWarning();
-                if (answer == 0) {
-                    savedEx = false;
-                    fileName = fileLoad.wgLoad();
-                    System.out.println("UI Result: " + fileName);
-                    if (!fileName.equals("Empty")) {
-                        saveGrain.wgLoader(fileName);
-                        tableRefresh();
-                    }
-                }
-            } else if (savedEx == true) {
-                savedEx = false;
-                fileName = fileLoad.wgLoad();
-                System.out.println("UI Result: " + fileName);
-                if (!fileName.equals("Empty")) {
-                    saveGrain.wgLoader(fileName);
-                    tableRefresh();
-                }
-                
-            }
+                Boolean x = saveGrain.loadRecipe();
+                if (x == true)
+                    wgMessage.setText("A new batch has been loaded!");
+            } 
         } else if (command.equals("Save Batch")) {
             savedWg = true;
-            wgMessage.setText("Your batch has been saved!");
-            File f = new File("C:\\BrewAssist\\Saves\\Recipe\\wg\\" + grainName.getText() + ".properties");
-            if (!f.exists()) {
-                saveGrain.saveGrain(grainName.getText());
-            } else {
-                answer = throwSaveOverrideWarning();
-                if (answer == 0) {
-                    saveGrain.saveGrain(grainName.getText());
-                }
-            }
-            
+            Boolean x = saveGrain.saveRecipe();
+            if (x == true)
+                wgMessage.setText("Your batch has been saved!");
         } else if (command.equals("Calculate")) {
             wholeGrainCalc.calculate();
         } else if (command.equals("...")) {
@@ -258,7 +222,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         return newSelectedValue;
     }
     
-    private void tableRefresh() {
+    public void tableRefresh() {
        // grainTable.getModel().setValueAt(grain, WIDTH, WIDTH);
         //hopTable.repaint();
     }
