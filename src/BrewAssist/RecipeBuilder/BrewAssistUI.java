@@ -183,7 +183,11 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
         } else if (command.equals("Calculate")) {
             wholeGrainCalc.calculate();
         } else if (command.equals("...")) {
-            //Do something
+            if (series_field.getText().equals("")) {
+                //Popup warning here
+            } else {
+                //wholeGrainEvent load shit here
+            }
         }
         
     }
