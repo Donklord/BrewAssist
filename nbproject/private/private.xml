@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Phillip%20Birch/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/RecipeTrack/RecipeTrackUI.java</file>
-            <file>file:/C:/Users/Phillip%20Birch/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/Run/Main.java</file>
-            <file>file:/C:/Users/Phillip%20Birch/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/RecipeBuilder/BrewAssistUI.java</file>
+            <file>file:/C:/Users/philb/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/Ingredients/Hops.java</file>
+            <file>file:/C:/Users/philb/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/Core/Recipe.java</file>
+            <file>file:/C:/Users/philb/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/Ingredients/yeast.java</file>
+            <file>file:/C:/Users/philb/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/RecipeTrack/RecipeTrackUI.java</file>
+            <file>file:/C:/Users/philb/Documents/NetBeansProjects/BrewAssist/src/BrewAssist/Run/Main.java</file>
         </group>
     </open-files>
 </project-private>

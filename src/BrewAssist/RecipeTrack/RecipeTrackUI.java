@@ -3,8 +3,7 @@ package BrewAssist.RecipeTrack;
 import BrewAssist.Ingredients.Hops;
 import BrewAssist.Ingredients.WholeGrain;
 import BrewAssist.Ingredients.yeast;
-import BrewAssist.RecipeTrack.FileLoader.*;
-import BrewAssist.RecipeTrack.SaveWholeGrain.*;
+import BrewAssist.Core.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -21,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -36,8 +34,10 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     WholeGrain grain = new WholeGrain();
     Hops hopApp = new Hops();
     yeast yeast1 = new yeast();
-    FileLoader loadWgTracker = new FileLoader(this);
-    SaveWholeGrain saveWgTracker = new SaveWholeGrain(this);
+    //FileLoader loadWgTracker = new FileLoader(this);
+    Batch_Load loadWgTracker = new Batch_Load(this);
+    //SaveWholeGrain saveWgTracker = new SaveWholeGrain(this);
+    Batch_Save saveWgTracker = new Batch_Save(this);
     
     JLabel wgMessage = new JLabel("");
     
@@ -51,29 +51,29 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     //Configure whole grain tab variables
     
     //Overview parameters
-    JTextField title_field = new JTextField(25);
-    JTextField series_field = new JTextField(10);
-    JTextField brewDate_field = new JTextField(15);
-    JTextField startTime_field = new JTextField(15);
-    JTextField endTime_field = new JTextField(15);
-    JTextField endPrim_field = new JTextField(15);
-    JTextField endSec_field = new JTextField(15);
-    JTextField kegDate_field = new JTextField(15);
-    JTextField botDate_field = new JTextField(15);
-    JTextField batchSize_field = new JTextField(4);
-    JTextField ibu_field = new JTextField(4);
-    JTextField srm_field = new JTextField(4);
-    JTextField og_field = new JTextField(4);
-    JTextField fg_field = new JTextField(4);
-    JTextField abv_field = new JTextField(4);
+    public JTextField title_field = new JTextField(25);
+    public JTextField series_field = new JTextField(10);
+    public JTextField brewDate_field = new JTextField(15);
+    public JTextField startTime_field = new JTextField(15);
+    public JTextField endTime_field = new JTextField(15);
+    public JTextField endPrim_field = new JTextField(15);
+    public JTextField endSec_field = new JTextField(15);
+    public JTextField kegDate_field = new JTextField(15);
+    public JTextField botDate_field = new JTextField(15);
+    public JTextField batchSize_field = new JTextField(4);
+    public JTextField ibu_field = new JTextField(4);
+    public JTextField srm_field = new JTextField(4);
+    public JTextField og_field = new JTextField(4);
+    public JTextField fg_field = new JTextField(4);
+    public JTextField abv_field = new JTextField(4);
     
     //Recipe parameters
     JComboBox<String> grainCombo = new JComboBox<>();
     JComboBox<String> hopCombo = new JComboBox<>();
-    JComboBox<String> yeastCombo = new JComboBox<>();
-    JComboBox<String> starterCombo = new JComboBox<>();
+    public JComboBox<String> yeastCombo = new JComboBox<>();
+    public JComboBox<String> starterCombo = new JComboBox<>();
     String[] grainColNames = {"Name", "Lbs"};
-    Object[][] grainData = {
+    public Object[][] grainData = {
             {"", ""},
             {"", ""},
             {"", ""},
@@ -85,7 +85,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     JTable grainTable = new JTable(grainData, grainColNames);
     
     String[] hopColNames = {"Name", "Amount", "Time"};
-    Object[][] hopData = {
+    public Object[][] hopData = {
             {"", "", ""},
             {"", "", ""},
             {"", "", ""},
@@ -96,21 +96,21 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     
     JTable hopTable = new JTable(hopData, hopColNames);
     
-    JTextField tempPitch_field = new JTextField(4);
+    public JTextField tempPitch_field = new JTextField(4);
     
     //Mash parameters
-    JTextField mashDuration_field = new JTextField(4);
-    JTextField waterMashRatio_field = new JTextField(4);
-    JTextField mashVolume_field = new JTextField(4);
-    JTextField targetMashTemp_field = new JTextField(4);
-    JTextField strikeWaterTemp_field = new JTextField(4);
-    JTextField mashTempActual_field = new JTextField(4);
-    JTextField finalMashTemp_field = new JTextField(4);
-    JTextField preboilGrav_field = new JTextField(4);
-    JTextField mashEff_field = new JTextField(4);
+    public JTextField mashDuration_field = new JTextField(4);
+    public JTextField waterMashRatio_field = new JTextField(4);
+    public JTextField mashVolume_field = new JTextField(4);
+    public JTextField targetMashTemp_field = new JTextField(4);
+    public JTextField strikeWaterTemp_field = new JTextField(4);
+    public JTextField mashTempActual_field = new JTextField(4);
+    public JTextField finalMashTemp_field = new JTextField(4);
+    public JTextField preboilGrav_field = new JTextField(4);
+    public JTextField mashEff_field = new JTextField(4);
     
     String[] mashColNames = {"Sparge Step", "<html>Infusion<br>Volume</html>", "<html>Infusion<br>Temp</html>", "<html>Mash<br>Temp</html>", "<html>Volume of<br>Runnings</html>", "<html>Gravity of<br>Runnings</html>"};
-    Object[][] mashData = {
+    public Object[][] mashData = {
         {"First", "", "", "", "", ""},
         {"Second", "", "", "", "", ""},
         {"Third", "", "", "", "", ""},
@@ -118,16 +118,16 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     JTable mashTable = new JTable(mashData, mashColNames);
     
     //Ferm / boil parameters
-    JTextField boilDuration_field = new JTextField(4);
-    JTextField postBoilGravity_field = new JTextField(4);
-    JTextField volumnPreBoil_field = new JTextField(4);
-    JTextField volumnPostBoil_field = new JTextField(4);
-    JTextField volumnInPrim_field = new JTextField(4);
-    JTextField tempCheck1_field = new JTextField(4);
-    JTextField tempCheck2_field = new JTextField(4);
-    JTextField tempCheck3_field = new JTextField(4);
-    JTextField tempCheck4_field = new JTextField(4);
-    JTextField finalGrav_field = new JTextField(4);
+    public JTextField boilDuration_field = new JTextField(4);
+    public JTextField postBoilGravity_field = new JTextField(4);
+    public JTextField volumnPreBoil_field = new JTextField(4);
+    public JTextField volumnPostBoil_field = new JTextField(4);
+    public JTextField volumnInPrim_field = new JTextField(4);
+    public JTextField tempCheck1_field = new JTextField(4);
+    public JTextField tempCheck2_field = new JTextField(4);
+    public JTextField tempCheck3_field = new JTextField(4);
+    public JTextField tempCheck4_field = new JTextField(4);
+    public JTextField finalGrav_field = new JTextField(4);
     
     public RecipeTrackUI() {
         
@@ -611,72 +611,44 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedWg = false;
-                    fileName = loadWgTracker.wgRecipeLoad();
-                    if (!fileName.equals("Empty")) {
-                        loadWgTracker.wgRecipeLoad_PostProcess(fileName);
-                        tableRefresh();
-                    }
+                    loadWgTracker.loadRecipe();
                 }
             } else if (savedWg == true) {
                 savedWg = false;
-                fileName = loadWgTracker.wgRecipeLoad();
-                    if (!fileName.equals("Empty")) {
-                        loadWgTracker.wgRecipeLoad_PostProcess(fileName);
-                        tableRefresh();
-                    }
-            } else if (savedEx == false) {
-                answer = throwNewBatchWarning();
-                if (answer == 0) {
-                    savedEx = false;
-                    //Create a new batch here
-                }
-            } else if (savedEx == true) {
-                savedEx = false;
-                //Create a new batch here
-            }
+                loadWgTracker.loadRecipe();
+            } 
         } else if (command.equals("Load Tracking")) {
             if (savedWg == false) {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedWg = false;
-                    fileName = loadWgTracker.wgTrackLoad();
+                    Boolean x = loadWgTracker.loadBatch();
+                    if (x == true)
+                        wgMessage.setText("Your tracking has been loaded!");
+               /*     fileName = loadWgTracker.wgTrackLoad();
                     System.out.println("UI Result: " + fileName);
                     if (!fileName.equals("Empty")) {
                         loadWgTracker.wgTrackLoad_PostProcess(fileName);
                         tableRefresh();
                         wgMessage.setText("Your tracking has been loaded!");
-                    }
+                    } */
                 }
             } else if (savedWg == true) {
                 savedWg = false;
-                fileName = loadWgTracker.wgTrackLoad();
-                System.out.println("UI Result: " + fileName);
-                    if (!fileName.equals("Empty")) {
-                        loadWgTracker.wgTrackLoad_PostProcess(fileName);
-                        tableRefresh();
-                        wgMessage.setText("Your tracking has been loaded!");
-                    }
-            } else if (savedEx == false) {
-                answer = throwNewBatchWarning();
-                if (answer == 0) {
-                    savedEx = false;
-                    //Load tracking here
-                }
-            } else if (savedEx == true) {
-                savedEx = false;
-                //Load tracking here
-                
+                Boolean x = loadWgTracker.loadBatch();
+                if (x == true)
+                    wgMessage.setText("Your tracking has been loaded!");
             }
         } else if (command.equals("Save Tracking")) {
             savedWg = true;
             File f = new File("C:\\BrewAssist\\Saves\\Tracking\\wg\\" + title_field.getText() + ".properties");
             if (!f.exists()) {
-                saveWgTracker.saveGrainTracking(title_field.getText());
+                saveWgTracker.saveBatch(title_field.getText());
                 wgMessage.setText("Your tracking has been saved!");
             } else {
                 answer = throwSaveOverrideWarning();
                 if (answer == 0) {
-                    saveWgTracker.saveGrainTracking(title_field.getText());
+                    saveWgTracker.saveBatch(title_field.getText());
                     wgMessage.setText("Your tracking has been saved!");
                 }
             }
@@ -716,7 +688,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         return newSelectedValue;    
     }
     
-    private void tableRefresh() {
+    public void tableRefresh() {
        grainTable.revalidate();
        grainTable.repaint();
        hopTable.revalidate();
