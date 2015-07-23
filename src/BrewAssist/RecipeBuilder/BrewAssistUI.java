@@ -17,10 +17,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.File;
 
 public class BrewAssistUI extends JFrame implements ActionListener, ItemListener {
     NewWholeGrainEvent wholeGrainEvent = new NewWholeGrainEvent(this);
     WholeGrainCalc wholeGrainCalc = new WholeGrainCalc(this);
+    Core file = new Core();
     //public SaveWholeGrain saveGrain = new SaveWholeGrain(this);
     Recipe saveGrain = new Recipe(this);
     //FileLoader fileLoad = new FileLoader(this);
@@ -137,6 +139,7 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
+        File t = new File("C:\\BrewAssist\\Saves\\" + series_field.getText());
         int answer = -1;
         if (command.equals("New Batch")) {
             if (savedWg == false) {
@@ -150,44 +153,50 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 savedWg = false;
                 wgMessage.setText("A new batch has been started!");
                 wholeGrainEvent.newGrain();
-            } else if (savedEx == false) {
-                answer = throwNewBatchWarning();
-                if (answer == 0) {
-                    savedEx = false;
-                    wholeGrainEvent.newGrain();
-                }
-            } else if (savedEx == true) {
-                savedEx = false;
-                wholeGrainEvent.newGrain();
             }
         } else if (command.equals("Load Batch")) {
+            System.out.println("Test" + series_field.getText());
             if (savedWg == false) {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedWg = false;
+                    if (!t.exists() || series_field.getText().equals("")) {
+                        wgMessage.setText("You must select a valid series!");
+                    } else {
+                        Boolean x = saveGrain.loadRecipe();
+                        if (x == true)
+                            wgMessage.setText("A new batch has been loaded!");
+                    }
+                }
+            } else if (savedWg == true) {
+                savedWg = false;
+                if (!t.exists() || series_field.getText().equals("")) {
+                    wgMessage.setText("You must select a valid series!");
+                } else {
                     Boolean x = saveGrain.loadRecipe();
                     if (x == true)
                         wgMessage.setText("A new batch has been loaded!");
                 }
-            } else if (savedWg == true) {
-                savedWg = false;
-                Boolean x = saveGrain.loadRecipe();
-                if (x == true)
-                    wgMessage.setText("A new batch has been loaded!");
             } 
         } else if (command.equals("Save Batch")) {
             savedWg = true;
-            Boolean x = saveGrain.saveRecipe();
-            if (x == true)
-                wgMessage.setText("Your batch has been saved!");
+            if (!t.exists() || series_field.getText().equals("")) {
+                if (series_field.getText().equals("")) {
+                    wgMessage.setText("Series can not be empty!");
+                } else {
+                    //Create file structure here
+                    //Save recipe here
+                }
+            } else {
+                if (!series_field.getText().equals("") && t.exists()) {
+                    saveGrain.saveRecipe();
+                }
+            }
         } else if (command.equals("Calculate")) {
             wholeGrainCalc.calculate();
         } else if (command.equals("...")) {
-            if (series_field.getText().equals("")) {
-                //Popup warning here
-            } else {
-                //wholeGrainEvent load shit here
-            }
+            System.out.println("This is a test");
+            saveGrain.loadSeries();
         }
         
     }

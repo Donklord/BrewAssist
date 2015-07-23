@@ -653,12 +653,12 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
                 }
             }
         } else if (command.equals("...")) {
-            fileName = loadWgTracker.wgSeriesLoad();
+        /*    fileName = loadWgTracker.wgSeriesLoad();
             System.out.println("UI Result: " + fileName);
                 if (!fileName.equals("Empty")) {
                     loadWgTracker.wgSeriesLoad_PostProcess(fileName);
                     wgMessage.setText("Your tracking has been loaded!");
-                }
+                } */
         }
     }
     

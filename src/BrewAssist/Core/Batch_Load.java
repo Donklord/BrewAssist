@@ -36,11 +36,6 @@ public class Batch_Load {
         return false;
     }
     
-    //To do: crate loadSeries functionality
-    public Boolean loadSeries() {
-        return false;
-    }
-    
     /**
     * Whole Grain Batch File Selector
     * <p>
@@ -68,25 +63,6 @@ public class Batch_Load {
         return filename;
     }
     
-  //to do - remove this
-    public String wgRecipeLoad() {
-        String filename = "Empty";
-        Frame f = new Frame();
-        f.setLocationRelativeTo(null);
-        FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
-        fd.setDirectory("C:\\BrewAssist\\Saves\\Recipe\\wg");
-        fd.setFile("*.properties");
-        fd.setVisible(true);
-        filename = fd.getFile();
-        //Logging
-        if (filename.contains("Empty"))
-            System.out.println("WG Load: No file chosen");
-        else
-            System.out.println("WG Load: File " + filename + " was loaded");
-        
-        return filename;
-    }
-    
     public String RunBatchLoadFrame() {
         String filename = "Empty";
         Frame f = new Frame();
@@ -101,24 +77,6 @@ public class Batch_Load {
             System.out.println("WG Load: No file chosen");
         else
             System.out.println("WG Load: File " + filename + " was loaded");
-        
-        return filename;
-    }
-    
-    public String wgSeriesLoad() {
-        String filename = "Empty";
-        Frame f = new Frame();
-        f.setLocationRelativeTo(null);
-        FileDialog fd = new FileDialog(f, "Select a batch series", FileDialog.LOAD);
-        fd.setDirectory("C:\\BrewAssist\\Saves\\Tracking\\series");
-        fd.setFile("*.properties");
-        fd.setVisible(true);
-        filename = fd.getFile();
-        //Logging
-        if (filename.contains("Empty"))
-            System.out.println("Series Load: No file chosen");
-        else
-            System.out.println("Series Load: File " + filename + " was loaded");
         
         return filename;
     }

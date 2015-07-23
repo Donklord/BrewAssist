@@ -20,7 +20,7 @@ public class Recipe {
     
     public Boolean saveRecipe() {
         int answer = -1;
-        File f = new File(root + gui.grainName.getText() + ".properties");
+        File f = new File("C:\\BrewAssist\\Saves\\" + gui.series_field.getText() + "\\recipes\\" + gui.grainName.getText() + ".properties");
         if (!f.exists()) {
             save(gui.grainName.getText());
             return true;
@@ -44,12 +44,40 @@ public class Recipe {
         return false;
     }
     
+    //To do: crate loadSeries functionality
+    public Boolean loadSeries() {
+        String fileName = RunSeriesLoadFrame();
+        if (!fileName.equals("Empty")) {
+            int x = fileName.length() - 11;
+            gui.series_field.setText(fileName.substring(0, x));
+        }
+        return false;
+    }
+    
+    public String RunSeriesLoadFrame() {
+        String filename = "Empty";
+        Frame f = new Frame();
+        f.setLocationRelativeTo(null);
+        FileDialog fd = new FileDialog(f, "Select a batch series", FileDialog.LOAD);
+        fd.setDirectory("C:\\BrewAssist\\Saves\\.Index\\");
+        fd.setFile("*.properties");
+        fd.setVisible(true);
+        filename = fd.getFile();
+        //Logging
+        if (filename.contains("Empty"))
+            System.out.println("Series Load: No file chosen");
+        else
+            System.out.println("Series Load: File " + filename + " was loaded");
+        
+        return filename;
+    }
+    
      public String RunLoadFrame() {
         String filename = "Empty";
         Frame f = new Frame();
         f.setLocationRelativeTo(null);
-        FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
-        fd.setDirectory(root);
+        FileDialog fd = new FileDialog(f, "Select a recipe", FileDialog.LOAD);
+        fd.setDirectory("C:\\BrewAssist\\Saves\\" + gui.series_field.getText() + "\\recipes");
         fd.setFile("*.properties");
         fd.setVisible(true);
         filename = fd.getFile();
@@ -118,7 +146,7 @@ public class Recipe {
         
         //Create the save file
         FileWriter writer = null;
-        String path = root + fileName + ".properties";
+        String path = "C:\\BrewAssist\\Saves\\" + gui.series_field.getText() + "\\recipes\\" + fileName + ".properties";
         try {
             writer = new FileWriter(path);
             prop.store(writer, "Author: PVB");
@@ -145,7 +173,7 @@ public class Recipe {
     */
     public void load(String filename) {
         try {
-            String path = root + filename;
+            String path = "C:\\BrewAssist\\Saves\\" + gui.series_field.getText() + "\\recipes\\" + filename;
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);
