@@ -51,7 +51,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     //Configure whole grain tab variables
     
     //Overview parameters
-    public JTextField title_field = new JTextField(25);
+    public JTextField title_field = new JTextField(15);
     public JTextField series_field = new JTextField(10);
     public JTextField brewDate_field = new JTextField(15);
     public JTextField startTime_field = new JTextField(15);
@@ -167,8 +167,8 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overview.setBackground(Color.WHITE);
         
         //  Local variables
-        JLabel title = new JLabel("Batch Name:  ");
-        JLabel series = new JLabel("Batch Series: ");
+        JLabel title = new JLabel("Recipe Name:  ");
+        JLabel series = new JLabel("Series: ");
         JLabel brewDate = new JLabel("Brew Date: ");
         JLabel startTime = new JLabel("Start Time: ");
         JLabel endTime = new JLabel("End Time: ");
@@ -178,24 +178,31 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JLabel botDate = new JLabel("Bottling Date: ");
         JLabel batchSize = new JLabel("Batch Size: ");
         JButton ect = new JButton("...");
-        ect.setPreferredSize(new Dimension(20,20));
+        ect.setPreferredSize(new Dimension(19,19));
         ect.addActionListener(this);
+        JButton recipeEct = new JButton("....");
+        recipeEct.setPreferredSize(new Dimension(19,19));
+        recipeEct.addActionListener(this);
         JLabel ibu = new JLabel("IBU: ");
         JLabel srm = new JLabel("SRM: ");
         JLabel og = new JLabel("OG: ");
         JLabel fg = new JLabel("FG: ");
         JLabel abv = new JLabel("ABV: ");
+        series_field.setEditable(false);
+        title_field.setEditable(false);
         
         //  Setting contstraints
         overviewLayout.putConstraint(SpringLayout.WEST, title, 60, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, title, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, title_field, 3, SpringLayout.EAST, title);
         overviewLayout.putConstraint(SpringLayout.NORTH, title_field, 5, SpringLayout.NORTH, overview);
-        overviewLayout.putConstraint(SpringLayout.WEST, series, 20, SpringLayout.EAST, title_field);
+        overviewLayout.putConstraint(SpringLayout.WEST, recipeEct, 5, SpringLayout.EAST, title_field);
+        overviewLayout.putConstraint(SpringLayout.NORTH, recipeEct, 5, SpringLayout.NORTH, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, series, 20, SpringLayout.EAST, recipeEct);
         overviewLayout.putConstraint(SpringLayout.NORTH, series, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, series_field, 3, SpringLayout.EAST, series);
         overviewLayout.putConstraint(SpringLayout.NORTH, series_field, 5, SpringLayout.NORTH, overview);
-        overviewLayout.putConstraint(SpringLayout.WEST, ect, 5, SpringLayout.EAST, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, ect, 5, SpringLayout.EAST, series_field);
         overviewLayout.putConstraint(SpringLayout.NORTH, ect, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate, 75, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, brewDate, 35, SpringLayout.NORTH, overview);
@@ -256,6 +263,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overview.add(series);
         overview.add(series_field);
         overview.add(ect);
+        overview.add(recipeEct);
         overview.add(brewDate);
         overview.add(brewDate_field);
         overview.add(startTime);
@@ -620,11 +628,11 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
                 answer = throwNewBatchWarning();
                 if (answer == 0) {
                     savedWg = false;
-                    loadWgTracker.loadRecipe();
+                    //clear fields here
                 }
             } else if (savedWg == true) {
                 savedWg = false;
-                loadWgTracker.loadRecipe();
+                //clear fields here
             } 
         } else if (command.equals("Load Tracking")) {
             if (savedWg == false) {
@@ -662,12 +670,9 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
                 }
             }
         } else if (command.equals("...")) {
-        /*    fileName = loadWgTracker.wgSeriesLoad();
-            System.out.println("UI Result: " + fileName);
-                if (!fileName.equals("Empty")) {
-                    loadWgTracker.wgSeriesLoad_PostProcess(fileName);
-                    wgMessage.setText("Your tracking has been loaded!");
-                } */
+            loadWgTracker.loadSeries();
+        } else if (command.equals("....")) {
+            loadWgTracker.loadRecipe();
         }
     }
     

@@ -36,6 +36,34 @@ public class Batch_Load {
         return false;
     }
     
+    //To do: crate loadSeries functionality
+    public Boolean loadSeries() {
+        String fileName = RunSeriesLoadFrame();
+        if (!fileName.equals("Empty")) {
+            int x = fileName.length() - 11;
+            gui.series_field.setText(fileName.substring(0, x));
+        }
+        return false;
+    }
+    
+    public String RunSeriesLoadFrame() {
+        String filename = "Empty";
+        Frame f = new Frame();
+        f.setLocationRelativeTo(null);
+        FileDialog fd = new FileDialog(f, "Select a batch series", FileDialog.LOAD);
+        fd.setDirectory("C:\\BrewAssist\\Saves\\.Index\\");
+        fd.setFile("*.properties");
+        fd.setVisible(true);
+        filename = fd.getFile();
+        //Logging
+        if (filename.contains("Empty"))
+            System.out.println("Series Load: No file chosen");
+        else
+            System.out.println("Series Load: File " + filename + " was loaded");
+        
+        return filename;
+    }
+    
     /**
     * Whole Grain Batch File Selector
     * <p>
@@ -48,9 +76,10 @@ public class Batch_Load {
     public String RunRecipeLoadFrame() {
         String filename = "Empty";
         Frame f = new Frame();
+        String series = gui.series_field.getText();
         f.setLocationRelativeTo(null);
-        FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
-        fd.setDirectory("C:\\BrewAssist\\Saves\\Recipe\\wg\\");
+        FileDialog fd = new FileDialog(f, "Select a recipe", FileDialog.LOAD);
+        fd.setDirectory("C:\\BrewAssist\\Saves\\" + series + "\\recipes");
         fd.setFile("*.properties");
         fd.setVisible(true);
         filename = fd.getFile();
@@ -66,9 +95,10 @@ public class Batch_Load {
     public String RunBatchLoadFrame() {
         String filename = "Empty";
         Frame f = new Frame();
+        String series = gui.series_field.getText();
         f.setLocationRelativeTo(null);
         FileDialog fd = new FileDialog(f, "Select a batch", FileDialog.LOAD);
-        fd.setDirectory("C:\\BrewAssist\\Saves\\Tracking\\wg");
+        fd.setDirectory("C:\\BrewAssist\\Saves\\" + series + "\\batches");
         fd.setFile("*.properties");
         fd.setVisible(true);
         filename = fd.getFile();
@@ -90,7 +120,8 @@ public class Batch_Load {
     */
     public void wgRecipeLoad_PostProcess(String filename) {
         try {
-            String path = "C:\\BrewAssist\\Saves\\Recipe\\wg\\" + filename;
+            String series = gui.series_field.getText();
+            String path = "C:\\BrewAssist\\Saves\\" + series + "\\recipes\\" + filename;
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);
@@ -144,7 +175,8 @@ public class Batch_Load {
     
     public void wgTrackLoad_PostProcess(String filename) {
         try {
-            String path = "C:\\BrewAssist\\Saves\\Tracking\\wg\\" + filename;
+            String series = gui.series_field.getText();
+            String path = "C:\\BrewAssist\\Saves\\" + series + "\\batches\\" + filename;
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);
@@ -253,7 +285,8 @@ public class Batch_Load {
     */
     public void wgSeriesLoad_PostProcess(String filename) {
         try {
-            String path = "C:\\BrewAssist\\Saves\\Recipe\\series\\" + filename;
+            String series = gui.series_field.getText();
+            String path = "C:\\BrewAssist\\Saves\\" + filename;   //To do: fix this later
             //Load the properites file
             File configFile = new File (path);
             FileInputStream inStream = new FileInputStream(configFile);

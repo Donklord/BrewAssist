@@ -185,8 +185,9 @@ public class BrewAssistUI extends JFrame implements ActionListener, ItemListener
                 if (series_field.getText().equals("")) {
                     wgMessage.setText("Series can not be empty!");
                 } else {
-                    //Create file structure here
-                    //Save recipe here
+                    file.createNewIndex(series_field.getText());
+                    file.createNewSeriesDirectory(series_field.getText());
+                    saveGrain.saveRecipe();
                 }
             } else {
                 if (!series_field.getText().equals("") && t.exists()) {
