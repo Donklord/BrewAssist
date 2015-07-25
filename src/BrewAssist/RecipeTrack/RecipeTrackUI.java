@@ -157,7 +157,10 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         wgTrack.setLayout(new GridLayout(4,1));
         wgTrack.setBackground(Color.WHITE);
         
-        //Overview
+        ////////////
+        //Overview//
+        ////////////
+        
         SpringLayout overviewLayout = new SpringLayout();
         overview.setLayout(overviewLayout);
         overview.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED, Color.GRAY, Color.DARK_GRAY), "Overview"));
@@ -174,6 +177,9 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JLabel kegDate = new JLabel("Kegging Date: ");
         JLabel botDate = new JLabel("Bottling Date: ");
         JLabel batchSize = new JLabel("Batch Size: ");
+        JButton ect = new JButton("...");
+        ect.setPreferredSize(new Dimension(20,20));
+        ect.addActionListener(this);
         JLabel ibu = new JLabel("IBU: ");
         JLabel srm = new JLabel("SRM: ");
         JLabel og = new JLabel("OG: ");
@@ -189,6 +195,8 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overviewLayout.putConstraint(SpringLayout.NORTH, series, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, series_field, 3, SpringLayout.EAST, series);
         overviewLayout.putConstraint(SpringLayout.NORTH, series_field, 5, SpringLayout.NORTH, overview);
+        overviewLayout.putConstraint(SpringLayout.WEST, ect, 5, SpringLayout.EAST, overview);
+        overviewLayout.putConstraint(SpringLayout.NORTH, ect, 5, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate, 75, SpringLayout.WEST, overview);
         overviewLayout.putConstraint(SpringLayout.NORTH, brewDate, 35, SpringLayout.NORTH, overview);
         overviewLayout.putConstraint(SpringLayout.WEST, brewDate_field, 15, SpringLayout.EAST, brewDate);
@@ -247,6 +255,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         overview.add(title_field);
         overview.add(series);
         overview.add(series_field);
+        overview.add(ect);
         overview.add(brewDate);
         overview.add(brewDate_field);
         overview.add(startTime);
