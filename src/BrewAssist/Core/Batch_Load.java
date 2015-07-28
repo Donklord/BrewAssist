@@ -15,34 +15,51 @@ public class Batch_Load {
     }
     
     public Boolean loadRecipe() {
-        String fileName = RunRecipeLoadFrame();
-        if (!fileName.equals("Empty")) {
-            wgRecipeLoad_PostProcess(fileName);
-            gui.tableRefresh();
-            System.out.println("Recipe Load Result: " + fileName + "has been loaded");
-            return true;
+        String fileName;
+        try {
+            fileName = RunRecipeLoadFrame();
+            if (!fileName.equals("Empty")) {
+                wgRecipeLoad_PostProcess(fileName);
+                gui.tableRefresh();
+                System.out.println("Recipe Load Result: " + fileName + "has been loaded");
+                return true;
+            }
+        } catch (Exception e) {
+            
         }
+        
         return false;
     }
     
     public Boolean loadBatch() {
-        String fileName = RunBatchLoadFrame();
-        if (!fileName.equals("Empty")) {
-            wgTrackLoad_PostProcess(fileName);
-            gui.tableRefresh();
-            System.out.println("Batch Load Result: " + fileName + "has been loaded");
-            return true;
+        String fileName;
+        try {
+            fileName = RunBatchLoadFrame();
+                if (!fileName.equals("Empty")) {
+                wgTrackLoad_PostProcess(fileName);
+                gui.tableRefresh();
+                System.out.println("Batch Load Result: " + fileName + "has been loaded");
+                return true;
+            }
+        } catch (Exception e) {
+            
         }
+        
         return false;
     }
     
-    //To do: crate loadSeries functionality
     public Boolean loadSeries() {
-        String fileName = RunSeriesLoadFrame();
-        if (!fileName.equals("Empty")) {
-            int x = fileName.length() - 11;
-            gui.series_field.setText(fileName.substring(0, x));
+        String fileName;
+        try {
+            fileName = RunSeriesLoadFrame();
+            if (!fileName.equals("Empty")) {
+                int x = fileName.length() - 11;
+                gui.series_field.setText(fileName.substring(0, x));
+            }   
+        } catch (Exception e) {
+            
         }
+        
         return false;
     }
     
@@ -60,7 +77,6 @@ public class Batch_Load {
             System.out.println("Series Load: No file chosen");
         else
             System.out.println("Series Load: File " + filename + " was loaded");
-        
         return filename;
     }
     

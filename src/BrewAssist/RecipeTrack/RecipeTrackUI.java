@@ -66,6 +66,7 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     public JTextField og_field = new JTextField(4);
     public JTextField fg_field = new JTextField(4);
     public JTextField abv_field = new JTextField(4);
+    JButton recipeEct = new JButton("....");
     
     //Recipe parameters
     JComboBox<String> grainCombo = new JComboBox<>();
@@ -128,6 +129,8 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
     public JTextField tempCheck3_field = new JTextField(4);
     public JTextField tempCheck4_field = new JTextField(4);
     public JTextField finalGrav_field = new JTextField(4);
+    JButton wgLoad = new JButton("Load Tracking");
+    JButton wgSave = new JButton("Save Tracking");
     
     public RecipeTrackUI() {
         
@@ -180,9 +183,11 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JButton ect = new JButton("...");
         ect.setPreferredSize(new Dimension(19,19));
         ect.addActionListener(this);
-        JButton recipeEct = new JButton("....");
+        
         recipeEct.setPreferredSize(new Dimension(19,19));
         recipeEct.addActionListener(this);
+        recipeEct.setEnabled(false);
+        recipeEct.setToolTipText("You must select a series first!");
         JLabel ibu = new JLabel("IBU: ");
         JLabel srm = new JLabel("SRM: ");
         JLabel og = new JLabel("OG: ");
@@ -520,11 +525,14 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
         JLabel fermentationL = new JLabel("Fermentation");
         JLabel boil = new JLabel("Boil");
         JButton wgNew = new JButton("New Tracking");
-        JButton wgLoad = new JButton("Load Tracking");
-        JButton wgSave = new JButton("Save Tracking");
+        
         wgNew.addActionListener(this);
         wgLoad.addActionListener(this);
+        wgLoad.setEnabled(false);
+        wgLoad.setToolTipText("You must select a recipe and series first!");
         wgSave.addActionListener(this);
+        wgSave.setToolTipText("You must select a recipe and series first!");
+        wgSave.setEnabled(false);
         
         //Set constraints
         fermentationLayout.putConstraint(SpringLayout.WEST, boil, 150, SpringLayout.WEST, fermentation);
@@ -671,8 +679,18 @@ public class RecipeTrackUI extends JFrame implements ActionListener {
             }
         } else if (command.equals("...")) {
             loadWgTracker.loadSeries();
+            if (!series_field.getText().equals("")) {
+                recipeEct.setEnabled(true);
+                recipeEct.setToolTipText("Select a recipe!");
+            }  
         } else if (command.equals("....")) {
             loadWgTracker.loadRecipe();
+            if (!title_field.getText().equals("") && !series_field.getText().equals("")) {
+                wgLoad.setEnabled(true);
+                wgLoad.setToolTipText("Load a new batch!");
+                wgSave.setEnabled(true);
+                wgSave.setToolTipText("Save your current batch!");
+            }
         }
     }
     

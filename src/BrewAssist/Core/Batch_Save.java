@@ -3,6 +3,8 @@
 import java.io.*;
 import java.util.*;
 import BrewAssist.RecipeTrack.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Batch_Save {
     RecipeTrackUI gui;
@@ -27,6 +29,7 @@ public class Batch_Save {
     public void saveBatch(String fileName) {
         //Configure a new properties class
         Properties prop = new Properties();
+        String series = gui.series_field.getText();
         
         //Save properties
         prop.setProperty("fileType", "Track");
@@ -136,7 +139,10 @@ public class Batch_Save {
         
         //Create the save file
         FileWriter writer = null;
-        String path = "C:\\BrewAssist\\Saves\\Tracking\\wg\\" + fileName + ".properties";
+        DateFormat today = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = today.format(new Date());
+        String recipe = gui.title_field.getText();
+        String path = "C:\\BrewAssist\\Saves\\" + series + "\\batches\\" + recipe + " " + dateString + ".properties";
         try {
             writer = new FileWriter(path);
             prop.store(writer, "Author: PVB");
