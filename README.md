@@ -1,7 +1,17 @@
 # BrewAssist #
 ### Introduction ###
 
-This project is a brewing assistance program.  Its is designed to assist beer homebrewers to create recipies, track brew day progress and track key brewing metrics over multiple batches.
+This project is a brewing assistance program.  Its is designed to assist beer homebrewers to create recipies, track brew day progress and track key brewing metrics over multiple batches.  In order to facilitate this, I organize the types of beers you are trying to brew into what I call "series".  
+
+A series is a way to organize multiple batches, and recipes into one core beer style you are trying to perfect.  Lets say you are attempting to make an IPA (Indian Pale Ale) called "Phil's Pale Ale".  In this case, the series will be called "Phil's Pale Ale", and you would start by making the first recipe iteration and attempting to brew it a couple of times to see how it turns out, called "Batches".  If you need to tweak the recipe a bit, you would simply create a new recipe iteration under the same series, and brew a few more batches with this recipe.  All of this information is tracked and stored in the Brew Assist software.  
+
+With all of this information stored, you now have the ability to track your progress.  I want to accomplish this by providing an easy to use graphing tool, that will display all of the key metircs in one screeen.  It is my goal to allow the user to glean any helpful information to help them imporove their recipe.  I have a handful of ideas on how I want this to work. 
+
+<ol>
+  <li>Track all of the batches associated with a single recipe.</li>
+  <li>Track all of your recipe iterations and how it ivolved</li>
+  <li>Track everything, your recipe interations and batches in one screen.</li>
+</ol>
   
 ### Motivation ###
 This is a learning project for me to help bridge two of my interests; brewing beer and programming.  My background in programming is based on C / Assembly, so this is my first time learning an object oriented programing language.  I have no dought that this program is really inefficient and I am probably doing a lot of things the hard way.
@@ -13,7 +23,7 @@ I took insparation from other comercially available options (Like BrewSmith or B
 There isnt any special installation instructions, the program, by default, is designed to work as is from  any location you copy it to.  All you need to do is navigate to BrewAssist\dist and open the executable jar file.
 
 <h5><i> Program Use </i></h5>
-Using the program requires some knowldege about what recipie you want to build.  But in general you can follow this procedure below.
+Using the program requires some knowldege about what recipie you want to build.  This program is designed around a series of tools that all work together.  You can easily load all of these tools from the main loading menu.  A brief description of each tool, and its status is below.
 
 Please note: there is a known bug with the table (Hops and grains table) not populating the ingredient characteristics afer selecting them.  All you have to do is click on any cell in the first column.  I am currently looking into alternatives.
 
