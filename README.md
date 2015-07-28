@@ -20,19 +20,35 @@ I took insparation from other comercially available options (Like BrewSmith or B
 
 ### Installation and Use ###
 <h5><i> Installation </i></h5>
-There isnt any special installation instructions, the program, by default, is designed to work as is from  any location you copy it to.  All you need to do is navigate to BrewAssist\dist and open the executable jar file.
+There isnt any special installation instructions, the program is designed to work as is from  any location you copy it to.  All you need to do is navigate to BrewAssist\dist and open the executable jar file.
 
 <h5><i> Program Use </i></h5>
 Using the program requires some knowldege about what recipie you want to build.  This program is designed around a series of tools that all work together.  You can easily load all of these tools from the main loading menu.  A brief description of each tool, and its status is below.
 
-Please note: there is a known bug with the table (Hops and grains table) not populating the ingredient characteristics afer selecting them.  All you have to do is click on any cell in the first column.  I am currently looking into alternatives.
+<ul>
+  <li>Recipe Builder: Create a new Recipe and choose the associated series.  Status: First version complete</li>
+  <li>Batch Tracker: Select the desired series and recipe and track your brew day progress.  Status: First version complete</li>
+  <li>Series Analytics:  Track key recipe and batch metrics over multiple iterations.  Status: Not Started</li>
+  <li>Ingredient Picker: Helpful lookup program that allows you to view all avaialble ingredients (Hops, Grains, Yeast, Beer Styles).  Status: Not Started</li>
+  <li>Ingredient Editor:  Allows the user to add any ingredient that is not currently available.  Status: Not Started</li>
+  <li>Settings:  Program settings.  Status: Not Started</li>
+  <li>Help:  Getting started guide, general help topics.  Status: Not Started</li>
+</ul>
+
+To start you need to create a new batch and series in the Recipe Builder tool.  When in the recipe builder follow the procedure below.
 
 <ol>
-  <li>Choose what beer style you are trying to create from the style selector</li>
-  <li>Choose your gain bill, batch size, yeast type, and hop additions in the tables.  Make sure to fillout the amounts.</li>
-  <li>Hit calculate, your metrics are shown at the bottom of the program</li>
-  <li>Compare your calculated metrics with the target metrics at the top of the page.  Alter your recipie as needed.</li>
+  <li>Fill in the name of the beer series you are creating (I.E. Phil's Pale Ale).</li>
+  <li>Fill in the name of the current recipe iteration (I.E. Recipe #1).</li>
+  <li>Fill out all of the recipe information; batch style, size, yeast type, grain bill, and hop additions.</li>
+  <li>Click calculated to view your target metrics.</li>
+  <li>Alter your recipe until your calcualted charactaristics match the batch characteristics.</li>
+  <li>Save your recipe when you are happy with it.</li>
 </ol>
+
+Please note:  This is a known bug with the Tables for this tool, when selecting the grain or hop type in the first column the the associated characteristics to the left may not populate right away.  To fix this you need to simply click on any of the other cells in the first column.  I am looking into ways to fix this.
+
+
   
 ### Code Overview ###
 
