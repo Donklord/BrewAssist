@@ -49,7 +49,7 @@ To start you need to create a new batch and series in the Recipe Builder tool.  
   <li>Save your recipe when you are happy with it.</li>
 </ol>
 
-Please note:  This is a known bug with the Tables for this tool, when selecting the grain or hop type in the first column the the associated characteristics to the left may not populate right away.  To fix this you need to simply click on any of the other cells in the first column.  I am looking into ways to fix this.
+Please note:  This is a known bug with the Tables for this tool, when selecting the grain or hop type in the first column the the associated characteristics to the right may not populate right away.  To fix this you need to simply click on any of the other cells in the first column.  I am looking into ways to fix this.
 
 Your recipe is now ready to be tracked using the Recipe Tracker tool.  With that program open, follow the procedure below.
 
