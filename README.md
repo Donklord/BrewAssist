@@ -9,11 +9,13 @@ With all of this information stored, you now have the ability to track your prog
 
 <ol>
   <li>Track all of the batches associated with a single recipe.</li>
-  <li>Track all of your recipe iterations and how it ivolved</li>
+  <li>Track all of your recipe iterations and how it evolved.</li>
   <li>Track everything, your recipe interations and batches in one screen.</li>
 </ol>
-  
-### Motivation ###
+
+<div class="verticalLine">
+Motivation
+</div>  
 This is a learning project for me to help bridge two of my interests; brewing beer and programming.  My background in programming is based on C / Assembly, so this is my first time learning an object oriented programing language.  I have no dought that this program is really inefficient and I am probably doing a lot of things the hard way.
 
 I took insparation from other comercially available options (Like BrewSmith or Beertarget) but I wanted to create something tailored to exacly what I wanted.  I also wanted to learn how to design my own batch of beer from scratch.
