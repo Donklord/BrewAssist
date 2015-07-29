@@ -26,11 +26,11 @@ I took insparation from other comercially available options (Like BrewSmith or B
 There isnt any special installation instructions, the program is designed to work as is from  any location you copy it to.  All you need to do is navigate to BrewAssist\dist and open the executable jar file.
 
 <h5><i> Program Use </i></h5>
-Using the program requires some knowldege about what recipie you want to build.  This program is designed around a series of tools that all work together.  You can easily load all of these tools from the main loading menu.  A brief description of each tool, and its status is below.
+Using the program requires some knowldege about what recipie you want to build.  This program is designed around a series of tools that all work together.  You can easily load all of these tools from the main loading menu.  A brief description of each tool, and its completion status is below.
 
 <ul>
-  <li>Recipe Builder: Create a new Recipe and choose the associated series.  Status: First version complete</li>
-  <li>Batch Tracker: Select the desired series and recipe and track your brew day progress.  Status: First version complete</li>
+  <li>Recipe Builder: Create a new Recipe and choose the associated series.  Status: V1.0 complete</li>
+  <li>Batch Tracker: Select the desired series and recipe and track your brew day progress.  Status: V1.0 complete</li>
   <li>Series Analytics:  Track key recipe and batch metrics over multiple iterations.  Status: Not Started</li>
   <li>Ingredient Picker: Helpful lookup program that allows you to view all avaialble ingredients (Hops, Grains, Yeast, Beer Styles).  Status: Not Started</li>
   <li>Ingredient Editor:  Allows the user to add any ingredient that is not currently available.  Status: Not Started</li>
@@ -51,91 +51,50 @@ To start you need to create a new batch and series in the Recipe Builder tool.  
 
 Please note:  This is a known bug with the Tables for this tool, when selecting the grain or hop type in the first column the the associated characteristics to the left may not populate right away.  To fix this you need to simply click on any of the other cells in the first column.  I am looking into ways to fix this.
 
+Your recipe is now ready to be tracked using the Recipe Tracker tool.  With that program open, follow the procedure below.
 
+<ol>
+  <li>Select your series.</li>
+  <li>Select your recipe.</li>
+  <li>Fill out the tracking form as your brew day commences.</li>
+  <li>Save your tracking sheet once everything is complete.</li>
+</ol>
   
 ### Code Overview ###
 <hr>
 
-There is two main packages in this project; com.Ingredients and com.BrewAsist.
+There are five packages in this project; BrewAssist.Run, BrewAssist.Core, BrewAssist.Ingredients, BrewAssist.RecipeBuilder and BrewAssist.RecipeTrack.  These packages can be split into two categories, Backbone (BrewAssist.Core and BrewAssist.Ingredients) and UI (BrewAssist.Run, BrewAssist.RecipeBuilder and BrewAssist.RecipeTrack).
 
-<h4><b> com.Ingredients </b></h4>
-This package contains five classes, one for each ingredient type and one for beer styles.; Extract Ingredients (Liquid and Dry Malt Extract), Whole Grain (Malted barley), hops, yeast and beer styles.  Each class contains the following methods.
+<h4><b> BrewAssist.Run </b></h4>
+This package contains the UI elements for the main loading screen.  It also contains the main class.
 
-<h5><i> isIngredients </i></h5>
-```
-/**
-  * Returns true if the ingredient exists, returns false if the
-  * ingredient doesn't exist.
-  * <p>
-  * This method is intended to check the existence of an ingredient 
-  * before calling the getIngredeints method.
-  *
-  * @param  in   a string name of the desired ingredient.
-  * @return      Boolean status of the existence of the input. 
-  */
-```
+<h4><b> BrewAssist.Core </b></h4>
+This package contains all of the file management methods which includes; directory checking and creation, series creation and loading, recipe loading and saving and batch loading and saving.  It also contains any other methods that cant be categorized in any other package.
 
-<h5><i> getIngredients </i></h5>
-```
-/**
-  * Given a beer name as a String, calls a helper function that
-  * sets the characteristics in the UI.
-  * <p>
-  * This method is the main means to set beer style characteristics.  It
-  * pulls the String information via a combo box in the main UI.
-  *
-  * @param  in   a string name of the desired ingredient.
-  */  
-```
+<h4><b> BrewAssist.Ingredients </b></h4>
+This package stores and provides the mehod for retrieval of all ingredients (hops, grains, yeast) and beer syles.
 
-<h5><i> Ingredient Storage Methods </i></h5>
-```
-/**
-  * Sets the global variables to the given style.
-  *
-  */
-```
+<h4><b> BrewAssist.RecipeBuilder </b></h4>
+This package conains all of the UI elements, event handling, and recipe calculatios for the recipe builder tool.
 
-<h4><b> com.BrewAssist </b></h4>
-This package contains four classes; BrewAssistUI, NewWholeGrainEvent, SaveWholeGrain and WholeGrainCalc.  A high level summary of each class is below.
-
-<h5><i>  BrewAssistUI </i></h5>
-This class contains all of the UI elements, using Java swing.  This class also contains all of the popup warnings and action events.  This class contains the main method.
-
-<h5><i> NewWholeGrainEvent </i></h5>
-This class ties into the BrewAssistUI class and imports ingredients information from the com.Ingredients package.  When an event occurs in BrewAssistUI it passes the information to NewWholeGrainEvent and pulls the information from the com.Ingredients package.
-
-<h5><i> SaveWholeGrain </i></h5>
-This class ties into the BrewAssistUI class and saves all data to a file located in C:\BrewAsist\wg\.  It also contains a method that checks the existinace of the file structure in c:\BrewAssist\, if that directly does not exist it creates it.  Creadted brewing recipies are saved in properties files.
-
-<h5><i> WholeGainCalc </i></h5>
-This class ties into BrewAssistUI and pulls ingredient information from the com.Ingredients package.  It contains all of the methods needed to calculate the key merics for brewing beer; IBU, SRM, Degrees Lovibond, Orignal Gravity, Final Gravity and ABV.  Once the "Calculate" button is selected, a method in the BrewAsssistUI class calls the calculate class in the WholeGrainClass.  This method then runs though a handful of helper methods that pull the required information form BrewAssistUI, calculates the target meric, and saves the final result in BrewAssistUI.
+<h4><b> BrewAssist.RecipeTrack </b></h4>
+This package contains all of the UI elements and event handling for the recipe tracking tool.
 
 ### To Do ###
 <hr>
 
 <h5><i> To Do List </i></h5>
 <ul style="list-style-type:square">
-  <li>Create Extract UI</li>
-  <li>Create Extract Events</li>
-  <li>Add Extract ingredients</li>
-  <li>Create "Load Batch" popup</li>
-  <li>Create batch loading functionality</li>
-  <li>Create batch calculation pop up window (will show you what calculations were used)</li>
-  <li>Create settings menu</li>
-  <li>Add swtiching between metric and english units</li>
-  <li>Add ingredient picker (Allows you to navigate all available ingredients and see more information about them)</li>
-  <li>Create a brew day tracking tab.  Allows user to load the target batch and track the brewday progress</li>
-  <li>Create batch tracking functionality, track a recipie across multiple batches and display how the target metrics varied over time.</li>
-  <li>Create "Post-mortem" functionality.  Program will try to identify flaws when creating a recipie.  (Beer Analytics!)</li>
-</ul>
-
-<h5><i> Wish List </i></h5>
-Items that I want to do, but are a little out of reach given my current skill level.
-<ul style="list-style-type:square">
-  <li>Update UI (Make it pretty)</li>
-  <li>Allow user the ability to add custom ingredients and beer styles</li>
-  <li>Allow user to display batch in a prettier format for printing.</li>
+  <li>Update Recipe Builder UI</li>
+  <li>Add text filters to all editable fields in Recipe Builder</li>
+  <li>Enhance recipe calculations to handle the usage of steeping grains</li>
+  <li>Update recipe builder UI to handle steeping grains</li>
+  <li>Add text filters to all editable fields in Recipe Track</li>
+  <li>Create series analyics tool</li>
+  <li>Create ingredient picker tool</li>
+  <li>Create ingredient editor tool</li>
+  <li>Create settings tool</li>
+  <li>Create help tool</li>
 </ul>
 
 <h5><i> Known Bugs </i></h5>
