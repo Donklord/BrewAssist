@@ -21,6 +21,7 @@ This is a learning project for me to help bridge two of my interests; brewing be
 I took insparation from other comercially available options (Like BrewSmith or Beertarget) but I wanted to create something tailored to exacly what I wanted.  I also wanted to learn how to design my own batch of beer from scratch.
 
 ### Installation and Use ###
+<hr>
 <h5><i> Installation </i></h5>
 There isnt any special installation instructions, the program is designed to work as is from  any location you copy it to.  All you need to do is navigate to BrewAssist\dist and open the executable jar file.
 
