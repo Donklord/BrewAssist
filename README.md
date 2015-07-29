@@ -54,6 +54,7 @@ Please note:  This is a known bug with the Tables for this tool, when selecting 
 
   
 ### Code Overview ###
+<hr>
 
 There is two main packages in this project; com.Ingredients and com.BrewAsist.
 
@@ -111,6 +112,7 @@ This class ties into the BrewAssistUI class and saves all data to a file located
 This class ties into BrewAssistUI and pulls ingredient information from the com.Ingredients package.  It contains all of the methods needed to calculate the key merics for brewing beer; IBU, SRM, Degrees Lovibond, Orignal Gravity, Final Gravity and ABV.  Once the "Calculate" button is selected, a method in the BrewAsssistUI class calls the calculate class in the WholeGrainClass.  This method then runs though a handful of helper methods that pull the required information form BrewAssistUI, calculates the target meric, and saves the final result in BrewAssistUI.
 
 ### To Do ###
+<hr>
 
 <h5><i> To Do List </i></h5>
 <ul style="list-style-type:square">
