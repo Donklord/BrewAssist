@@ -75,7 +75,7 @@ This package contains all of the file management methods which includes; directo
 This package stores and provides the mehod for retrieval of all ingredients (hops, grains, yeast) and beer syles.
 
 <h4><b> BrewAssist.RecipeBuilder </b></h4>
-This package conains all of the UI elements, event handling, and recipe calculatios for the recipe builder tool.
+This package conains all of the UI elements, event handling, and recipe calculations for the recipe builder tool.
 
 <h4><b> BrewAssist.RecipeTrack </b></h4>
 This package contains all of the UI elements and event handling for the recipe tracking tool.
