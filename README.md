@@ -87,6 +87,9 @@ This package contains all of the UI elements and event handling for the recipe t
 <ul style="list-style-type:square">
   <li>Update Recipe Builder UI</li>
   <li>Add text filters to all editable fields in Recipe Builder</li>
+  <li>Add volume tags for all fields that need it.</li>
+  <li>Recipe Tracker: Add ability to swtich mash view based on type of mash being performed.</li>
+  <li>Recipe Tracker: Add ability to calculate mash eff.</li>
   <li>Enhance recipe calculations to handle the usage of steeping grains</li>
   <li>Update recipe builder UI to handle steeping grains</li>
   <li>Add text filters to all editable fields in Recipe Track</li>
